@@ -1,8 +1,8 @@
 {
-  "updated_at": "20:45:40 09/11/2026",
+  "updated_at": "22:30:04 09/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
-  "total_rows": 387,
+  "total_rows": 389,
   "records": [
     {
       "STT": "1",
@@ -6194,6 +6194,38 @@
       "Số lượt share": "",
       "Chi nhánh": "TNN",
       "Bộ phận": "KTV",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "388",
+      "Email người đăng bài": "haihv12@fpt.com",
+      "Họ tên người đăng bài": "Hai Hoang Van",
+      "Tiêu đề bài đăng": "Haihv12 đi bán mạng...là trời mưa🤣🤣🤣",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "09/11/2026 16:16",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "HaMTT6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "DNI",
+      "Bộ phận": "IBB",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "389",
+      "Email người đăng bài": "maylt@fpt.com",
+      "Họ tên người đăng bài": "May Le Thi",
+      "Tiêu đề bài đăng": "FTEL30 - Triệu nụ cười - Niềm vui mỗi ngày",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "09/11/2026 15:57",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "HaMTT6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "LCI",
+      "Bộ phận": "DVKH",
       "Số lượt comment": ""
     }
   ]
