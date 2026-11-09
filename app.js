@@ -379,9 +379,10 @@ const state = {
   keyword: '',
   showZeroBranches: true,
   showTimeColumns: true,
-  regionSort: 'excel_order',
+  branchSort: 'hierarchy',
+  regionSort: 'smiles_desc',
   deptMatrixLevel: 'branch_and_region',
-  isDemoData: true,
+  isDemoData: false,
   charts: {}
 };
 
@@ -838,15 +839,79 @@ function getRecordBucketKey(r) {
   return r.monthKey;
 }
 
+// Tính các mốc thời gian chuẩn từ dữ liệu thực tế: Hôm nay, Hôm qua, Hôm kia, Tuần này, Tuần trước, Tháng này
+function getTemporalMilestones() {
+  const allRecs = state.rawRecords;
+  if (!allRecs || allRecs.length === 0) {
+    const now = new Date();
+    const yest = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+    const prev = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 2);
+    const prevWeekDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7);
+    return {
+      latestYmd: toYMD(now),
+      yesterdayYmd: toYMD(yest),
+      prevDayYmd: toYMD(prev),
+      currentWeekKey: getWeekInfo(now).key,
+      prevWeekKey: getWeekInfo(prevWeekDate).key,
+      currentMonthKey: getMonthInfo(now).key
+    };
+  }
+  const maxDateObj = allRecs.reduce((max, r) => (r.dateObj > max ? r.dateObj : max), allRecs[0].dateObj);
+  const yestObj = new Date(maxDateObj.getFullYear(), maxDateObj.getMonth(), maxDateObj.getDate() - 1);
+  const prevObj = new Date(maxDateObj.getFullYear(), maxDateObj.getMonth(), maxDateObj.getDate() - 2);
+  const prevWeekObj = new Date(maxDateObj.getFullYear(), maxDateObj.getMonth(), maxDateObj.getDate() - 7);
+  return {
+    latestYmd: toYMD(maxDateObj),
+    yesterdayYmd: toYMD(yestObj),
+    prevDayYmd: toYMD(prevObj),
+    currentWeekKey: getWeekInfo(maxDateObj).key,
+    prevWeekKey: getWeekInfo(prevWeekObj).key,
+    currentMonthKey: getMonthInfo(maxDateObj).key
+  };
+}
+
+function formatDeltaHtml(diff) {
+  if (diff > 0) return `<span class="delta-up">▲ +${diff}</span>`;
+  if (diff < 0) return `<span class="delta-down">▼ ${diff}</span>`;
+  return `<span class="delta-flat">= 0</span>`;
+}
+
+function formatRankBadge(rank) {
+  if (!rank || rank <= 0) return `<span class="rank-pill">-</span>`;
+  if (rank === 1) return `<span class="rank-pill gold">🥇 #1</span>`;
+  if (rank === 2) return `<span class="rank-pill silver">🥈 #2</span>`;
+  if (rank === 3) return `<span class="rank-pill bronze">🥉 #3</span>`;
+  return `<span class="rank-pill">#${rank}</span>`;
+}
+
+// Lọc theo Đơn vị / Khu vực / Bộ phận / Loại (không khóa cứng khoảng ngày để tính đúng Hôm nay / Hôm qua / Tuần / Tháng)
+function getUnitScopedRecords() {
+  const kw = normalizeKey(state.keyword);
+  return state.rawRecords.filter(r => {
+    if (state.region !== 'ALL' && r.region !== state.region) return false;
+    if (state.branch !== 'ALL' && r.branch !== state.branch) return false;
+    if (state.dept !== 'ALL' && r.dept !== state.dept) return false;
+    if (state.mediaType !== 'ALL' && r.mediaCode !== state.mediaType) return false;
+    if (kw) {
+      const hay = normalizeKey(`${r.branch} ${r.region} ${r.dept} ${r.rawBranch} ${r.authorEmail} ${r.authorName} ${r.postTitle}`);
+      if (!hay.includes(kw)) return false;
+    }
+    return true;
+  });
+}
+
 // Cập nhật toàn bộ Dashboard
 function refreshDashboard() {
   filterRecords();
   const timeBuckets = getTimeBuckets(state.filteredRecords);
 
   const grainLabelMap = { day: 'Ngày', week: 'Tuần', month: 'Tháng' };
-  document.getElementById('lblTimeColumnMode').textContent = grainLabelMap[state.timeGrain];
+  const lblMode = document.getElementById('lblTimeColumnMode');
+  if (lblMode) lblMode.textContent = grainLabelMap[state.timeGrain];
 
   renderKpis();
+  renderUnitSpotlight();
+  renderLeaderboardStrip();
   renderBranchAndRegionTable(timeBuckets);
   renderRegionSummaryTable(timeBuckets);
   renderDepartmentTables(timeBuckets);
@@ -856,6 +921,39 @@ function refreshDashboard() {
 
 function renderKpis() {
   const recs = state.filteredRecords;
+  const unitRecs = getUnitScopedRecords();
+  const m = getTemporalMilestones();
+
+  let todaySmiles = 0, todayImages = 0, todayVideos = 0;
+  let yestSmiles = 0, yestImages = 0, yestVideos = 0;
+  let prevDaySmiles = 0;
+  let weekSmiles = 0, weekImages = 0, weekVideos = 0;
+  let prevWeekSmiles = 0;
+
+  unitRecs.forEach(r => {
+    if (r.ymd === m.latestYmd) {
+      todaySmiles += r.smiles;
+      todayImages += r.images;
+      todayVideos += r.videos;
+    }
+    if (r.ymd === m.yesterdayYmd) {
+      yestSmiles += r.smiles;
+      yestImages += r.images;
+      yestVideos += r.videos;
+    }
+    if (r.ymd === m.prevDayYmd) {
+      prevDaySmiles += r.smiles;
+    }
+    if (r.weekKey === m.currentWeekKey) {
+      weekSmiles += r.smiles;
+      weekImages += r.images;
+      weekVideos += r.videos;
+    }
+    if (r.weekKey === m.prevWeekKey) {
+      prevWeekSmiles += r.smiles;
+    }
+  });
+
   let totalSmiles = 0;
   let totalImages = 0;
   let totalVideos = 0;
@@ -878,14 +976,8 @@ function renderKpis() {
     deptSmiles[r.dept] = (deptSmiles[r.dept] || 0) + r.smiles;
   });
 
-  const totalPosts = totalImages + totalVideos;
   const numDays = Math.max(1, activeDaysSet.size);
   const avgPerDay = (totalSmiles / numDays).toFixed(1);
-
-  const imageSmiles = totalImages * 1;
-  const videoSmiles = totalVideos * 2;
-  const imgShare = totalSmiles > 0 ? ((imageSmiles / totalSmiles) * 100).toFixed(1) : '0.0';
-  const vidShare = totalSmiles > 0 ? ((videoSmiles / totalSmiles) * 100).toFixed(1) : '0.0';
 
   const totalTargetBranches = state.region === 'ALL'
     ? ALL_BRANCHES.length
@@ -895,57 +987,277 @@ function renderKpis() {
     ? ((activeBranchesSet.size / totalTargetBranches) * 100).toFixed(1)
     : '0.0';
 
-  const topRegionEntry = Object.entries(regionSmiles).sort((a, b) => b[1] - a[1])[0];
-  const topDeptEntry = Object.entries(deptSmiles).sort((a, b) => b[1] - a[1])[0];
+  // Thẻ 1: Hôm nay
+  const elTodayTitle = document.getElementById('kpiTodayTitle');
+  if (elTodayTitle) {
+    elTodayTitle.textContent = `Hôm Nay (${formatShortDM(m.latestYmd)})`;
+    document.getElementById('kpiTodaySmiles').textContent = `+${todaySmiles.toLocaleString('vi-VN')} 😊`;
+    document.getElementById('kpiTodayDetail').textContent = `${todayImages} Ảnh (×1) • ${todayVideos} Video (×2)`;
+    const diffToday = todaySmiles - yestSmiles;
+    const signToday = diffToday >= 0 ? `+${diffToday}` : `${diffToday}`;
+    document.getElementById('kpiTodayVsYesterday').textContent = `Hôm qua (${formatShortDM(m.yesterdayYmd)}): ${yestSmiles} 😊 (${signToday})`;
+  }
 
-  document.getElementById('kpiTotalSmiles').textContent = totalSmiles.toLocaleString('vi-VN');
-  document.getElementById('kpiTotalPostsText').textContent = `${totalPosts.toLocaleString('vi-VN')} lượt đăng`;
+  // Thẻ 2: Hôm qua & So với hôm kia
+  const elYestTitle = document.getElementById('kpiYesterdayTitle');
+  if (elYestTitle) {
+    elYestTitle.textContent = `Hôm Qua (${formatShortDM(m.yesterdayYmd)})`;
+    document.getElementById('kpiYesterdaySmiles').textContent = `+${yestSmiles.toLocaleString('vi-VN')} 😊`;
+    document.getElementById('kpiYesterdayDetail').textContent = `${yestImages} Ảnh (×1) • ${yestVideos} Video (×2)`;
+    const diffYest = yestSmiles - prevDaySmiles;
+    const arrowYest = diffYest > 0 ? `▲ +${diffYest}` : (diffYest < 0 ? `▼ ${diffYest}` : `= 0`);
+    document.getElementById('kpiYesterdayVsPrev').textContent = `So với ${formatShortDM(m.prevDayYmd)}: ${arrowYest} 😊`;
+  }
+
+  // Thẻ 3: Lũy kế Tuần này
+  const elWeekTitle = document.getElementById('kpiWeekTitle');
+  if (elWeekTitle) {
+    elWeekTitle.textContent = `Tuần Này (${m.currentWeekKey.split('-')[1]})`;
+    document.getElementById('kpiWeekSmiles').textContent = `${weekSmiles.toLocaleString('vi-VN')} 😊`;
+    document.getElementById('kpiWeekDetail').textContent = `${weekImages} Ảnh (×1) • ${weekVideos} Video (×2)`;
+    const diffWeek = weekSmiles - prevWeekSmiles;
+    const arrowWeek = diffWeek > 0 ? `▲ +${diffWeek}` : (diffWeek < 0 ? `▼ ${diffWeek}` : `= 0`);
+    document.getElementById('kpiWeekVsPrev').textContent = `Tuần trước: ${prevWeekSmiles} 😊 (${arrowWeek})`;
+  }
+
+  // Thẻ 4: Lũy kế Tháng / Kỳ đang xem
+  const elMonthTitle = document.getElementById('kpiMonthTitle');
+  if (elMonthTitle) {
+    elMonthTitle.textContent = `Lũy Kế Tháng (${m.currentMonthKey})`;
+  }
+  document.getElementById('kpiTotalSmiles').textContent = `${totalSmiles.toLocaleString('vi-VN')} 😊`;
+  document.getElementById('kpiTotalPostsText').textContent = `${totalImages.toLocaleString('vi-VN')} Ảnh (×1) + ${totalVideos.toLocaleString('vi-VN')} Video (×2)`;
   document.getElementById('kpiAvgSmilesPerDay').textContent = `TB: ${avgPerDay} nụ cười/ngày`;
 
-  document.getElementById('kpiImageCount').textContent = totalImages.toLocaleString('vi-VN');
-  document.getElementById('kpiImageSmilesText').textContent = `= ${imageSmiles.toLocaleString('vi-VN')} nụ cười (×1)`;
-  document.getElementById('kpiImageShare').textContent = `${imgShare}% tổng điểm`;
+  // Thẻ 5: Độ phủ hoặc Thứ hạng Chi nhánh đang chọn
+  const elCovTitle = document.getElementById('kpiCoverageTitle');
+  if (state.branch !== 'ALL') {
+    // Tính thứ hạng toàn quốc và trong khu vực cho chi nhánh đang chọn
+    const allBrScores = {};
+    ALL_BRANCHES.forEach(b => { allBrScores[b] = 0; });
+    state.rawRecords.forEach(r => {
+      if (allBrScores[r.branch] !== undefined) allBrScores[r.branch] += r.smiles;
+    });
+    const sortedNational = Object.entries(allBrScores).sort((a, b) => b[1] - a[1]);
+    const natRank = sortedNational.findIndex(x => x[0] === state.branch) + 1;
+    const regCode = BRANCH_TO_REGION[state.branch];
+    const regBranches = REGION_BRANCH_HIERARCHY.find(g => g.region === regCode)?.branches || [];
+    const sortedReg = regBranches.map(b => [b, allBrScores[b] || 0]).sort((a, b) => b[1] - a[1]);
+    const regRank = sortedReg.findIndex(x => x[0] === state.branch) + 1;
 
-  document.getElementById('kpiVideoCount').textContent = totalVideos.toLocaleString('vi-VN');
-  document.getElementById('kpiVideoSmilesText').textContent = `= ${videoSmiles.toLocaleString('vi-VN')} nụ cười (×2)`;
-  document.getElementById('kpiVideoShare').textContent = `${vidShare}% tổng điểm`;
-
-  document.getElementById('kpiActiveBranches').textContent = `${activeBranchesSet.size} / ${totalTargetBranches}`;
-  document.getElementById('kpiActiveRegionsText').textContent = `${activeRegionsSet.size} / 15 Khu vực có bài`;
-  document.getElementById('kpiBranchRate').textContent = `${branchRate}% tham gia`;
-
-  document.getElementById('kpiTopRegion').textContent = topRegionEntry
-    ? `KV ${topRegionEntry[0]} (${topRegionEntry[1]} 😊)`
-    : 'Chưa có dữ liệu';
-  document.getElementById('kpiTopDeptText').textContent = topDeptEntry
-    ? `BP dẫn đầu: ${topDeptEntry[0]} (${topDeptEntry[1]} 😊)`
-    : 'BP dẫn đầu: --';
-  document.getElementById('kpiDeptCountBadge').textContent = `${Object.keys(deptSmiles).length} bộ phận`;
+    if (elCovTitle) elCovTitle.textContent = `Xếp Hạng Đơn Vị (${state.branch})`;
+    document.getElementById('kpiActiveBranches').textContent = `Hạng #${natRank} / 78`;
+    document.getElementById('kpiActiveRegionsText').textContent = `Hạng #${regRank} / ${regBranches.length} tại KV ${regCode}`;
+    document.getElementById('kpiBranchRate').textContent = `${totalSmiles} điểm lũy kế`;
+  } else {
+    if (elCovTitle) elCovTitle.textContent = state.region === 'ALL' ? 'Độ Phủ Toàn Hệ Thống' : `Độ Phủ KV ${state.region}`;
+    document.getElementById('kpiActiveBranches').textContent = `${activeBranchesSet.size} / ${totalTargetBranches} CN`;
+    document.getElementById('kpiActiveRegionsText').textContent = `${activeRegionsSet.size} / 15 Khu vực có bài`;
+    document.getElementById('kpiBranchRate').textContent = `${branchRate}% CN đã tham gia`;
+  }
 
   document.getElementById('badgeDeptCount').textContent = `${Object.keys(deptSmiles).length} BP`;
-  document.getElementById('badgeRawCount').textContent = `${recs.length} dòng`;
+  document.getElementById('badgeRawCount').textContent = `${recs.length} bài`;
 }
 
-// TAB 1: Render Bảng Chi nhánh & Khu vực chuẩn theo cấu trúc Chi nhánh.xlsx (có STT 1->99 & dòng tổng Khu vực)
+// Hiển thị Banner thông tin nhanh khi người dùng chọn 1 Khu vực hoặc Chi nhánh cụ thể
+function renderUnitSpotlight() {
+  const banner = document.getElementById('unitSpotlightBanner');
+  if (!banner) return;
+
+  if (state.region === 'ALL' && state.branch === 'ALL') {
+    banner.style.display = 'none';
+    return;
+  }
+
+  const m = getTemporalMilestones();
+  const unitRecs = getUnitScopedRecords();
+  let todayS = 0, yestS = 0, prevS = 0, weekS = 0, mtdS = 0;
+  unitRecs.forEach(r => {
+    if (r.ymd === m.latestYmd) todayS += r.smiles;
+    if (r.ymd === m.yesterdayYmd) yestS += r.smiles;
+    if (r.ymd === m.prevDayYmd) prevS += r.smiles;
+    if (r.weekKey === m.currentWeekKey) weekS += r.smiles;
+    if (r.monthKey === m.currentMonthKey) mtdS += r.smiles;
+  });
+
+  const diffYest = yestS - prevS;
+  const deltaStr = diffYest > 0 ? `+${diffYest}` : `${diffYest}`;
+  const titleLabel = state.branch !== 'ALL'
+    ? `🏢 Chi nhánh <strong>${state.branch}</strong> (Khu vực ${BRANCH_TO_REGION[state.branch]})`
+    : `🗺️ Khu vực <strong>${state.region}</strong>`;
+
+  banner.style.display = 'flex';
+  banner.innerHTML = `
+    <div>
+      📍 Đang xem kết quả của: ${titleLabel}
+    </div>
+    <div class="unit-spotlight-metrics">
+      <span class="spotlight-chip">🔥 Hôm nay (${formatShortDM(m.latestYmd)}): <strong>+${todayS} 😊</strong></span>
+      <span class="spotlight-chip">⚡ Hôm qua (${formatShortDM(m.yesterdayYmd)}): <strong>+${yestS} 😊</strong> (${deltaStr} so với ${formatShortDM(m.prevDayYmd)})</span>
+      <span class="spotlight-chip">📅 Tuần này: <strong>${weekS} 😊</strong></span>
+      <span class="spotlight-chip">🏆 Lũy kế tháng: <strong>${mtdS} 😊</strong></span>
+      <button type="button" id="btnResetUnitFilter" style="background:#1e3a8a;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer;">
+        ✕ Xem lại toàn quốc
+      </button>
+    </div>
+  `;
+
+  const resetBtn = document.getElementById('btnResetUnitFilter');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      state.region = 'ALL';
+      state.branch = 'ALL';
+      document.getElementById('filterRegion').value = 'ALL';
+      updateBranchDropdown('ALL');
+      refreshDashboard();
+    });
+  }
+}
+
+// Render 3 hộp Bảng Vàng Thi Đua (Top 5 Chi nhánh Lũy kế / Top 5 Bứt phá Hôm qua & Hôm nay / Top 5 Khu vực)
+function renderLeaderboardStrip() {
+  const mtdEl = document.getElementById('topBranchesMtdList');
+  const recentEl = document.getElementById('topBranchesRecentList');
+  const regEl = document.getElementById('topRegionsMtdList');
+  if (!mtdEl || !recentEl || !regEl) return;
+
+  const m = getTemporalMilestones();
+  const lblRecent = document.getElementById('lblRecentDates');
+  if (lblRecent) lblRecent.textContent = `${formatShortDM(m.yesterdayYmd)} & ${formatShortDM(m.latestYmd)}`;
+  const lblScope = document.getElementById('lblLeaderScope');
+  if (lblScope) lblScope.textContent = state.region === 'ALL' ? 'Toàn quốc (78 CN)' : `Trong KV ${state.region}`;
+
+  const brMap = {};
+  ALL_BRANCHES.forEach(b => {
+    if (state.region !== 'ALL' && BRANCH_TO_REGION[b] !== state.region) return;
+    brMap[b] = { branch: b, region: BRANCH_TO_REGION[b], mtd: 0, images: 0, videos: 0, today: 0, yest: 0, recent: 0 };
+  });
+
+  const regMap = {};
+  REGION_BRANCH_HIERARCHY.forEach(g => {
+    regMap[g.region] = { region: g.region, name: g.regionName.split('(')[0].trim(), smiles: 0, activeCN: new Set(), totalCN: g.branches.length };
+  });
+
+  state.rawRecords.forEach(r => {
+    if (brMap[r.branch]) {
+      brMap[r.branch].mtd += r.smiles;
+      brMap[r.branch].images += r.images;
+      brMap[r.branch].videos += r.videos;
+      if (r.ymd === m.latestYmd) brMap[r.branch].today += r.smiles;
+      if (r.ymd === m.yesterdayYmd) brMap[r.branch].yest += r.smiles;
+      if (r.ymd === m.latestYmd || r.ymd === m.yesterdayYmd) brMap[r.branch].recent += r.smiles;
+    }
+    if (regMap[r.region]) {
+      regMap[r.region].smiles += r.smiles;
+      if (BRANCH_TO_REGION[r.branch]) regMap[r.region].activeCN.add(r.branch);
+    }
+  });
+
+  const topMtd = Object.values(brMap).sort((a, b) => b.mtd - a.mtd || b.videos - a.videos).slice(0, 5);
+  const topRecent = Object.values(brMap).sort((a, b) => b.recent - a.recent || b.today - a.today || b.mtd - a.mtd).slice(0, 5);
+  const topRegs = Object.values(regMap).sort((a, b) => b.smiles - a.smiles).slice(0, 5);
+
+  const medals = ['🥇', '🥈', '🥉', '4.', '5.'];
+
+  mtdEl.innerHTML = topMtd.map((item, idx) => `
+    <div class="leader-item" data-select-branch="${item.branch}" title="Bấm để xem chi tiết ${item.branch}">
+      <div>
+        <span class="leader-rank top${idx + 1}">${medals[idx]}</span>
+        <strong>${item.branch}</strong>
+        <span class="region-tag" style="margin-left:4px;">${item.region}</span>
+      </div>
+      <div>
+        <span style="color:#64748b;font-size:11.5px;margin-right:6px;">${item.images} ảnh • ${item.videos} video</span>
+        <span class="smile-pill">${item.mtd} 😊</span>
+      </div>
+    </div>
+  `).join('');
+
+  recentEl.innerHTML = topRecent.map((item, idx) => `
+    <div class="leader-item" data-select-branch="${item.branch}" title="Bấm để xem chi tiết ${item.branch}">
+      <div>
+        <span class="leader-rank top${idx + 1}">${medals[idx]}</span>
+        <strong>${item.branch}</strong>
+        <span class="region-tag" style="margin-left:4px;">${item.region}</span>
+      </div>
+      <div>
+        <span style="color:#64748b;font-size:11.5px;margin-right:6px;">H.qua: +${item.yest} | H.nay: +${item.today}</span>
+        <span class="delta-up">+${item.recent} 😊</span>
+      </div>
+    </div>
+  `).join('');
+
+  regEl.innerHTML = topRegs.map((item, idx) => {
+    const rate = Math.round((item.activeCN.size / item.totalCN) * 100);
+    return `
+      <div class="leader-item" data-select-region="${item.region}" title="Bấm để lọc Khu vực ${item.region}">
+        <div>
+          <span class="leader-rank top${idx + 1}">${medals[idx]}</span>
+          <strong>${item.region}</strong>
+          <span style="color:#64748b;font-size:11.5px;margin-left:4px;">(${item.activeCN.size}/${item.totalCN} CN - ${rate}%)</span>
+        </div>
+        <div>
+          <span class="smile-pill">${item.smiles} 😊</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Cho phép bấm vào bất kỳ dòng nào trên Bảng Vàng để lọc nhanh đơn vị đó
+  document.querySelectorAll('[data-select-branch]').forEach(el => {
+    el.addEventListener('click', () => {
+      const br = el.getAttribute('data-select-branch');
+      const reg = BRANCH_TO_REGION[br] || 'ALL';
+      state.region = reg;
+      document.getElementById('filterRegion').value = reg;
+      updateBranchDropdown(reg);
+      state.branch = br;
+      document.getElementById('filterBranch').value = br;
+      refreshDashboard();
+    });
+  });
+
+  document.querySelectorAll('[data-select-region]').forEach(el => {
+    el.addEventListener('click', () => {
+      const reg = el.getAttribute('data-select-region');
+      state.region = reg;
+      state.branch = 'ALL';
+      document.getElementById('filterRegion').value = reg;
+      updateBranchDropdown(reg);
+      refreshDashboard();
+    });
+  });
+}
+
+// TAB 1: Render Bảng Chi nhánh & Khu vực có đầy đủ Hạng, Hôm kia, Hôm qua, So sánh, Hôm nay, Tuần này, Lũy kế & từng ngày
 function renderBranchAndRegionTable(timeBuckets) {
   const headEl = document.getElementById('branchTableHead');
   const bodyEl = document.getElementById('branchTableBody');
   const showDynamic = state.showTimeColumns && timeBuckets.length > 0;
+  const m = getTemporalMilestones();
 
-  const grainTitle = state.timeGrain === 'day' ? 'Chi Tiết Theo Ngày (Nụ Cười)' :
-                     state.timeGrain === 'week' ? 'Chi Tiết Theo Tuần (Nụ Cười)' :
-                     'Chi Tiết Theo Tháng (Nụ Cười)';
+  const grainTitle = state.timeGrain === 'day' ? 'Chi Tiết Từng Ngày (Nụ Cười)' :
+                     state.timeGrain === 'week' ? 'Chi Tiết Từng Tuần (Nụ Cười)' :
+                     'Chi Tiết Từng Tháng (Nụ Cười)';
 
   let headHtml = `
     <tr>
       <th rowspan="2" class="sticky-col-1">STT</th>
       <th rowspan="2" class="sticky-col-2">Đơn vị / Chi nhánh</th>
       <th rowspan="2">Khu vực</th>
-      <th colspan="4">Tổng Hợp Nụ Cười Trong Kỳ</th>
-      <th rowspan="2">Tỷ trọng (%)</th>
+      <th rowspan="2">Hạng</th>
+      <th colspan="5" style="background:#1e3a8a;color:#fff;">Tiến Độ Hôm Qua • Hôm Nay • Tuần Này</th>
+      <th colspan="4">Lũy Kế Trong Kỳ Đang Chọn</th>
+      <th rowspan="2">Tỷ trọng</th>
       ${showDynamic ? `<th colspan="${timeBuckets.length}">${grainTitle}</th>` : ''}
     </tr>
     <tr class="sub-header">
+      <th style="background:#eff6ff;color:#1e3a8a;">Hôm kia (${formatShortDM(m.prevDayYmd)})</th>
+      <th style="background:#eff6ff;color:#1e3a8a;">Hôm qua (${formatShortDM(m.yesterdayYmd)})</th>
+      <th style="background:#eff6ff;color:#1e3a8a;">So với ${formatShortDM(m.prevDayYmd)}</th>
+      <th style="background:#ecfdf5;color:#047857;">Hôm nay (${formatShortDM(m.latestYmd)})</th>
+      <th style="background:#f5f3ff;color:#5b21b6;">Tuần này (${m.currentWeekKey.split('-')[1]})</th>
       <th>Hình ảnh (×1)</th>
       <th>Video (×2)</th>
       <th>Tổng bài</th>
@@ -955,10 +1267,16 @@ function renderBranchAndRegionTable(timeBuckets) {
   `;
   headEl.innerHTML = headHtml;
 
-  // Tính toán số liệu từng Chi nhánh
+  // Khởi tạo bộ đếm cho 78 Chi nhánh
   const branchStats = {};
   ALL_BRANCHES.forEach(b => {
     branchStats[b] = {
+      branch: b,
+      region: BRANCH_TO_REGION[b],
+      prevDay: 0,
+      yesterday: 0,
+      today: 0,
+      thisWeek: 0,
       images: 0,
       videos: 0,
       posts: 0,
@@ -967,12 +1285,30 @@ function renderBranchAndRegionTable(timeBuckets) {
     };
   });
 
+  // Tính các cột Hôm kia / Hôm qua / Hôm nay / Tuần này từ dữ liệu gốc (lọc theo Bộ phận / Loại nếu có)
+  state.rawRecords.forEach(r => {
+    if (state.dept !== 'ALL' && r.dept !== state.dept) return;
+    if (state.mediaType !== 'ALL' && r.mediaCode !== state.mediaType) return;
+    if (!branchStats[r.branch]) return;
+    const st = branchStats[r.branch];
+    if (r.ymd === m.prevDayYmd) st.prevDay += r.smiles;
+    if (r.ymd === m.yesterdayYmd) st.yesterday += r.smiles;
+    if (r.ymd === m.latestYmd) st.today += r.smiles;
+    if (r.weekKey === m.currentWeekKey) st.thisWeek += r.smiles;
+  });
+
   let grandImages = 0, grandVideos = 0, grandPosts = 0, grandSmiles = 0;
+  let grandPrevDay = 0, grandYesterday = 0, grandToday = 0, grandThisWeek = 0;
   const grandByBucket = {};
 
   state.filteredRecords.forEach(r => {
     if (!branchStats[r.branch]) {
-      branchStats[r.branch] = { images: 0, videos: 0, posts: 0, smiles: 0, byBucket: {} };
+      branchStats[r.branch] = {
+        branch: r.branch,
+        region: r.region,
+        prevDay: 0, yesterday: 0, today: 0, thisWeek: 0,
+        images: 0, videos: 0, posts: 0, smiles: 0, byBucket: {}
+      };
     }
     const st = branchStats[r.branch];
     const bKey = getRecordBucketKey(r);
@@ -990,85 +1326,158 @@ function renderBranchAndRegionTable(timeBuckets) {
     grandByBucket[bKey] = (grandByBucket[bKey] || 0) + r.smiles;
   });
 
+  // Tính thứ hạng (Rank 1 -> 78) dựa trên Tổng Nụ Cười trong kỳ
+  const rankedList = ALL_BRANCHES.slice().sort((a, b) => {
+    const diff = branchStats[b].smiles - branchStats[a].smiles;
+    if (diff !== 0) return diff;
+    return (branchStats[b].today + branchStats[b].yesterday) - (branchStats[a].today + branchStats[a].yesterday);
+  });
+  const rankMap = {};
+  rankedList.forEach((b, idx) => {
+    rankMap[b] = branchStats[b].smiles > 0 ? idx + 1 : 0;
+  });
+
   const kw = normalizeKey(state.keyword);
   let rowsHtml = '';
 
-  REGION_BRANCH_HIERARCHY.forEach(group => {
-    if (state.region !== 'ALL' && group.region !== state.region) return;
+  function renderSingleBranchRow(branch) {
+    const st = branchStats[branch];
+    const groupRegion = BRANCH_TO_REGION[branch] || st.region;
+    const sharePct = grandSmiles > 0 ? ((st.smiles / grandSmiles) * 100).toFixed(1) : '0.0';
+    const stt = BRANCH_STT_MAP[branch] || '-';
+    const diffYest = st.yesterday - st.prevDay;
 
-    let regImages = 0, regVideos = 0, regPosts = 0, regSmiles = 0;
-    let regActiveBranches = 0;
-    const regByBucket = {};
-    let groupRowsHtml = '';
+    return `
+      <tr>
+        <td class="sticky-col-1">${stt}</td>
+        <td class="sticky-col-2"><strong>${branch}</strong></td>
+        <td class="center-col"><span class="region-tag">${groupRegion}</span></td>
+        <td class="center-col">${formatRankBadge(rankMap[branch])}</td>
+        <td class="num-col ${st.prevDay === 0 ? 'zero-val' : ''}">${st.prevDay}</td>
+        <td class="num-col ${st.yesterday === 0 ? 'zero-val' : ''}" style="font-weight:700;color:#1e40af;">${st.yesterday > 0 ? '+' + st.yesterday : '0'}</td>
+        <td class="center-col">${formatDeltaHtml(diffYest)}</td>
+        <td class="num-col ${st.today === 0 ? 'zero-val' : ''}" style="font-weight:700;color:#047857;">${st.today > 0 ? '+' + st.today : '0'}</td>
+        <td class="num-col ${st.thisWeek === 0 ? 'zero-val' : ''}" style="font-weight:600;">${st.thisWeek}</td>
+        <td class="num-col ${st.images === 0 ? 'zero-val' : ''}">${st.images}</td>
+        <td class="num-col ${st.videos === 0 ? 'zero-val' : ''}">${st.videos}</td>
+        <td class="num-col ${st.posts === 0 ? 'zero-val' : ''}">${st.posts}</td>
+        <td class="num-col"><span class="smile-pill">${st.smiles}</span></td>
+        <td class="num-col">${sharePct}%</td>
+        ${showDynamic ? timeBuckets.map(b => {
+          const v = st.byBucket[b.key] || 0;
+          return `<td class="num-col ${v === 0 ? 'zero-val' : ''}">${v === 0 ? '-' : v}</td>`;
+        }).join('') : ''}
+      </tr>
+    `;
+  }
 
-    group.branches.forEach(branch => {
-      if (state.branch !== 'ALL' && branch !== state.branch) return;
-      if (kw && !normalizeKey(`${branch} ${group.region}`).includes(kw)) return;
-
+  if (state.branchSort === 'rank_desc' || state.branchSort === 'today_desc') {
+    const flatBranches = ALL_BRANCHES.filter(branch => {
+      const reg = BRANCH_TO_REGION[branch];
+      if (state.region !== 'ALL' && reg !== state.region) return false;
+      if (state.branch !== 'ALL' && branch !== state.branch) return false;
+      if (kw && !normalizeKey(`${branch} ${reg}`).includes(kw)) return false;
       const st = branchStats[branch];
-      regImages += st.images;
-      regVideos += st.videos;
-      regPosts += st.posts;
-      regSmiles += st.smiles;
-      if (st.smiles > 0) regActiveBranches++;
-
-      timeBuckets.forEach(b => {
-        const val = st.byBucket[b.key] || 0;
-        regByBucket[b.key] = (regByBucket[b.key] || 0) + val;
-      });
-
-      if (!state.showZeroBranches && st.smiles === 0) return;
-
-      const sharePct = grandSmiles > 0 ? ((st.smiles / grandSmiles) * 100).toFixed(1) : '0.0';
-      const stt = BRANCH_STT_MAP[branch];
-
-      groupRowsHtml += `
-        <tr>
-          <td class="sticky-col-1">${stt}</td>
-          <td class="sticky-col-2">${branch}</td>
-          <td class="center-col"><span class="region-tag">${group.region}</span></td>
-          <td class="num-col ${st.images === 0 ? 'zero-val' : ''}">${st.images}</td>
-          <td class="num-col ${st.videos === 0 ? 'zero-val' : ''}">${st.videos}</td>
-          <td class="num-col ${st.posts === 0 ? 'zero-val' : ''}">${st.posts}</td>
-          <td class="num-col"><span class="smile-pill">${st.smiles}</span></td>
-          <td class="num-col">${sharePct}%</td>
-          ${showDynamic ? timeBuckets.map(b => {
-            const v = st.byBucket[b.key] || 0;
-            return `<td class="num-col ${v === 0 ? 'zero-val' : ''}">${v === 0 ? '-' : v}</td>`;
-          }).join('') : ''}
-        </tr>
-      `;
+      if (!state.showZeroBranches && st.smiles === 0) return false;
+      return true;
     });
 
-    // Hiển thị các chi nhánh trong khu vực + Dòng Tổng Khu Vực in đậm (giống hệt Chi nhánh.xlsx)
-    if (groupRowsHtml || (state.showZeroBranches && state.branch === 'ALL' && !kw)) {
-      const regShare = grandSmiles > 0 ? ((regSmiles / grandSmiles) * 100).toFixed(1) : '0.0';
-      rowsHtml += groupRowsHtml;
-      rowsHtml += `
-        <tr class="region-summary-row">
-          <td class="sticky-col-1" style="background:var(--region-row-bg)">KV</td>
-          <td class="sticky-col-2" style="background:var(--region-row-bg)">${group.region} (${regActiveBranches}/${group.branches.length} CN)</td>
-          <td class="center-col">${group.region}</td>
-          <td class="num-col">${regImages.toLocaleString('vi-VN')}</td>
-          <td class="num-col">${regVideos.toLocaleString('vi-VN')}</td>
-          <td class="num-col">${regPosts.toLocaleString('vi-VN')}</td>
-          <td class="num-col"><span class="smile-pill">${regSmiles.toLocaleString('vi-VN')}</span></td>
-          <td class="num-col">${regShare}%</td>
-          ${showDynamic ? timeBuckets.map(b => {
-            const v = regByBucket[b.key] || 0;
-            return `<td class="num-col">${v}</td>`;
-          }).join('') : ''}
-        </tr>
-      `;
+    if (state.branchSort === 'rank_desc') {
+      flatBranches.sort((a, b) => branchStats[b].smiles - branchStats[a].smiles || branchStats[b].today - branchStats[a].today);
+    } else {
+      flatBranches.sort((a, b) => (branchStats[b].today + branchStats[b].yesterday) - (branchStats[a].today + branchStats[a].yesterday) || branchStats[b].smiles - branchStats[a].smiles);
     }
-  });
+
+    flatBranches.forEach(branch => {
+      const st = branchStats[branch];
+      grandPrevDay += st.prevDay;
+      grandYesterday += st.yesterday;
+      grandToday += st.today;
+      grandThisWeek += st.thisWeek;
+      rowsHtml += renderSingleBranchRow(branch);
+    });
+  } else {
+    REGION_BRANCH_HIERARCHY.forEach(group => {
+      if (state.region !== 'ALL' && group.region !== state.region) return;
+
+      let regImages = 0, regVideos = 0, regPosts = 0, regSmiles = 0;
+      let regPrevDay = 0, regYesterday = 0, regToday = 0, regThisWeek = 0;
+      let regActiveBranches = 0;
+      const regByBucket = {};
+      let groupRowsHtml = '';
+
+      group.branches.forEach(branch => {
+        if (state.branch !== 'ALL' && branch !== state.branch) return;
+        if (kw && !normalizeKey(`${branch} ${group.region}`).includes(kw)) return;
+
+        const st = branchStats[branch];
+        regPrevDay += st.prevDay;
+        regYesterday += st.yesterday;
+        regToday += st.today;
+        regThisWeek += st.thisWeek;
+        regImages += st.images;
+        regVideos += st.videos;
+        regPosts += st.posts;
+        regSmiles += st.smiles;
+        if (st.smiles > 0) regActiveBranches++;
+
+        grandPrevDay += st.prevDay;
+        grandYesterday += st.yesterday;
+        grandToday += st.today;
+        grandThisWeek += st.thisWeek;
+
+        timeBuckets.forEach(b => {
+          const val = st.byBucket[b.key] || 0;
+          regByBucket[b.key] = (regByBucket[b.key] || 0) + val;
+        });
+
+        if (!state.showZeroBranches && st.smiles === 0) return;
+        groupRowsHtml += renderSingleBranchRow(branch);
+      });
+
+      if (groupRowsHtml || (state.showZeroBranches && state.branch === 'ALL' && !kw)) {
+        const regShare = grandSmiles > 0 ? ((regSmiles / grandSmiles) * 100).toFixed(1) : '0.0';
+        const regDiffYest = regYesterday - regPrevDay;
+        rowsHtml += groupRowsHtml;
+        rowsHtml += `
+          <tr class="region-summary-row">
+            <td class="sticky-col-1" style="background:var(--region-row-bg)">KV</td>
+            <td class="sticky-col-2" style="background:var(--region-row-bg)">${group.region} (${regActiveBranches}/${group.branches.length} CN)</td>
+            <td class="center-col">${group.region}</td>
+            <td class="center-col">--</td>
+            <td class="num-col">${regPrevDay}</td>
+            <td class="num-col">+${regYesterday}</td>
+            <td class="center-col">${formatDeltaHtml(regDiffYest)}</td>
+            <td class="num-col">+${regToday}</td>
+            <td class="num-col">${regThisWeek}</td>
+            <td class="num-col">${regImages.toLocaleString('vi-VN')}</td>
+            <td class="num-col">${regVideos.toLocaleString('vi-VN')}</td>
+            <td class="num-col">${regPosts.toLocaleString('vi-VN')}</td>
+            <td class="num-col"><span class="smile-pill">${regSmiles.toLocaleString('vi-VN')}</span></td>
+            <td class="num-col">${regShare}%</td>
+            ${showDynamic ? timeBuckets.map(b => {
+              const v = regByBucket[b.key] || 0;
+              return `<td class="num-col">${v}</td>`;
+            }).join('') : ''}
+          </tr>
+        `;
+      }
+    });
+  }
 
   // Dòng Tổng Cộng Toàn Hệ Thống
+  const grandDiffYest = grandYesterday - grandPrevDay;
   rowsHtml += `
     <tr class="grand-total-row">
       <td class="sticky-col-1" style="background:var(--total-row-bg);color:#fff">∑</td>
       <td class="sticky-col-2" style="background:var(--total-row-bg);color:#fff">TỔNG TOÀN HỆ THỐNG</td>
       <td class="center-col">15 KV</td>
+      <td class="center-col">--</td>
+      <td class="num-col">${grandPrevDay.toLocaleString('vi-VN')}</td>
+      <td class="num-col">+${grandYesterday.toLocaleString('vi-VN')}</td>
+      <td class="center-col">${grandDiffYest >= 0 ? '+' + grandDiffYest : grandDiffYest}</td>
+      <td class="num-col">+${grandToday.toLocaleString('vi-VN')}</td>
+      <td class="num-col">${grandThisWeek.toLocaleString('vi-VN')}</td>
       <td class="num-col">${grandImages.toLocaleString('vi-VN')}</td>
       <td class="num-col">${grandVideos.toLocaleString('vi-VN')}</td>
       <td class="num-col">${grandPosts.toLocaleString('vi-VN')}</td>
@@ -1084,36 +1493,51 @@ function renderBranchAndRegionTable(timeBuckets) {
   bodyEl.innerHTML = rowsHtml;
 }
 
-// TAB 2: Render Bảng Tổng hợp 15 Khu vực (Có STT)
+// TAB 2: Render Bảng Tổng hợp 15 Khu vực (Có Hạng, Hôm qua, Hôm nay, Tuần này, Lũy kế)
 function renderRegionSummaryTable(timeBuckets) {
   const headEl = document.getElementById('regionTableHead');
   const bodyEl = document.getElementById('regionTableBody');
+  const m = getTemporalMilestones();
 
   headEl.innerHTML = `
     <tr>
-      <th class="sticky-col-1">STT</th>
+      <th class="sticky-col-1">Hạng</th>
       <th class="sticky-col-2">Mã Khu Vực</th>
       <th>Tên Khu Vực</th>
-      <th>Số CN Có Bài / Tổng CN</th>
+      <th>Số CN Có Bài</th>
       <th>Tỷ Lệ Tham Gia</th>
+      <th style="background:#eff6ff;color:#1e3a8a;">Hôm qua (${formatShortDM(m.yesterdayYmd)})</th>
+      <th style="background:#ecfdf5;color:#047857;">Hôm nay (${formatShortDM(m.latestYmd)})</th>
+      <th style="background:#f5f3ff;color:#5b21b6;">Tuần này (${m.currentWeekKey.split('-')[1]})</th>
       <th>Hình Ảnh (×1)</th>
       <th>Video (×2)</th>
       <th>Tổng Bài Đăng</th>
       <th>Tổng Nụ Cười</th>
-      <th>TB Nụ Cười / CN</th>
-      <th>Tỷ Trọng (%)</th>
+      <th>TB / CN</th>
+      <th>Tỷ Trọng</th>
       ${timeBuckets.map(b => `<th>${b.label}</th>`).join('')}
     </tr>
   `;
 
   let grandSmiles = 0, grandImages = 0, grandVideos = 0, grandPosts = 0;
+  let grandYesterday = 0, grandToday = 0, grandThisWeek = 0;
   const grandActiveBranches = new Set();
   const grandByBucket = {};
 
   const regionRows = REGION_BRANCH_HIERARCHY.map((g, idx) => {
     let images = 0, videos = 0, posts = 0, smiles = 0;
+    let yesterday = 0, today = 0, thisWeek = 0;
     const activeSet = new Set();
     const byBucket = {};
+
+    state.rawRecords.forEach(r => {
+      if (r.region !== g.region) return;
+      if (state.dept !== 'ALL' && r.dept !== state.dept) return;
+      if (state.mediaType !== 'ALL' && r.mediaCode !== state.mediaType) return;
+      if (r.ymd === m.yesterdayYmd) yesterday += r.smiles;
+      if (r.ymd === m.latestYmd) today += r.smiles;
+      if (r.weekKey === m.currentWeekKey) thisWeek += r.smiles;
+    });
 
     state.filteredRecords.forEach(r => {
       if (r.region === g.region) {
@@ -1133,6 +1557,9 @@ function renderRegionSummaryTable(timeBuckets) {
     grandImages += images;
     grandVideos += videos;
     grandPosts += posts;
+    grandYesterday += yesterday;
+    grandToday += today;
+    grandThisWeek += thisWeek;
 
     const totalBranches = g.branches.length;
     const rate = totalBranches > 0 ? (activeSet.size / totalBranches) * 100 : 0;
@@ -1145,6 +1572,9 @@ function renderRegionSummaryTable(timeBuckets) {
       activeCount: activeSet.size,
       totalBranches,
       rate,
+      yesterday,
+      today,
+      thisWeek,
       images,
       videos,
       posts,
@@ -1165,7 +1595,7 @@ function renderRegionSummaryTable(timeBuckets) {
     const share = grandSmiles > 0 ? ((row.smiles / grandSmiles) * 100).toFixed(1) : '0.0';
     html += `
       <tr>
-        <td class="sticky-col-1">${i + 1}</td>
+        <td class="sticky-col-1">${formatRankBadge(i + 1)}</td>
         <td class="sticky-col-2"><strong>${row.region}</strong></td>
         <td>${row.regionName}</td>
         <td class="center-col"><strong>${row.activeCount}</strong> / ${row.totalBranches}</td>
@@ -1177,6 +1607,9 @@ function renderRegionSummaryTable(timeBuckets) {
             <span style="font-weight:600;font-size:12px">${row.rate.toFixed(0)}%</span>
           </div>
         </td>
+        <td class="num-col" style="font-weight:700;color:#1e40af;">${row.yesterday > 0 ? '+' + row.yesterday : '0'}</td>
+        <td class="num-col" style="font-weight:700;color:#047857;">${row.today > 0 ? '+' + row.today : '0'}</td>
+        <td class="num-col" style="font-weight:600;">${row.thisWeek}</td>
         <td class="num-col">${row.images.toLocaleString('vi-VN')}</td>
         <td class="num-col">${row.videos.toLocaleString('vi-VN')}</td>
         <td class="num-col">${row.posts.toLocaleString('vi-VN')}</td>
@@ -1199,6 +1632,9 @@ function renderRegionSummaryTable(timeBuckets) {
       <td>Toàn hệ thống</td>
       <td class="center-col">${grandActiveBranches.size} / ${ALL_BRANCHES.length}</td>
       <td class="center-col">${totalRate}%</td>
+      <td class="num-col">+${grandYesterday.toLocaleString('vi-VN')}</td>
+      <td class="num-col">+${grandToday.toLocaleString('vi-VN')}</td>
+      <td class="num-col">${grandThisWeek.toLocaleString('vi-VN')}</td>
       <td class="num-col">${grandImages.toLocaleString('vi-VN')}</td>
       <td class="num-col">${grandVideos.toLocaleString('vi-VN')}</td>
       <td class="num-col">${grandPosts.toLocaleString('vi-VN')}</td>
@@ -1555,7 +1991,7 @@ function renderCharts(timeBuckets) {
   });
 }
 
-// TAB 5: Bảng dữ liệu gốc & đối soát
+// TAB 5: Danh sách bài đăng chi tiết
 function renderRawDataTable() {
   const bodyEl = document.getElementById('rawTableBody');
   const rows = state.filteredRecords.slice(0, 500);
@@ -1564,15 +2000,13 @@ function renderRawDataTable() {
   rows.forEach((r, idx) => {
     const typeClass = r.mediaCode === 'VIDEO' ? 'video' : 'image';
     const typeIcon = r.mediaCode === 'VIDEO' ? '🎬 Video (×2)' : '📸 Hình ảnh (×1)';
-    const branchDisplay = r.rawBranch !== r.branch
-      ? `<span style="color:#64748b">${r.rawBranch}</span> → <strong>${r.branch}</strong>`
-      : `<strong>${r.branch}</strong>`;
+    const branchDisplay = `<strong>${r.branch}</strong>`;
     const emailDisplay = r.authorEmail
       ? `<a href="mailto:${r.authorEmail}" style="color:#2563eb;text-decoration:none;font-weight:600;">${r.authorEmail}</a>`
       : '--';
     const authorDisplay = r.authorName ? `<strong>${r.authorName}</strong>` : '--';
     const titleDisplay = r.postTitle
-      ? `<div style="max-width:280px;overflow:hidden;text-overflow:ellipsis;" title="${r.postTitle.replace(/"/g, '&quot;')}">${r.postTitle}</div>`
+      ? `<div style="max-width:320px;overflow:hidden;text-overflow:ellipsis;" title="${r.postTitle.replace(/"/g, '&quot;')}">${r.postTitle}</div>`
       : '--';
 
     html += `
@@ -1581,9 +2015,8 @@ function renderRawDataTable() {
         <td>${r.rawTimestamp}</td>
         <td class="center-col">${r.dmy}</td>
         <td class="center-col">${r.weekKey}</td>
-        <td class="center-col">${r.monthKey}</td>
-        <td>${emailDisplay}</td>
         <td>${authorDisplay}</td>
+        <td>${emailDisplay}</td>
         <td>${titleDisplay}</td>
         <td>${branchDisplay}</td>
         <td class="center-col"><span class="region-tag">${r.region}</span></td>
@@ -2063,6 +2496,13 @@ function bindEvents() {
   });
 
   // Tùy chọn hiển thị bảng
+  const sortBranchEl = document.getElementById('sortBranchSelect');
+  if (sortBranchEl) {
+    sortBranchEl.addEventListener('change', e => {
+      state.branchSort = e.target.value;
+      refreshDashboard();
+    });
+  }
   document.getElementById('chkShowZeroBranches').addEventListener('change', e => {
     state.showZeroBranches = e.target.checked;
     refreshDashboard();
@@ -2094,48 +2534,60 @@ function bindEvents() {
     });
   });
 
-  // Đồng bộ Google Sheet
-  document.getElementById('btnSyncSheet').addEventListener('click', () => {
-    trySyncDataSource(true);
-  });
+  // Đồng bộ Google Sheet (nếu có nút trên giao diện Admin)
+  const btnSync = document.getElementById('btnSyncSheet');
+  if (btnSync) {
+    btnSync.addEventListener('click', () => {
+      trySyncDataSource(true);
+    });
+  }
 
-  // Nhập file Excel / CSV
-  document.getElementById('fileUploadInput').addEventListener('change', e => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = evt => {
-      const data = new Uint8Array(evt.target.result);
-      const workbook = XLSX.read(data, { type: 'array' });
-      const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-      const rows = XLSX.utils.sheet_to_json(firstSheet, { defval: '' });
-      const parsed = ingestTabularRows(rows);
-      if (parsed.length > 0) {
-        applyNewRecords(parsed, false, `File: ${file.name} (${parsed.length} dòng)`);
-      } else {
-        alert('Không tìm thấy dữ liệu hợp lệ trong file. Vui lòng kiểm tra các cột: Thời gian đăng, Chi nhánh, Loại, Bộ phận.');
-      }
-    };
-    reader.readAsArrayBuffer(file);
-  });
+  // Nhập file Excel / CSV (nếu có trên giao diện Admin)
+  const fileUpload = document.getElementById('fileUploadInput');
+  if (fileUpload) {
+    fileUpload.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = evt => {
+        const data = new Uint8Array(evt.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+        const rows = XLSX.utils.sheet_to_json(firstSheet, { defval: '' });
+        const parsed = ingestTabularRows(rows);
+        if (parsed.length > 0) {
+          applyNewRecords(parsed, false, `File: ${file.name} (${parsed.length} dòng)`);
+        } else {
+          alert('Không tìm thấy dữ liệu hợp lệ trong file. Vui lòng kiểm tra các cột: Thời gian đăng, Chi nhánh, Loại, Bộ phận.');
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  }
 
   // Xuất Excel
-  document.getElementById('btnExportExcel').addEventListener('click', exportExcelReport);
+  const btnExport = document.getElementById('btnExportExcel');
+  if (btnExport) {
+    btnExport.addEventListener('click', exportExcelReport);
+  }
 
-  // Modal Email
+  // Modal Email (nếu có trên giao diện Admin)
   const emailModal = document.getElementById('emailModal');
-  document.getElementById('btnPreviewEmail').addEventListener('click', () => {
-    document.getElementById('emailPreviewBody').innerHTML = generateDailyEmailHtml();
-    emailModal.classList.add('open');
-  });
-  document.getElementById('btnCloseEmailModal').addEventListener('click', () => emailModal.classList.remove('open'));
-  document.getElementById('btnCloseEmailFooter').addEventListener('click', () => emailModal.classList.remove('open'));
-  document.getElementById('btnCopyEmailHtml').addEventListener('click', () => {
-    const html = generateDailyEmailHtml();
-    navigator.clipboard.writeText(html).then(() => {
-      alert('Đã copy mã HTML báo cáo Email vào clipboard!');
+  const btnPreviewEmail = document.getElementById('btnPreviewEmail');
+  if (emailModal && btnPreviewEmail) {
+    btnPreviewEmail.addEventListener('click', () => {
+      document.getElementById('emailPreviewBody').innerHTML = generateDailyEmailHtml();
+      emailModal.classList.add('open');
     });
-  });
+    document.getElementById('btnCloseEmailModal')?.addEventListener('click', () => emailModal.classList.remove('open'));
+    document.getElementById('btnCloseEmailFooter')?.addEventListener('click', () => emailModal.classList.remove('open'));
+    document.getElementById('btnCopyEmailHtml')?.addEventListener('click', () => {
+      const html = generateDailyEmailHtml();
+      navigator.clipboard.writeText(html).then(() => {
+        alert('Đã copy mã HTML báo cáo Email vào clipboard!');
+      });
+    });
+  }
 }
 
 // Khởi chạy ứng dụng
