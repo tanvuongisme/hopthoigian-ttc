@@ -1,8 +1,8 @@
 {
-  "updated_at": "09:05:37 10/11/2026",
+  "updated_at": "09:30:05 10/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
-  "total_rows": 395,
+  "total_rows": 399,
   "records": [
     {
       "STT": "1",
@@ -6322,6 +6322,70 @@
       "Số lượt share": "",
       "Chi nhánh": "BGG",
       "Bộ phận": "IBB",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "396",
+      "Email người đăng bài": "phudv@fpt.com",
+      "Họ tên người đăng bài": "Dương Văn Phú",
+      "Tiêu đề bài đăng": "FTEL30 – TRIỆU NỤ CƯỜI | CHUNG SỨC CHUYỂN ĐỔI",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "10/11/2026 9:12",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "lytd2@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HCM",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "397",
+      "Email người đăng bài": "loint24@fpt.com",
+      "Họ tên người đăng bài": "Loi Nguyen Tien",
+      "Tiêu đề bài đăng": "NỤ CƯỜI TRAO ĐI – KẾT NỐI YÊU THƯƠNG",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "10/11/2026 8:40",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "lytd2@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "GLI",
+      "Bộ phận": "IBB",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "398",
+      "Email người đăng bài": "baonnq@fpt.com",
+      "Họ tên người đăng bài": "Bao Nhan Nguyen Quoc",
+      "Tiêu đề bài đăng": "💗 KỶ NIỆM ONSITE HCM07 – GẶP GỠ ĐỂ KẾT NỐI, ĐỒNG HÀNH ĐỂ LAN TỎA TRIỆU NỤ CƯỜI!",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "09/11/2026 19:26",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "lytd2@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HCM",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "399",
+      "Email người đăng bài": "tuantd2@vienthongtin.com",
+      "Họ tên người đăng bài": "Tạ Đình Tuấn",
+      "Tiêu đề bài đăng": "❤️ BỮA CƠM TRƯA ẤM TÌNH KHÁCH HÀNG – NỤ CƯỜI RẠNG NGỜI TRÊN MÔI ❤️",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "lytd2@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "",
+      "Bộ phận": "",
       "Số lượt comment": ""
     }
   ]
