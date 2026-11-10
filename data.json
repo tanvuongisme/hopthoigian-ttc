@@ -1,8 +1,8 @@
 {
-  "updated_at": "12:30:04 10/11/2026",
+  "updated_at": "14:30:05 10/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
-  "total_rows": 412,
+  "total_rows": 414,
   "records": [
     {
       "STT": "1",
@@ -6594,6 +6594,38 @@
       "Số lượt share": "",
       "Chi nhánh": "HCM",
       "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "413",
+      "Email người đăng bài": "PhucLD12@fpt.com",
+      "Họ tên người đăng bài": "Phuc Le Dinh",
+      "Tiêu đề bài đăng": "❤️ Nụ cười trao đi – Niềm tin nhận lại !",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "10/11/2026 12:45",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "lytd2@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "NTN",
+      "Bộ phận": "IBB",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "414",
+      "Email người đăng bài": "nhitcy@fpt.com",
+      "Họ tên người đăng bài": "Nhi Tran Cam Yen",
+      "Tiêu đề bài đăng": "NIỀM VUI TRONG CHĂM SÓC KHÁCH HÀNG",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "10/11/2026 12:32",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "lytd2@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "NTN",
+      "Bộ phận": "DVKH",
       "Số lượt comment": ""
     }
   ]
