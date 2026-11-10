@@ -756,18 +756,18 @@ function applyQuickRange(rangeCode) {
     b.classList.toggle('active', b.dataset.range === rangeCode);
   });
 
-  if (state.rawRecords.length === 0) return;
+  const now = new Date();
+  const minDateObj = state.rawRecords.length > 0
+    ? state.rawRecords.reduce((min, r) => (r.dateObj < min ? r.dateObj : min), state.rawRecords[0].dateObj)
+    : now;
 
-  // Tìm ngày mới nhất trong tập dữ liệu để neo bộ lọc hợp lý
-  const maxDateObj = state.rawRecords.reduce((max, r) => (r.dateObj > max ? r.dateObj : max), state.rawRecords[0].dateObj);
-  const minDateObj = state.rawRecords.reduce((min, r) => (r.dateObj < min ? r.dateObj : min), state.rawRecords[0].dateObj);
-
-  const ref = new Date(maxDateObj.getFullYear(), maxDateObj.getMonth(), maxDateObj.getDate());
+  // Neo theo ngày thực tế hiện tại (Hôm nay)
+  const ref = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   let start = new Date(ref);
   let end = new Date(ref);
 
   if (rangeCode === 'today') {
-    // Hôm nay (ngày mới nhất)
+    // Hôm nay (ngày thực tế hiện tại)
   } else if (rangeCode === 'yesterday') {
     start.setDate(ref.getDate() - 1);
     end = new Date(start);
@@ -839,34 +839,20 @@ function getRecordBucketKey(r) {
   return r.monthKey;
 }
 
-// Tính các mốc thời gian chuẩn từ dữ liệu thực tế: Hôm nay, Hôm qua, Hôm kia, Tuần này, Tuần trước, Tháng này
+// Tính các mốc thời gian chuẩn theo ngày thực tế hiện tại: Hôm nay, Hôm qua, Hôm kia, Tuần này, Tuần trước, Tháng này
 function getTemporalMilestones() {
-  const allRecs = state.rawRecords;
-  if (!allRecs || allRecs.length === 0) {
-    const now = new Date();
-    const yest = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
-    const prev = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 2);
-    const prevWeekDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7);
-    return {
-      latestYmd: toYMD(now),
-      yesterdayYmd: toYMD(yest),
-      prevDayYmd: toYMD(prev),
-      currentWeekKey: getWeekInfo(now).key,
-      prevWeekKey: getWeekInfo(prevWeekDate).key,
-      currentMonthKey: getMonthInfo(now).key
-    };
-  }
-  const maxDateObj = allRecs.reduce((max, r) => (r.dateObj > max ? r.dateObj : max), allRecs[0].dateObj);
-  const yestObj = new Date(maxDateObj.getFullYear(), maxDateObj.getMonth(), maxDateObj.getDate() - 1);
-  const prevObj = new Date(maxDateObj.getFullYear(), maxDateObj.getMonth(), maxDateObj.getDate() - 2);
-  const prevWeekObj = new Date(maxDateObj.getFullYear(), maxDateObj.getMonth(), maxDateObj.getDate() - 7);
+  const now = new Date();
+  const todayObj = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const yestObj = new Date(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate() - 1);
+  const prevObj = new Date(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate() - 2);
+  const prevWeekObj = new Date(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate() - 7);
   return {
-    latestYmd: toYMD(maxDateObj),
+    latestYmd: toYMD(todayObj),
     yesterdayYmd: toYMD(yestObj),
     prevDayYmd: toYMD(prevObj),
-    currentWeekKey: getWeekInfo(maxDateObj).key,
+    currentWeekKey: getWeekInfo(todayObj).key,
     prevWeekKey: getWeekInfo(prevWeekObj).key,
-    currentMonthKey: getMonthInfo(maxDateObj).key
+    currentMonthKey: getMonthInfo(todayObj).key
   };
 }
 
@@ -2142,8 +2128,8 @@ function generateDailyEmailHtml() {
   const allRecs = state.rawRecords.length > 0 ? state.rawRecords : state.filteredRecords;
   if (allRecs.length === 0) return '<p>Chưa có dữ liệu.</p>';
 
-  // Xác định ngày mới nhất trong tập dữ liệu (T+1) và Ngày hôm qua (Ngày T chốt 09:00 sáng)
-  const maxDateObj = allRecs.reduce((max, r) => (r.dateObj > max ? r.dateObj : max), allRecs[0].dateObj);
+  // Xác định ngày thực tế hôm nay (T+1) và Ngày hôm qua (Ngày T chốt 09:00 sáng)
+  const maxDateObj = new Date();
   const latestYmd = toYMD(maxDateObj);
   const yesterdayObj = new Date(maxDateObj.getFullYear(), maxDateObj.getMonth(), maxDateObj.getDate() - 1);
   const yesterdayYmd = toYMD(yesterdayObj);
