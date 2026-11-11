@@ -1,6 +1,6 @@
 // Auto-generated from Google Sheet: data trang hop thoi gian
 window.LIVE_SHEET_DATA = {
-  "updated_at": "14:45:23 11/11/2026",
+  "updated_at": "16:30:08 11/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
   "total_rows": 439,
@@ -1102,7 +1102,7 @@ window.LIVE_SHEET_DATA = {
       "Thời gian đăng": "03/11/2026 12:51",
       "Thời gian duyệt": "",
       "Email người duyệt": "ThangDM6@fpt.com",
-      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Loại: video/ hình ảnh": "",
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "BNH",
@@ -5746,7 +5746,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "KHA",
-      "Bộ phận": "ĐT",
+      "Bộ phận": "KTV",
       "Số lượt comment": ""
     },
     {
@@ -6430,7 +6430,7 @@ window.LIVE_SHEET_DATA = {
       "Thời gian đăng": "",
       "Thời gian duyệt": "",
       "Email người duyệt": "lytd2@fpt.com",
-      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Loại: video/ hình ảnh": "",
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "TNN",
@@ -6446,7 +6446,7 @@ window.LIVE_SHEET_DATA = {
       "Thời gian đăng": "",
       "Thời gian duyệt": "",
       "Email người duyệt": "lytd2@fpt.com",
-      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Loại: video/ hình ảnh": "",
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "BDG",
@@ -6942,7 +6942,7 @@ window.LIVE_SHEET_DATA = {
       "Thời gian đăng": "10/11/2026 16:37",
       "Thời gian duyệt": "",
       "Email người duyệt": "lytd2@fpt.com",
-      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Loại: video/ hình ảnh": "",
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "TNN",
