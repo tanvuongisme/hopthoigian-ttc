@@ -55,7 +55,7 @@ const REGION_BRANCH_HIERARCHY = [
     region: 'ĐNB',
     regionName: 'Đông Nam Bộ (ĐNB)',
     branches: [
-      'BPC', 'BTN', 'LAN',
+      'BTN', 'LAN',
       'LDG', 'NTN', 'TNH'
     ]
   },
@@ -101,7 +101,7 @@ const REGION_BRANCH_HIERARCHY = [
   {
     region: 'DNI',
     regionName: 'Đồng Nai (DNI)',
-    branches: ['DNI']
+    branches: ['DNI', 'BPC']
   },
   {
     region: 'VTU',
