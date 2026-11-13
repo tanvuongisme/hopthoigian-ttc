@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261113112123" />
+  <link rel="stylesheet" href="styles.css?v=20261113113208" />
   <!-- Chart.js & SheetJS for Excel Export -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -25,7 +25,7 @@
         <div class="brand-title">
           <h1>
             CHƯƠNG TRÌNH FTEL30 - TRIỆU NỤ CƯỜI TTC
-            <span class="badge-rule">📸 Hình ảnh = 1 nụ cười &nbsp;|&nbsp; 🎬 Video = 2 nụ cười</span>
+            <span class="badge-rule">📸 Hình ảnh = 3 nụ cười &nbsp;|&nbsp; 🎬 Video = 5 nụ cười</span>
           </h1>
           <div class="brand-subtitle">
             <span>🏢 Bảng Theo Dõi Thi Đua <strong>79 Đơn vị / 16 Khu vực</strong></span>
@@ -117,8 +117,8 @@
           <label for="filterMediaType">🎬 Loại bài đăng</label>
           <select id="filterMediaType">
             <option value="ALL">-- Tất cả (Ảnh + Video) --</option>
-            <option value="IMAGE">📸 Hình ảnh (= 1 nụ cười)</option>
-            <option value="VIDEO">🎬 Video (= 2 nụ cười)</option>
+            <option value="IMAGE">📸 Hình ảnh (= 3 nụ cười)</option>
+            <option value="VIDEO">🎬 Video (= 5 nụ cười)</option>
           </select>
         </div>
         <div class="filter-field">
@@ -184,7 +184,7 @@
         </div>
         <div class="kpi-value" id="kpiTotalSmiles">0</div>
         <div class="kpi-sub">
-          <span id="kpiTotalPostsText">0 Ảnh (×1) + 0 Video (×2)</span>
+          <span id="kpiTotalPostsText">0 Ảnh (×3) + 0 Video (×5)</span>
           <span class="kpi-badge" id="kpiAvgSmilesPerDay">TB: 0 / ngày</span>
         </div>
       </div>
@@ -331,7 +331,7 @@
           <div>
             <div class="section-title">👥 3A. Bảng Thống Kê Nụ Cười Theo Bộ Phận</div>
             <div class="section-desc">
-              Tổng hợp số lượng Hình ảnh (×1), Video (×2), Tổng Nụ Cười, số Chi nhánh tham gia của từng Bộ phận theo Ngày / Tuần / Tháng.
+              Tổng hợp số lượng Hình ảnh (×3), Video (×5), Tổng Nụ Cười, số Chi nhánh tham gia của từng Bộ phận theo Ngày / Tuần / Tháng.
             </div>
           </div>
         </div>
@@ -378,7 +378,7 @@
           <div class="section-header">
             <div>
               <div class="section-title" id="chartTrendTitle">📈 Xu Hướng Nụ Cười Theo Thời Gian</div>
-              <div class="section-desc">So sánh điểm Nụ cười từ Hình ảnh (×1), Video (×2) và Tổng Nụ Cười</div>
+              <div class="section-desc">So sánh điểm Nụ cười từ Hình ảnh (×3), Video (×5) và Tổng Nụ Cười</div>
             </div>
           </div>
           <div class="chart-box">
@@ -431,7 +431,7 @@
           <div>
             <div class="section-title">🗂️ Danh Sách Bài Đăng Đã Ghi Nhận</div>
             <div class="section-desc" id="rawMappingWarning">
-              Tra cứu chi tiết từng bài đăng của CBNV các Chi nhánh (Hình ảnh = 1 nụ cười, Video = 2 nụ cười).
+              Tra cứu chi tiết từng bài đăng của CBNV các Chi nhánh (Hình ảnh = 3 nụ cười, Video = 5 nụ cười).
             </div>
           </div>
         </div>
@@ -461,7 +461,7 @@
 
   </main>
 
-  <script src="sheet_data_bundle.js?v=20261113112123"></script>
-  <script src="app.js?v=20261113112123"></script>
+  <script src="sheet_data_bundle.js?v=20261113113208"></script>
+  <script src="app.js?v=20261113113208"></script>
 </body>
 </html>

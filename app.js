@@ -242,11 +242,11 @@ function normalizeDepartment(rawDept) {
 // Quy tắc tính điểm Nụ cười từ cột "Loại"
 function parseMediaType(rawType) {
   const norm = normalizeKey(rawType);
-  if (norm.includes('VIDEO') || norm.includes('CLIP') || norm.includes('PHIM') || norm === '2') {
-    return { code: 'VIDEO', label: 'Video', smiles: 2, images: 0, videos: 1 };
+  if (norm.includes('VIDEO') || norm.includes('CLIP') || norm.includes('PHIM') || norm === '2' || norm === '5') {
+    return { code: 'VIDEO', label: 'Video', smiles: 5, images: 0, videos: 1 };
   }
-  // Mặc định Hình ảnh = 1 nụ cười
-  return { code: 'IMAGE', label: 'Hình ảnh', smiles: 1, images: 1, videos: 0 };
+  // Mặc định Hình ảnh = 3 nụ cười
+  return { code: 'IMAGE', label: 'Hình ảnh', smiles: 3, images: 1, videos: 0 };
 }
 
 // Parse cột "Thời gian đăng" đa định dạng (DD/MM/YYYY, YYYY-MM-DD, Google Date(), Excel serial)
@@ -988,7 +988,7 @@ function renderKpis() {
   if (elTodayTitle) {
     elTodayTitle.textContent = `Hôm Nay (${formatShortDM(m.latestYmd)})`;
     document.getElementById('kpiTodaySmiles').textContent = `+${todaySmiles.toLocaleString('vi-VN')} 😊`;
-    document.getElementById('kpiTodayDetail').textContent = `${todayImages} Ảnh (×1) • ${todayVideos} Video (×2)`;
+    document.getElementById('kpiTodayDetail').textContent = `${todayImages} Ảnh (×3) • ${todayVideos} Video (×5)`;
     const diffToday = todaySmiles - yestSmiles;
     const signToday = diffToday >= 0 ? `+${diffToday}` : `${diffToday}`;
     document.getElementById('kpiTodayVsYesterday').textContent = `Hôm qua (${formatShortDM(m.yesterdayYmd)}): ${yestSmiles} 😊 (${signToday})`;
@@ -999,7 +999,7 @@ function renderKpis() {
   if (elYestTitle) {
     elYestTitle.textContent = `Hôm Qua (${formatShortDM(m.yesterdayYmd)})`;
     document.getElementById('kpiYesterdaySmiles').textContent = `+${yestSmiles.toLocaleString('vi-VN')} 😊`;
-    document.getElementById('kpiYesterdayDetail').textContent = `${yestImages} Ảnh (×1) • ${yestVideos} Video (×2)`;
+    document.getElementById('kpiYesterdayDetail').textContent = `${yestImages} Ảnh (×3) • ${yestVideos} Video (×5)`;
     const diffYest = yestSmiles - prevDaySmiles;
     const arrowYest = diffYest > 0 ? `▲ +${diffYest}` : (diffYest < 0 ? `▼ ${diffYest}` : `= 0`);
     document.getElementById('kpiYesterdayVsPrev').textContent = `So với ${formatShortDM(m.prevDayYmd)}: ${arrowYest} 😊`;
@@ -1010,7 +1010,7 @@ function renderKpis() {
   if (elWeekTitle) {
     elWeekTitle.textContent = `Tuần Này (${m.currentWeekKey.split('-')[1]})`;
     document.getElementById('kpiWeekSmiles').textContent = `${weekSmiles.toLocaleString('vi-VN')} 😊`;
-    document.getElementById('kpiWeekDetail').textContent = `${weekImages} Ảnh (×1) • ${weekVideos} Video (×2)`;
+    document.getElementById('kpiWeekDetail').textContent = `${weekImages} Ảnh (×3) • ${weekVideos} Video (×5)`;
     const diffWeek = weekSmiles - prevWeekSmiles;
     const arrowWeek = diffWeek > 0 ? `▲ +${diffWeek}` : (diffWeek < 0 ? `▼ ${diffWeek}` : `= 0`);
     document.getElementById('kpiWeekVsPrev').textContent = `Tuần trước: ${prevWeekSmiles} 😊 (${arrowWeek})`;
@@ -1022,7 +1022,7 @@ function renderKpis() {
     elMonthTitle.textContent = `Lũy Kế Tháng (${m.currentMonthKey})`;
   }
   document.getElementById('kpiTotalSmiles').textContent = `${totalSmiles.toLocaleString('vi-VN')} 😊`;
-  document.getElementById('kpiTotalPostsText').textContent = `${totalImages.toLocaleString('vi-VN')} Ảnh (×1) + ${totalVideos.toLocaleString('vi-VN')} Video (×2)`;
+  document.getElementById('kpiTotalPostsText').textContent = `${totalImages.toLocaleString('vi-VN')} Ảnh (×3) + ${totalVideos.toLocaleString('vi-VN')} Video (×5)`;
   document.getElementById('kpiAvgSmilesPerDay').textContent = `TB: ${avgPerDay} nụ cười/ngày`;
 
   // Thẻ 5: Độ phủ hoặc Thứ hạng Chi nhánh đang chọn
@@ -1254,8 +1254,8 @@ function renderBranchAndRegionTable(timeBuckets) {
       <th style="background:#eff6ff;color:#1e3a8a;">So với ${formatShortDM(m.prevDayYmd)}</th>
       <th style="background:#ecfdf5;color:#047857;">Hôm nay (${formatShortDM(m.latestYmd)})</th>
       <th style="background:#f5f3ff;color:#5b21b6;">Tuần này (${m.currentWeekKey.split('-')[1]})</th>
-      <th>Hình ảnh (×1)</th>
-      <th>Video (×2)</th>
+      <th>Hình ảnh (×3)</th>
+      <th>Video (×5)</th>
       <th>Tổng bài</th>
       <th>Tổng Nụ Cười</th>
       ${showDynamic ? timeBuckets.map(b => `<th>${b.label}</th>`).join('') : ''}
@@ -1505,8 +1505,8 @@ function renderRegionSummaryTable(timeBuckets) {
       <th style="background:#eff6ff;color:#1e3a8a;">Hôm qua (${formatShortDM(m.yesterdayYmd)})</th>
       <th style="background:#ecfdf5;color:#047857;">Hôm nay (${formatShortDM(m.latestYmd)})</th>
       <th style="background:#f5f3ff;color:#5b21b6;">Tuần này (${m.currentWeekKey.split('-')[1]})</th>
-      <th>Hình Ảnh (×1)</th>
-      <th>Video (×2)</th>
+      <th>Hình Ảnh (×3)</th>
+      <th>Video (×5)</th>
       <th>Tổng Bài Đăng</th>
       <th>Tổng Nụ Cười</th>
       <th>TB / CN</th>
@@ -1691,8 +1691,8 @@ function renderDepartmentTables(timeBuckets) {
       <th class="sticky-col-2">Bộ Phận (Cột: Bộ phận)</th>
       <th>Số CN Tham Gia</th>
       <th>Số KV Tham Gia</th>
-      <th>Hình Ảnh (×1)</th>
-      <th>Video (×2)</th>
+      <th>Hình Ảnh (×3)</th>
+      <th>Video (×5)</th>
       <th>Tổng Bài Đăng</th>
       <th>Tổng Nụ Cười</th>
       <th>Tỷ Trọng (%)</th>
@@ -1838,8 +1838,8 @@ function renderCharts(timeBuckets) {
     let imgS = 0, vidS = 0;
     state.filteredRecords.forEach(r => {
       if (getRecordBucketKey(r) === b.key) {
-        imgS += r.images * 1;
-        vidS += r.videos * 2;
+        imgS += r.images * 3;
+        vidS += r.videos * 5;
       }
     });
     imgSmilesArr.push(imgS);
@@ -1866,14 +1866,14 @@ function renderCharts(timeBuckets) {
         },
         {
           type: 'bar',
-          label: 'Nụ cười từ Hình ảnh (×1)',
+          label: 'Nụ cười từ Hình ảnh (×3)',
           data: imgSmilesArr,
           backgroundColor: '#10b981',
           stack: 'smiles'
         },
         {
           type: 'bar',
-          label: 'Nụ cười từ Video (×2)',
+          label: 'Nụ cười từ Video (×5)',
           data: vidSmilesArr,
           backgroundColor: '#f59e0b',
           stack: 'smiles'
@@ -1891,7 +1891,7 @@ function renderCharts(timeBuckets) {
     }
   });
 
-  // 2. Region Chart (15 Khu vực)
+  // 2. Region Chart (16 Khu vực)
   const regionLabels = REGION_BRANCH_HIERARCHY.map(g => g.region);
   const regImgSmiles = [];
   const regVidSmiles = [];
@@ -1900,8 +1900,8 @@ function renderCharts(timeBuckets) {
     let iS = 0, vS = 0;
     state.filteredRecords.forEach(r => {
       if (r.region === g.region) {
-        iS += r.images * 1;
-        vS += r.videos * 2;
+        iS += r.images * 3;
+        vS += r.videos * 5;
       }
     });
     regImgSmiles.push(iS);
@@ -1915,8 +1915,8 @@ function renderCharts(timeBuckets) {
     data: {
       labels: regionLabels,
       datasets: [
-        { label: 'Hình ảnh (×1)', data: regImgSmiles, backgroundColor: '#3b82f6', stack: 'reg' },
-        { label: 'Video (×2)', data: regVidSmiles, backgroundColor: '#f59e0b', stack: 'reg' }
+        { label: 'Hình ảnh (×3)', data: regImgSmiles, backgroundColor: '#3b82f6', stack: 'reg' },
+        { label: 'Video (×5)', data: regVidSmiles, backgroundColor: '#f59e0b', stack: 'reg' }
       ]
     },
     options: {
@@ -1995,7 +1995,7 @@ function renderRawDataTable() {
   let html = '';
   rows.forEach((r, idx) => {
     const typeClass = r.mediaCode === 'VIDEO' ? 'video' : 'image';
-    const typeIcon = r.mediaCode === 'VIDEO' ? '🎬 Video (×2)' : '📸 Hình ảnh (×1)';
+    const typeIcon = r.mediaCode === 'VIDEO' ? '🎬 Video (×5)' : '📸 Hình ảnh (×3)';
     const branchDisplay = `<strong>${r.branch}</strong>`;
     const emailDisplay = r.authorEmail
       ? `<a href="mailto:${r.authorEmail}" style="color:#2563eb;text-decoration:none;font-weight:600;">${r.authorEmail}</a>`
@@ -2040,7 +2040,7 @@ function exportExcelReport() {
   const ws1Data = [];
   const header1 = [
     'STT', 'Đơn vị / Chi nhánh', 'Khu vực',
-    'Hình ảnh (x1)', 'Video (x2)', 'Tổng bài đăng', 'Tổng Nụ Cười',
+    'Hình ảnh (x3)', 'Video (x5)', 'Tổng bài đăng', 'Tổng Nụ Cười',
     ...timeBuckets.map(b => b.label)
   ];
   ws1Data.push(header1);
@@ -2105,7 +2105,7 @@ function exportExcelReport() {
   XLSX.utils.book_append_sheet(wb, ws1, '1_ChiNhanh_KhuVuc');
 
   // Sheet 2: Tổng hợp Bộ phận
-  const ws2Data = [['STT', 'Bộ phận', 'Hình ảnh (x1)', 'Video (x2)', 'Tổng bài đăng', 'Tổng Nụ Cười']];
+  const ws2Data = [['STT', 'Bộ phận', 'Hình ảnh (x3)', 'Video (x5)', 'Tổng bài đăng', 'Tổng Nụ Cười']];
   const deptMap = {};
   state.filteredRecords.forEach(r => {
     if (!deptMap[r.dept]) deptMap[r.dept] = { images: 0, videos: 0, posts: 0, smiles: 0 };
@@ -2313,7 +2313,7 @@ function generateDailyEmailHtml() {
             <div style="margin:6px 0;font-size:20px;font-weight:800;color:#ffffff;">😊 BÁO CÁO THỐNG KÊ NỤ CƯỜI HÀNG NGÀY</div>
             <div style="margin:0;color:#e2e8f0;font-size:13px;">
               Ngày chốt số liệu: <strong style="color:#ffffff;">${formatDMY(yesterdayYmd)} (Ngày T)</strong> &amp; sáng <strong style="color:#ffffff;">${formatDMY(latestYmd)}</strong> &nbsp;|&nbsp;
-              Quy tắc: <strong style="color:#fde68a;">Hình ảnh = 1 nụ cười, Video = 2 nụ cười</strong>
+              Quy tắc: <strong style="color:#fde68a;">Hình ảnh = 3 nụ cười, Video = 5 nụ cười</strong>
             </div>
           </td>
         </tr>
@@ -2331,7 +2331,7 @@ function generateDailyEmailHtml() {
             <td style="padding:12px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;text-align:center;width:24%;">
               <div style="font-size:11px;color:#065f46;font-weight:700;text-transform:uppercase;">Phát Sinh Ngày T (${formatShortDM(yesterdayYmd)})</div>
               <div style="font-size:23px;font-weight:800;color:#047857;margin:3px 0;">+${dayTSmiles} 😊</div>
-              <div style="font-size:11.5px;color:#065f46;">${dayTImages} Ảnh (×1) • ${dayTVideos} Video (×2)</div>
+              <div style="font-size:11.5px;color:#065f46;">${dayTImages} Ảnh (×3) • ${dayTVideos} Video (×5)</div>
             </td>
             <td style="width:1.3%;"></td>
             <td style="padding:12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;text-align:center;width:24%;">
@@ -2343,20 +2343,20 @@ function generateDailyEmailHtml() {
             <td style="padding:12px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;text-align:center;width:24%;">
               <div style="font-size:11px;color:#92400e;font-weight:700;text-transform:uppercase;">Lũy Kế Tháng (${currentMonthKey})</div>
               <div style="font-size:23px;font-weight:800;color:#b45309;margin:3px 0;">${mtdSmiles} 😊</div>
-              <div style="font-size:11.5px;color:#92400e;">${mtdImages} Ảnh (×1) + ${mtdVideos} Video (×2)</div>
+              <div style="font-size:11.5px;color:#92400e;">${mtdImages} Ảnh (×3) + ${mtdVideos} Video (×5)</div>
             </td>
             <td style="width:1.3%;"></td>
             <td style="padding:12px;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:8px;text-align:center;width:24%;">
               <div style="font-size:11px;color:#5b21b6;font-weight:700;text-transform:uppercase;">Độ Phủ Đơn Vị</div>
               <div style="font-size:23px;font-weight:800;color:#6d28d9;margin:3px 0;">${activeBranchesMtd.size}/${ALL_BRANCHES.length} CN</div>
-              <div style="font-size:11.5px;color:#5b21b6;">${activeRegionsMtd.size}/15 Khu vực có bài</div>
+              <div style="font-size:11.5px;color:#5b21b6;">${activeRegionsMtd.size}/${REGION_BRANCH_HIERARCHY.length} Khu vực có bài</div>
             </td>
           </tr>
         </table>
 
-        <!-- Bảng 1: 15 Khu vực -->
+        <!-- Bảng 1: 16 Khu vực -->
         <h3 style="font-size:14px;margin:18px 0 8px;color:#0f172a;border-left:4px solid #2563eb;padding-left:8px;">
-          1. Thống Kê Theo 15 Khu Vực (Có STT - Ngày / Tuần / Tháng)
+          1. Thống Kê Theo ${REGION_BRANCH_HIERARCHY.length} Khu Vực (Có STT - Ngày / Tuần / Tháng)
         </h3>
         <table style="width:100%;border-collapse:collapse;font-size:12.5px;border:1px solid #cbd5e1;">
           <thead>
@@ -2366,8 +2366,8 @@ function generateDailyEmailHtml() {
               <th style="padding:8px 8px;">Độ Phủ CN</th>
               <th style="padding:8px 10px;text-align:right;">Ngày T (${formatShortDM(yesterdayYmd)})</th>
               <th style="padding:8px 10px;text-align:right;">Tuần Này</th>
-              <th style="padding:8px 10px;text-align:right;">Ảnh Tháng (×1)</th>
-              <th style="padding:8px 10px;text-align:right;">Video Tháng (×2)</th>
+              <th style="padding:8px 10px;text-align:right;">Ảnh Tháng (×3)</th>
+              <th style="padding:8px 10px;text-align:right;">Video Tháng (×5)</th>
               <th style="padding:8px 10px;text-align:right;background:#1e40af;">Tổng Nụ Cười Tháng</th>
             </tr>
           </thead>
@@ -2375,7 +2375,7 @@ function generateDailyEmailHtml() {
             ${regionRowsHtml}
             <tr style="background:#0f172a;color:#ffffff;font-weight:800;">
               <td style="padding:8px;text-align:center;">∑</td>
-              <td style="padding:8px 10px;">TỔNG TOÀN HỆ THỐNG (15 KV)</td>
+              <td style="padding:8px 10px;">TỔNG TOÀN HỆ THỐNG (${REGION_BRANCH_HIERARCHY.length} KV)</td>
               <td style="padding:8px;text-align:center;">${activeBranchesMtd.size}/${ALL_BRANCHES.length} CN</td>
               <td style="padding:8px 10px;text-align:right;color:#6ee7b7;">+${dayTSmiles}</td>
               <td style="padding:8px 10px;text-align:right;">${weekSmiles}</td>
@@ -2397,8 +2397,8 @@ function generateDailyEmailHtml() {
               <th style="padding:8px 10px;text-align:left;">Bộ Phận</th>
               <th style="padding:8px 10px;text-align:right;">Ngày T (${formatShortDM(yesterdayYmd)})</th>
               <th style="padding:8px 10px;text-align:right;">Tuần Này</th>
-              <th style="padding:8px 10px;text-align:right;">Hình Ảnh (×1)</th>
-              <th style="padding:8px 10px;text-align:right;">Video (×2)</th>
+              <th style="padding:8px 10px;text-align:right;">Hình Ảnh (×3)</th>
+              <th style="padding:8px 10px;text-align:right;">Video (×5)</th>
               <th style="padding:8px 10px;text-align:right;">Tổng Nụ Cười</th>
               <th style="padding:8px 10px;text-align:right;">Tỷ Trọng</th>
             </tr>
