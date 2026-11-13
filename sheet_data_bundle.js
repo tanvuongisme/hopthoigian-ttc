@@ -1,9 +1,9 @@
 // Auto-generated from Google Sheet: data trang hop thoi gian
 window.LIVE_SHEET_DATA = {
-  "updated_at": "09:30:04 13/11/2026",
+  "updated_at": "10:30:08 13/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
-  "total_rows": 527,
+  "total_rows": 536,
   "records": [
     {
       "STT": "1",
@@ -3714,7 +3714,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -3730,7 +3730,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -3810,7 +3810,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -3858,7 +3858,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -4146,7 +4146,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -4338,7 +4338,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -4434,7 +4434,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -4898,7 +4898,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -5474,7 +5474,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -5490,7 +5490,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -5522,7 +5522,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -5634,7 +5634,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -5985,7 +5985,7 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "HCM",
+      "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
@@ -6001,7 +6001,7 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "HCM",
+      "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
@@ -6161,7 +6161,7 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "HCM",
+      "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
@@ -6273,7 +6273,7 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "HCM",
+      "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
@@ -6337,7 +6337,7 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "HCM",
+      "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
@@ -6369,7 +6369,7 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "HCM",
+      "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
@@ -6593,7 +6593,7 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "HCM",
+      "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
@@ -6737,7 +6737,7 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Video",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "HNI",
+      "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
@@ -7025,7 +7025,7 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "HCM",
+      "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
@@ -7041,7 +7041,7 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "HCM",
+      "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
@@ -7282,7 +7282,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -7298,7 +7298,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -7314,7 +7314,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -8178,7 +8178,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -8226,7 +8226,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SOC",
-      "Bộ phận": "DVKH",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     },
     {
@@ -8279,39 +8279,71 @@ window.LIVE_SHEET_DATA = {
     },
     {
       "STT": "518",
-      "Email người đăng bài": "",
-      "Họ tên người đăng bài": "",
-      "Tiêu đề bài đăng": "",
+      "Email người đăng bài": "MinhNX13@fpt.com",
+      "Họ tên người đăng bài": "Nguyen Xuan Minh",
+      "Tiêu đề bài đăng": "TRIỆU NỤ CƯỜI – NIỀM VUI TỪ NHỮNG ĐIỀU GIẢN DỊ",
       "Nội dung bài đăng": "",
-      "Thời gian đăng": "",
+      "Thời gian đăng": "12/11/2026 18:33",
       "Thời gian duyệt": "",
-      "Email người duyệt": "",
-      "Loại: video/ hình ảnh": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "",
-      "Bộ phận": "",
+      "Chi nhánh": "DNI",
+      "Bộ phận": "TPKT",
       "Số lượt comment": ""
     },
     {
       "STT": "519",
-      "Email người đăng bài": "",
-      "Họ tên người đăng bài": "",
-      "Tiêu đề bài đăng": "",
+      "Email người đăng bài": "phuongnam.tanht1@fpt.net",
+      "Họ tên người đăng bài": "Hồ Trọng Tấn",
+      "Tiêu đề bài đăng": "Nét đẹp lao động",
       "Nội dung bài đăng": "",
-      "Thời gian đăng": "",
+      "Thời gian đăng": "12/11/2026 20:22",
       "Thời gian duyệt": "",
-      "Email người duyệt": "",
-      "Loại: video/ hình ảnh": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "",
-      "Bộ phận": "",
+      "Chi nhánh": "DLC",
+      "Bộ phận": "KTV",
       "Số lượt comment": ""
     },
     {
       "STT": "520",
-      "Email người đăng bài": "",
+      "Email người đăng bài": "gamnt7@fpt.com",
+      "Họ tên người đăng bài": "Nguyen Thi Gam",
+      "Tiêu đề bài đăng": "Mỗi ngày làm việc là một ngày vui",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "12/11/2026 21:28",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "DBG",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "521",
+      "Email người đăng bài": "phuongnam.khanhlhq@fpt.net",
+      "Họ tên người đăng bài": "Khánh Lê Hoàng Quốc",
+      "Tiêu đề bài đăng": "ĐIỂM CHẠM TẬN TÂM – NHÀ CÁO LÊN ĐƯỜNG",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "12/11/2026 23:57",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "522",
+      "Email người đăng bài": "Khánh Lê Hoàng Quốc",
       "Họ tên người đăng bài": "",
       "Tiêu đề bài đăng": "",
       "Nội dung bài đăng": "",
@@ -8358,7 +8390,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "523",
+      "STT": "526",
       "Email người đăng bài": "NganLk21@fpt.com",
       "Họ tên người đăng bài": "Le Kim Ngannganlk21@fpt.com",
       "Tiêu đề bài đăng": "Những khoảnh khắc đẹp trên hành trình đồng hành cùng khách hàng",
@@ -8374,7 +8406,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "524",
+      "STT": "527",
       "Email người đăng bài": "cant2@fpt.com",
       "Họ tên người đăng bài": "Nhữ Thị Ca",
       "Tiêu đề bài đăng": "TRIỆU NỤ CƯỜI, LAN TỎA YÊU THƯƠNG",
@@ -8390,7 +8422,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "525",
+      "STT": "528",
       "Email người đăng bài": "Phuongpt61@fpt.com",
       "Họ tên người đăng bài": "Phan Thi Phuong",
       "Tiêu đề bài đăng": "Những khoảnh khắc đẹp trên hành trình đồng hành cùng khách hàng",
@@ -8406,7 +8438,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "526",
+      "STT": "529",
       "Email người đăng bài": "HaoVTM6@fpt.com",
       "Họ tên người đăng bài": "Hao Vu Thi My",
       "Tiêu đề bài đăng": "TRAO ĐI SỰ TẬN TÂM, NHẬN LẠI TRIỆU NỤ CƯỜI",
@@ -8422,12 +8454,124 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "527",
+      "STT": "530",
       "Email người đăng bài": "Nhott@fpt.com",
       "Họ tên người đăng bài": "Tống Thị Nhớ",
       "Tiêu đề bài đăng": "Tận tâm hướng dẫn, chu đáo phục vụ khách hàng.",
       "Nội dung bài đăng": "",
       "Thời gian đăng": "13/11/2026 09:08:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "BDG",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "531",
+      "Email người đăng bài": "Laint2@fpt.com",
+      "Họ tên người đăng bài": "Nguyen Tuong Lail",
+      "Tiêu đề bài đăng": "NỤ CƯỜI KHI ĐÃ HỖ TRỢ KHÁCH XONG",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 09:38:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "532",
+      "Email người đăng bài": "Anhnt299@fpt.com",
+      "Họ tên người đăng bài": "Nguyen Thi Anhanhnt299@fpt.com",
+      "Tiêu đề bài đăng": "FTEL30 – Triệu nụ cười – Gắn kết tình đồng đội",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 09:21:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "BDG",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "533",
+      "Email người đăng bài": "Trangnth64@fpt.com",
+      "Họ tên người đăng bài": "Trang Nguyen Thi Huyen",
+      "Tiêu đề bài đăng": "FTEL30 - Một hành trình, triệu nụ cười! 🚀🧡",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 09:32:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HDG",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "534",
+      "Email người đăng bài": "Laint2@fpt.com",
+      "Họ tên người đăng bài": "Nguyen Tuong Lailaint2@fpt.com",
+      "Tiêu đề bài đăng": "NỤ CƯỜI ĐỒNG HÀNH – CÙNG NHAU CẢI TIẾN 😊",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 09:43:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "535",
+      "Email người đăng bài": "ThanhPH23@fpt.com",
+      "Họ tên người đăng bài": "Pham Hong Thanh",
+      "Tiêu đề bài đăng": "NỤ CƯỜI TRAO ĐI, NIỀM TIN Ở LẠI",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 09:32:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HDG",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "536",
+      "Email người đăng bài": "Linhntc3@fpt.com",
+      "Họ tên người đăng bài": "Linh Nham Thi Cam",
+      "Tiêu đề bài đăng": "Bữa ăn vội, nụ cười tươi và tinh thần người Kỹ thuật viên. – Chi nhánh Hậu Giang.",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 09:31:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HGG",
+      "Bộ phận": "KTV",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "537",
+      "Email người đăng bài": "binhhd2@fpt.com",
+      "Họ tên người đăng bài": "Huynh Dieu Binh",
+      "Tiêu đề bài đăng": "CHUNG MỘT NHỊP ĐẬP, CÙNG TRIỆU NỤ CƯỜI! 🧡",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 09:11:00",
       "Thời gian duyệt": "",
       "Email người duyệt": "ThangDM6@fpt.com",
       "Loại: video/ hình ảnh": "Hình ảnh",
