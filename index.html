@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bảng Theo Dõi Thi Đua: Triệu Nụ Cười TTC - 78 Chi Nhánh & 15 Khu Vực</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Bảng Theo Dõi Thi Đua: Triệu Nụ Cười TTC - 79 Đơn Vị & 16 Khu Vực</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261113112123" />
   <!-- Chart.js & SheetJS for Excel Export -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -25,7 +28,7 @@
             <span class="badge-rule">📸 Hình ảnh = 1 nụ cười &nbsp;|&nbsp; 🎬 Video = 2 nụ cười</span>
           </h1>
           <div class="brand-subtitle">
-            <span>🏢 Bảng Theo Dõi Thi Đua <strong>78 Chi nhánh / 15 Khu vực</strong></span>
+            <span>🏢 Bảng Theo Dõi Thi Đua <strong>79 Đơn vị / 16 Khu vực</strong></span>
             <span>•</span>
             <span class="live-sync-badge">
               <span class="pulse-dot"></span>
@@ -69,17 +72,39 @@
         </div>
       </div>
 
+      <!-- Hàng ngang 16 Khu vực (bao gồm SOC) để chọn nhanh -->
+      <div class="quick-range-group" id="regionHorizontalBar" style="padding-bottom:14px; margin-bottom:14px; border-bottom:1px solid var(--border-color);">
+        <span class="group-label">🗺️ Khu vực (16):</span>
+        <button type="button" class="chip-btn active" data-region-chip="ALL">Tất cả (16)</button>
+        <button type="button" class="chip-btn" data-region-chip="HNI">HNI</button>
+        <button type="button" class="chip-btn" data-region-chip="HCM">HCM</button>
+        <button type="button" class="chip-btn" data-region-chip="TBB">TBB</button>
+        <button type="button" class="chip-btn" data-region-chip="ĐBB">ĐBB</button>
+        <button type="button" class="chip-btn" data-region-chip="MT&TN">MT&amp;TN</button>
+        <button type="button" class="chip-btn" data-region-chip="ĐNB">ĐNB</button>
+        <button type="button" class="chip-btn" data-region-chip="TNB">TNB</button>
+        <button type="button" class="chip-btn" data-region-chip="QNH">QNH</button>
+        <button type="button" class="chip-btn" data-region-chip="HDG">HDG</button>
+        <button type="button" class="chip-btn" data-region-chip="HPG">HPG</button>
+        <button type="button" class="chip-btn" data-region-chip="DNG">DNG</button>
+        <button type="button" class="chip-btn" data-region-chip="KHA">KHA</button>
+        <button type="button" class="chip-btn" data-region-chip="BDG">BDG</button>
+        <button type="button" class="chip-btn" data-region-chip="DNI">DNI</button>
+        <button type="button" class="chip-btn" data-region-chip="VTU">VTU</button>
+        <button type="button" class="chip-btn" data-region-chip="SOC">SOC</button>
+      </div>
+
       <div class="filter-grid">
         <div class="filter-field">
-          <label for="filterRegion">🗺️ Chọn Khu vực của bạn (15 KV)</label>
+          <label for="filterRegion">🗺️ Chọn Khu vực của bạn (16 KV)</label>
           <select id="filterRegion">
-            <option value="ALL">-- Tất cả Khu vực (15) --</option>
+            <option value="ALL">-- Tất cả Khu vực (16) --</option>
           </select>
         </div>
         <div class="filter-field">
-          <label for="filterBranch">🏢 Chọn Chi nhánh của bạn (78 CN)</label>
+          <label for="filterBranch">🏢 Chọn Chi nhánh / Đơn vị (79 CN)</label>
           <select id="filterBranch">
-            <option value="ALL">-- Tất cả Chi nhánh (78) --</option>
+            <option value="ALL">-- Tất cả Chi nhánh (79) --</option>
           </select>
         </div>
         <div class="filter-field">
@@ -169,9 +194,9 @@
           <span class="kpi-title" id="kpiCoverageTitle">Độ Phủ & Dẫn Đầu</span>
           <div class="kpi-icon">🏢</div>
         </div>
-        <div class="kpi-value" id="kpiActiveBranches">0 / 78 CN</div>
+        <div class="kpi-value" id="kpiActiveBranches">0 / 79 CN</div>
         <div class="kpi-sub">
-          <span id="kpiActiveRegionsText">0 / 15 Khu vực có bài</span>
+          <span id="kpiActiveRegionsText">0 / 16 Khu vực có bài</span>
           <span class="kpi-badge" id="kpiBranchRate">0% tham gia</span>
         </div>
       </div>
@@ -198,7 +223,7 @@
       <div class="leader-box">
         <div class="leader-box-header">
           <span>🗺️ Top 5 Khu Vực Dẫn Đầu Nụ Cười</span>
-          <span class="leader-sub">15 Khu vực</span>
+          <span class="leader-sub">16 Khu vực</span>
         </div>
         <div class="leader-list" id="topRegionsMtdList"></div>
       </div>
@@ -207,12 +232,12 @@
     <!-- Navigation Tabs -->
     <nav class="nav-tabs" id="mainNavTabs">
       <button type="button" class="tab-btn active" data-tab="tab-branch-region">
-        📋 1. Tiến Độ 78 Chi Nhánh & Khu Vực
-        <span class="tab-count" id="badgeBranchCount">78 CN / 15 KV</span>
+        📋 1. Tiến Độ 79 Đơn Vị & Khu Vực
+        <span class="tab-count" id="badgeBranchCount">79 CN / 16 KV</span>
       </button>
       <button type="button" class="tab-btn" data-tab="tab-region-summary">
-        🗺️ 2. Xếp Hạng 15 Khu Vực
-        <span class="tab-count">15 KV</span>
+        🗺️ 2. Xếp Hạng 16 Khu Vực
+        <span class="tab-count">16 KV</span>
       </button>
       <button type="button" class="tab-btn" data-tab="tab-department">
         👥 3. Thống Kê Theo Bộ Phận
@@ -236,14 +261,14 @@
               📋 Tiến Độ Thi Đua Theo Chi Nhánh & Khu Vực (Hôm qua • Hôm nay • Tuần này • Lũy kế Tháng)
             </div>
             <div class="section-desc" id="branchTableSubtitle">
-              Theo dõi trực tiếp điểm Nụ cười phát sinh Hôm qua, Hôm nay, so sánh tăng/giảm, Lũy kế Tuần, Lũy kế Tháng và chi tiết từng ngày của 78 Chi nhánh thuộc 15 Khu vực.
+              Theo dõi trực tiếp điểm Nụ cười phát sinh Hôm qua, Hôm nay, so sánh tăng/giảm, Lũy kế Tuần, Lũy kế Tháng và chi tiết từng ngày của 79 Đơn vị thuộc 16 Khu vực (bao gồm SOC).
             </div>
           </div>
           <div class="table-toolbar">
             <label class="toggle-label">
               Sắp xếp:
               <select id="sortBranchSelect" style="padding:5px 8px; border-radius:6px; border:1px solid #cbd5e1; font-weight:600;">
-                <option value="hierarchy">Theo 15 Khu vực chuẩn (Có dòng tổng KV)</option>
+                <option value="hierarchy">Theo 16 Khu vực chuẩn (Có dòng tổng KV)</option>
                 <option value="rank_desc">Xếp hạng Tổng Nụ Cười (Cao → Thấp)</option>
                 <option value="today_desc">Phát sinh Hôm nay & Hôm qua (Cao → Thấp)</option>
               </select>
@@ -273,9 +298,9 @@
       <div class="section-card">
         <div class="section-header">
           <div>
-            <div class="section-title">🗺️ Bảng Tổng Hợp & Xếp Hạng 15 Khu Vực</div>
+            <div class="section-title">🗺️ Bảng Tổng Hợp & Xếp Hạng 16 Khu Vực</div>
             <div class="section-desc">
-              So sánh kết quả Hôm qua, Hôm nay, Tuần này, Lũy kế Tháng, tỷ lệ Chi nhánh tham gia và trung bình Nụ cười/Chi nhánh của 15 Khu vực.
+              So sánh kết quả Hôm qua, Hôm nay, Tuần này, Lũy kế Tháng, tỷ lệ Chi nhánh tham gia và trung bình Nụ cười/Chi nhánh của 16 Khu vực (bao gồm SOC).
             </div>
           </div>
           <div class="table-toolbar">
@@ -283,7 +308,7 @@
               Sắp xếp:
               <select id="sortRegionSelect" style="padding:5px 8px; border-radius:6px; border:1px solid #cbd5e1;">
                 <option value="smiles_desc">Xếp hạng Tổng Nụ Cười (Cao → Thấp)</option>
-                <option value="excel_order">Thứ tự chuẩn 15 Khu vực</option>
+                <option value="excel_order">Thứ tự chuẩn 16 Khu vực</option>
                 <option value="rate_desc">Tỷ lệ CN tham gia (Cao → Thấp)</option>
               </select>
             </label>
@@ -331,8 +356,8 @@
             <label class="toggle-label">
               Cấp độ hiển thị:
               <select id="deptMatrixLevel" style="padding:5px 8px; border-radius:6px; border:1px solid #cbd5e1;">
-                <option value="branch_and_region">Chi nhánh + Tổng Khu vực (78 CN & 15 KV)</option>
-                <option value="region_only">Chỉ Tổng hợp theo 15 Khu vực</option>
+                <option value="branch_and_region">Chi nhánh + Tổng Khu vực (79 CN & 16 KV)</option>
+                <option value="region_only">Chỉ Tổng hợp theo 16 Khu vực</option>
               </select>
             </label>
           </div>
@@ -364,7 +389,7 @@
         <div class="section-card">
           <div class="section-header">
             <div>
-              <div class="section-title">🗺️ Tổng Nụ Cười Theo 15 Khu Vực</div>
+              <div class="section-title">🗺️ Tổng Nụ Cười Theo 16 Khu Vực</div>
               <div class="section-desc">Đối sánh đóng góp Hình ảnh và Video giữa các Khu vực</div>
             </div>
           </div>
@@ -436,7 +461,7 @@
 
   </main>
 
-  <script src="sheet_data_bundle.js"></script>
-  <script src="app.js"></script>
+  <script src="sheet_data_bundle.js?v=20261113112123"></script>
+  <script src="app.js?v=20261113112123"></script>
 </body>
 </html>

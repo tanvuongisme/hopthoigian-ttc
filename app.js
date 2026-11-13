@@ -107,6 +107,11 @@ const REGION_BRANCH_HIERARCHY = [
     region: 'VTU',
     regionName: 'Vũng Tàu (VTU)',
     branches: ['VTU']
+  },
+  {
+    region: 'SOC',
+    regionName: 'SOC',
+    branches: ['SOC']
   }
 ];
 
@@ -174,7 +179,8 @@ const CUSTOM_BRANCH_ALIASES = {
   'KHA-01': 'KHA', 'KHA-02': 'KHA', 'KHA01': 'KHA', 'KHA02': 'KHA',
   'BDG-01': 'BDG', 'BDG-02': 'BDG', 'BDG01': 'BDG', 'BDG02': 'BDG',
   'DNI-01': 'DNI', 'DNI-02': 'DNI', 'DNI-03': 'DNI', 'DNI-04': 'DNI', 'DNI01': 'DNI', 'DNI02': 'DNI', 'DNI03': 'DNI', 'DNI04': 'DNI',
-  'HYN-01': 'HYN', 'HYN-02': 'HYN', 'HYN01': 'HYN', 'HYN02': 'HYN'
+  'HYN-01': 'HYN', 'HYN-02': 'HYN', 'HYN01': 'HYN', 'HYN02': 'HYN',
+  'SOC-01': 'SOC', 'SOC-02': 'SOC', 'SOC01': 'SOC', 'SOC02': 'SOC'
 };
 
 function resolveCanonicalBranch(rawBranch) {
@@ -490,7 +496,7 @@ function ingestTabularRows(rows) {
 
   let colTime = findColKey(['THOI GIAN DANG', 'THOI GIAN', 'NGAY DANG', 'TIMESTAMP', 'NGAY', 'DATE', 'TIME']) || keys[0];
   let colBranch = findColKey(['CHI NHANH', 'DON VI', 'BRANCH', 'TRUNG TAM']) || keys[1];
-  let colType = findColKey(['LOAI', 'HINH ANH', 'VIDEO', 'TYPE', 'MEDIA']) || keys[2];
+  let colType = findColKey(['LOAI', 'HINH THUC', 'HINH ANH', 'VIDEO', 'TYPE', 'MEDIA']) || keys[2];
   let colDept = findColKey(['BO PHAN', 'PHONG BAN', 'DEPARTMENT', 'BP', 'NHOM']) || keys[3];
   let colAuthorName = findColKey(['HO TEN NGUOI DANG', 'HO TEN', 'NGUOI DANG']);
   let colAuthorEmail = findColKey(['EMAIL NGUOI DANG', 'EMAIL']);
@@ -567,9 +573,9 @@ async function trySyncDataSource(showAlertOnFail = false) {
       } catch (_) {}
     }
 
-    // 1. Ưu tiên đọc từ file data.json nếu script Python/gsheets đã kéo về
+    // 1. Ưu tiên đọc từ file data.json nếu script Python/gsheets đã kéo về (chống cache hoàn toàn)
     try {
-      const resp = await fetch(`data.json?t=${Date.now()}`);
+      const resp = await fetch(`data.json?t=${Date.now()}`, { cache: 'no-store' });
       if (resp.ok) {
         const payload = await resp.json();
         if (payload && Array.isArray(payload.records) && payload.records.length > 0) {
@@ -696,7 +702,7 @@ function applyNewRecords(records, isDemo, sourceLabel) {
     const syncTime = (window.LIVE_SHEET_DATA && window.LIVE_SHEET_DATA.updated_at)
       ? window.LIVE_SHEET_DATA.updated_at
       : `${new Date().toLocaleTimeString('vi-VN')} ${new Date().toLocaleDateString('vi-VN')}`;
-    syncText.textContent = `Cập nhật: ${syncTime} (Tự động 2h/lần)`;
+    syncText.textContent = `Cập nhật: ${syncTime} (Tự động 1h/lần)`;
   }
 
   populateFilterDropdowns();
@@ -706,7 +712,7 @@ function applyNewRecords(records, isDemo, sourceLabel) {
 function populateFilterDropdowns() {
   // Region dropdown
   const regSelect = document.getElementById('filterRegion');
-  regSelect.innerHTML = '<option value="ALL">-- Tất cả Khu vực (15) --</option>';
+  regSelect.innerHTML = `<option value="ALL">-- Tất cả Khu vực (${REGION_BRANCH_HIERARCHY.length}) --</option>`;
   REGION_BRANCH_HIERARCHY.forEach(g => {
     const opt = document.createElement('option');
     opt.value = g.region;
@@ -891,6 +897,10 @@ function refreshDashboard() {
   filterRecords();
   const timeBuckets = getTimeBuckets(state.filteredRecords);
 
+  document.querySelectorAll('#regionHorizontalBar [data-region-chip]').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-region-chip') === state.region);
+  });
+
   const grainLabelMap = { day: 'Ngày', week: 'Tuần', month: 'Tháng' };
   const lblMode = document.getElementById('lblTimeColumnMode');
   if (lblMode) lblMode.textContent = grainLabelMap[state.timeGrain];
@@ -1032,13 +1042,13 @@ function renderKpis() {
     const regRank = sortedReg.findIndex(x => x[0] === state.branch) + 1;
 
     if (elCovTitle) elCovTitle.textContent = `Xếp Hạng Đơn Vị (${state.branch})`;
-    document.getElementById('kpiActiveBranches').textContent = `Hạng #${natRank} / 78`;
+    document.getElementById('kpiActiveBranches').textContent = `Hạng #${natRank} / ${ALL_BRANCHES.length}`;
     document.getElementById('kpiActiveRegionsText').textContent = `Hạng #${regRank} / ${regBranches.length} tại KV ${regCode}`;
     document.getElementById('kpiBranchRate').textContent = `${totalSmiles} điểm lũy kế`;
   } else {
     if (elCovTitle) elCovTitle.textContent = state.region === 'ALL' ? 'Độ Phủ Toàn Hệ Thống' : `Độ Phủ KV ${state.region}`;
     document.getElementById('kpiActiveBranches').textContent = `${activeBranchesSet.size} / ${totalTargetBranches} CN`;
-    document.getElementById('kpiActiveRegionsText').textContent = `${activeRegionsSet.size} / 15 Khu vực có bài`;
+    document.getElementById('kpiActiveRegionsText').textContent = `${activeRegionsSet.size} / ${REGION_BRANCH_HIERARCHY.length} Khu vực có bài`;
     document.getElementById('kpiBranchRate').textContent = `${branchRate}% CN đã tham gia`;
   }
 
@@ -1457,7 +1467,7 @@ function renderBranchAndRegionTable(timeBuckets) {
     <tr class="grand-total-row">
       <td class="sticky-col-1" style="background:var(--total-row-bg);color:#fff">∑</td>
       <td class="sticky-col-2" style="background:var(--total-row-bg);color:#fff">TỔNG TOÀN HỆ THỐNG</td>
-      <td class="center-col">15 KV</td>
+      <td class="center-col">${REGION_BRANCH_HIERARCHY.length} KV</td>
       <td class="center-col">--</td>
       <td class="num-col">${grandPrevDay.toLocaleString('vi-VN')}</td>
       <td class="num-col">+${grandYesterday.toLocaleString('vi-VN')}</td>
@@ -1614,7 +1624,7 @@ function renderRegionSummaryTable(timeBuckets) {
   html += `
     <tr class="grand-total-row">
       <td class="sticky-col-1" style="background:var(--total-row-bg);color:#fff">∑</td>
-      <td class="sticky-col-2" style="background:var(--total-row-bg);color:#fff">TỔNG 15 KHU VỰC</td>
+      <td class="sticky-col-2" style="background:var(--total-row-bg);color:#fff">TỔNG ${REGION_BRANCH_HIERARCHY.length} KHU VỰC</td>
       <td>Toàn hệ thống</td>
       <td class="center-col">${grandActiveBranches.size} / ${ALL_BRANCHES.length}</td>
       <td class="center-col">${totalRate}%</td>
@@ -2459,6 +2469,17 @@ function bindEvents() {
   });
 
   // Lọc Khu vực / Chi nhánh / Bộ phận / Loại
+  document.querySelectorAll('#regionHorizontalBar [data-region-chip]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const reg = btn.getAttribute('data-region-chip');
+      state.region = reg;
+      state.branch = 'ALL';
+      document.getElementById('filterRegion').value = reg;
+      updateBranchDropdown(reg);
+      refreshDashboard();
+    });
+  });
+
   document.getElementById('filterRegion').addEventListener('change', e => {
     state.region = e.target.value;
     updateBranchDropdown(state.region);
@@ -2579,6 +2600,26 @@ function bindEvents() {
 // Khởi chạy ứng dụng
 document.addEventListener('DOMContentLoaded', () => {
   bindEvents();
+
+  // Nếu mở qua web (GitHub Pages / localhost), tự động kiểm tra bản data.json mới nhất định kỳ mỗi 3 phút
+  if (window.location.protocol.startsWith('http')) {
+    setInterval(async () => {
+      try {
+        const resp = await fetch(`data.json?t=${Date.now()}`, { cache: 'no-store' });
+        if (resp.ok) {
+          const payload = await resp.json();
+          if (payload && payload.updated_at && (!window.LIVE_SHEET_DATA || payload.updated_at !== window.LIVE_SHEET_DATA.updated_at)) {
+            window.LIVE_SHEET_DATA = payload;
+            const parsed = ingestTabularRows(payload.records);
+            if (parsed.length > 0) {
+              applyNewRecords(parsed, false, `Dữ liệu thực Google Sheet (${parsed.length} bài đăng)`);
+            }
+          }
+        }
+      } catch (_) {}
+    }, 180000);
+  }
+
   // Ưu tiên nạp trực tiếp từ sheet_data_bundle.js (đã đồng bộ từ Google Sheet thực tế)
   if (window.LIVE_SHEET_DATA && Array.isArray(window.LIVE_SHEET_DATA.records) && window.LIVE_SHEET_DATA.records.length > 0) {
     const parsed = ingestTabularRows(window.LIVE_SHEET_DATA.records);

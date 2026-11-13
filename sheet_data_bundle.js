@@ -1,9 +1,9 @@
 // Auto-generated from Google Sheet: data trang hop thoi gian
 window.LIVE_SHEET_DATA = {
-  "updated_at": "10:30:08 13/11/2026",
+  "updated_at": "11:21:23 13/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
-  "total_rows": 536,
+  "total_rows": 532,
   "records": [
     {
       "STT": "1",
@@ -1102,7 +1102,7 @@ window.LIVE_SHEET_DATA = {
       "Thời gian đăng": "03/11/2026 12:51",
       "Thời gian duyệt": "",
       "Email người duyệt": "ThangDM6@fpt.com",
-      "Loại: video/ hình ảnh": "",
+      "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "BNH",
@@ -6422,38 +6422,6 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "402",
-      "Email người đăng bài": "hapn13@fpt.com",
-      "Họ tên người đăng bài": "",
-      "Tiêu đề bài đăng": "CÙNG FPT LAN TỎA TRIỆU NỤ CƯỜI ❤️",
-      "Nội dung bài đăng": "",
-      "Thời gian đăng": "",
-      "Thời gian duyệt": "",
-      "Email người duyệt": "lytd2@fpt.com",
-      "Loại: video/ hình ảnh": "",
-      "Số lượt like": "",
-      "Số lượt share": "",
-      "Chi nhánh": "TNN",
-      "Bộ phận": "DVKH",
-      "Số lượt comment": ""
-    },
-    {
-      "STT": "403",
-      "Email người đăng bài": "nhilty16@fpt.com",
-      "Họ tên người đăng bài": "",
-      "Tiêu đề bài đăng": "FTEL30_ TRIỆU NỤ CƯỜI",
-      "Nội dung bài đăng": "",
-      "Thời gian đăng": "",
-      "Thời gian duyệt": "",
-      "Email người duyệt": "lytd2@fpt.com",
-      "Loại: video/ hình ảnh": "",
-      "Số lượt like": "",
-      "Số lượt share": "",
-      "Chi nhánh": "BDG",
-      "Bộ phận": "DVKH",
-      "Số lượt comment": ""
-    },
-    {
       "STT": "404",
       "Email người đăng bài": "Trangntt92@fpt.com",
       "Họ tên người đăng bài": "Nguyễn Thị Thu Trang",
@@ -6942,7 +6910,7 @@ window.LIVE_SHEET_DATA = {
       "Thời gian đăng": "10/11/2026 16:37",
       "Thời gian duyệt": "",
       "Email người duyệt": "lytd2@fpt.com",
-      "Loại: video/ hình ảnh": "",
+      "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "TNN",
@@ -8339,38 +8307,6 @@ window.LIVE_SHEET_DATA = {
       "Số lượt share": "",
       "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
-      "Số lượt comment": ""
-    },
-    {
-      "STT": "522",
-      "Email người đăng bài": "Khánh Lê Hoàng Quốc",
-      "Họ tên người đăng bài": "",
-      "Tiêu đề bài đăng": "",
-      "Nội dung bài đăng": "",
-      "Thời gian đăng": "",
-      "Thời gian duyệt": "",
-      "Email người duyệt": "",
-      "Loại: video/ hình ảnh": "",
-      "Số lượt like": "",
-      "Số lượt share": "",
-      "Chi nhánh": "",
-      "Bộ phận": "",
-      "Số lượt comment": ""
-    },
-    {
-      "STT": "521",
-      "Email người đăng bài": "",
-      "Họ tên người đăng bài": "",
-      "Tiêu đề bài đăng": "",
-      "Nội dung bài đăng": "",
-      "Thời gian đăng": "",
-      "Thời gian duyệt": "",
-      "Email người duyệt": "",
-      "Loại: video/ hình ảnh": "",
-      "Số lượt like": "",
-      "Số lượt share": "",
-      "Chi nhánh": "",
-      "Bộ phận": "",
       "Số lượt comment": ""
     },
     {
