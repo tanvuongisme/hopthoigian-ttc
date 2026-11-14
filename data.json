@@ -1,8 +1,8 @@
 {
-  "updated_at": "11:34:56 14/11/2026",
+  "updated_at": "12:30:04 14/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
-  "total_rows": 559,
+  "total_rows": 560,
   "records": [
     {
       "STT": "1",
@@ -8946,6 +8946,22 @@
       "Số lượt share": "",
       "Chi nhánh": "LAN",
       "Bộ phận": "IBB",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "565",
+      "Email người đăng bài": "Phuocln@fpt.com",
+      "Họ tên người đăng bài": "Phuoc Lai Ngoc",
+      "Tiêu đề bài đăng": "ĐI CÙNG KỸ THUẬT SWAP WIFI 7: CHẠM CÔNG NGHỆ MỚI, GÓP TRIỆU NỤ CƯỜI 🧡",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "14/11/2026 11:30",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "tungdt21@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     }
   ]
