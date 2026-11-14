@@ -1,9 +1,9 @@
 // Auto-generated from Google Sheet: data trang hop thoi gian
 window.LIVE_SHEET_DATA = {
-  "updated_at": "13:30:04 14/11/2026",
+  "updated_at": "14:30:05 14/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
-  "total_rows": 560,
+  "total_rows": 563,
   "records": [
     {
       "STT": "1",
@@ -8963,6 +8963,54 @@ window.LIVE_SHEET_DATA = {
       "Số lượt share": "",
       "Chi nhánh": "SOC",
       "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "566",
+      "Email người đăng bài": "phuongnam.DuyNN2",
+      "Họ tên người đăng bài": "",
+      "Tiêu đề bài đăng": "FTEL30 - TRIỆU NỤ CƯỜI",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "14/11/2026 13:31",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "tungdt21@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "NTN",
+      "Bộ phận": "KTV",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "567",
+      "Email người đăng bài": "LanTNY@fpt.com",
+      "Họ tên người đăng bài": "Lan Tran Nguyen Y",
+      "Tiêu đề bài đăng": "FTEL30 – 🌧️ DÙ NGÀY MƯA HAY NGÀY NẮNG, CHÚNG TÔI VẪN CSKH! 💚",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "14/11/2026 12:16",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "tungdt21@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "BDG",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "568",
+      "Email người đăng bài": "anhptv10@fpt.com",
+      "Họ tên người đăng bài": "Anh Pham Thi Van",
+      "Tiêu đề bài đăng": "Trinh phục nụ Cười của người nổi tiếng",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "14/11/2026 11:27",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "tungdt21@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "NBH",
+      "Bộ phận": "IBB",
       "Số lượt comment": ""
     }
   ]
