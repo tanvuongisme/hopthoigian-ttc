@@ -1,8 +1,8 @@
 {
-  "updated_at": "07:30:04 14/11/2026",
+  "updated_at": "08:30:07 14/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
-  "total_rows": 532,
+  "total_rows": 534,
   "records": [
     {
       "STT": "1",
@@ -8514,6 +8514,38 @@
       "Số lượt share": "",
       "Chi nhánh": "BDG",
       "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "538",
+      "Email người đăng bài": "Phuongtt14@fpt.com",
+      "Họ tên người đăng bài": "Phuong Trinh Thi",
+      "Tiêu đề bài đăng": "FTEL30 - Triệu Nụ Cười",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "14/11/2026 8:18",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "tungdt21@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "KGG",
+      "Bộ phận": "AD",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "539",
+      "Email người đăng bài": "Dienndp@fpt.com",
+      "Họ tên người đăng bài": "Dien Nguyen Duy Phong",
+      "Tiêu đề bài đăng": "FTEL 30 TRIỆU NỤ CƯỜI",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "14/11/2026 8:14",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "tungdt21@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "",
+      "Bộ phận": "",
       "Số lượt comment": ""
     }
   ]
