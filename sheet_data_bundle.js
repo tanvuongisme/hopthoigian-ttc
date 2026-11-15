@@ -1,9 +1,9 @@
 // Auto-generated from Google Sheet: data trang hop thoi gian
 window.LIVE_SHEET_DATA = {
-  "updated_at": "06:30:05 15/11/2026",
+  "updated_at": "07:30:05 15/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
-  "total_rows": 563,
+  "total_rows": 564,
   "records": [
     {
       "STT": "1",
@@ -9011,6 +9011,22 @@ window.LIVE_SHEET_DATA = {
       "Số lượt share": "",
       "Chi nhánh": "NBH",
       "Bộ phận": "IBB",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "569",
+      "Email người đăng bài": "NamNH178@fpt.com",
+      "Họ tên người đăng bài": "Nguyen Hoang Nam",
+      "Tiêu đề bài đăng": "FTEL30 - TRIỆU NỤ CƯỜI",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "15/11/2026 0:36",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "lytd2@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
       "Số lượt comment": ""
     }
   ]
