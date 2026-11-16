@@ -1,9 +1,9 @@
 // Auto-generated from Google Sheet: data trang hop thoi gian
 window.LIVE_SHEET_DATA = {
-  "updated_at": "10:30:11 16/11/2026",
+  "updated_at": "11:41:02 16/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
-  "total_rows": 632,
+  "total_rows": 670,
   "records": [
     {
       "STT": "1",
@@ -8977,12 +8977,604 @@ window.LIVE_SHEET_DATA = {
       "Loại: video/ hình ảnh": "Hình ảnh",
       "Số lượt like": "",
       "Số lượt share": "",
-      "Chi nhánh": "",
-      "Bộ phận": "",
+      "Chi nhánh": "LDG",
+      "Bộ phận": "DVKH",
       "Số lượt comment": ""
     },
     {
-      "STT": "535",
+      "STT": "575",
+      "Email người đăng bài": "baonnq@fpt.com",
+      "Họ tên người đăng bài": "Bao Nhan Nguyen Quoc",
+      "Tiêu đề bài đăng": "LAN TỎA YÊU THƯƠNG TỪ NHỮNG CHUYẾN ONSITE TẠI NHÀ KHÁCH HÀNG ❤️",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 15:11:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "576",
+      "Email người đăng bài": "phed@fpt.com",
+      "Họ tên người đăng bài": "Phe Danh",
+      "Tiêu đề bài đăng": "MỖI KHÁCH HÀNG HÀI LÒNG, MỘT NỤ CƯỜI LAN TỎA!",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 15:01:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "BLU",
+      "Bộ phận": "ĐT",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "577",
+      "Email người đăng bài": "phuongnam.khangtv1@fpt.net",
+      "Họ tên người đăng bài": "khang khang",
+      "Tiêu đề bài đăng": "CÀ PHÊ SÁNG PKT.SG10 – GẮN KẾT ĐỒNG ĐỘI, LAN TỎA NỤ CƯỜI",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 14:57:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SG10",
+      "Bộ phận": "PKT",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "578",
+      "Email người đăng bài": "maint7@fpt.com",
+      "Họ tên người đăng bài": "Mai Nguyen Thi",
+      "Tiêu đề bài đăng": "Một lần hướng dẫn, một đời tự tin",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 14:54:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HN03",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "579",
+      "Email người đăng bài": "tuyenpt4@fpt.com",
+      "Họ tên người đăng bài": "Pham Trong Tuyen",
+      "Tiêu đề bài đăng": "KTV FPT TBH luôn vui vẻ tươi cười để có ngày làm việc tích cực nhất",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 14:37:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "TBH",
+      "Bộ phận": "PKT",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "580",
+      "Email người đăng bài": "chauntm14@fpt.com",
+      "Họ tên người đăng bài": "Chau Nguyen Thi Minh",
+      "Tiêu đề bài đăng": "🧡 Một bức ảnh – Nhiều nụ cười – Một tinh thần đồng đội!",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 14:35:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "LDG",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "581",
+      "Email người đăng bài": "cuongpt3@fpt.com",
+      "Họ tên người đăng bài": "Cuong Pham Tuan",
+      "Tiêu đề bài đăng": "🧡 MÀU ÁO CAM – NỤ CƯỜI XANH",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 14:21:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "KGG",
+      "Bộ phận": "BGĐ",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "582",
+      "Email người đăng bài": "cuongpt3@fpt.com",
+      "Họ tên người đăng bài": "Cuong Pham Tuan",
+      "Tiêu đề bài đăng": "KHÁCH HÀNG LÀ TRÁI TIM CỦA MỌI HÀNH TRÌNH!",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 14:17:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "KGG",
+      "Bộ phận": "BGĐ",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "583",
+      "Email người đăng bài": "cuongpt3@fpt.com",
+      "Họ tên người đăng bài": "Cuong Pham Tuan",
+      "Tiêu đề bài đăng": "🔥 Team An Biên",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 14:14:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "KGG",
+      "Bộ phận": "BGĐ",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "584",
+      "Email người đăng bài": "cuongpt3@fpt.com",
+      "Họ tên người đăng bài": "Cuong Pham Tuan",
+      "Tiêu đề bài đăng": "Tươi Tưới Tinh Thần",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 14:11:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "KGG",
+      "Bộ phận": "BGĐ",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "585",
+      "Email người đăng bài": "thanhpv37@fpt.com",
+      "Họ tên người đăng bài": "Thanh Pham Van",
+      "Tiêu đề bài đăng": "MỖI HÀNH ĐỘNG NHỎ - MỘT NỤ CƯỜI ĐƯỢC LAN TỎA",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 14:08:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HN01",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "586",
+      "Email người đăng bài": "phuongnam.anhdnl@fpt.net",
+      "Họ tên người đăng bài": "Dương Ngọc Lan Anh",
+      "Tiêu đề bài đăng": "NỤ CƯỜI THẤU HIỂU – CHUYỂN TỪ CHỐI THÀNH GẬT ĐẦU",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 13:17:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "587",
+      "Email người đăng bài": "minhpa3@fpt.com",
+      "Họ tên người đăng bài": "Minh Pham Anh (FTEL CS HCM) Minh",
+      "Tiêu đề bài đăng": "NỤ CƯỜI HẬU PHƯƠNG – ĐỒNG ĐỘI LUÔN CÓ NHAU",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 13:01:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "588",
+      "Email người đăng bài": "hieunh7@fpt.com",
+      "Họ tên người đăng bài": "Nguyen Huu Hieu",
+      "Tiêu đề bài đăng": "Một chuyến đi nhỏ, một điểm CSAT 5",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 12:08:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "589",
+      "Email người đăng bài": "longk@fpt.com",
+      "Họ tên người đăng bài": "Long Kim",
+      "Tiêu đề bài đăng": "Ftel30 Triệu Nụ Cười",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 12:04:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "BTE",
+      "Bộ phận": "KTV",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "590",
+      "Email người đăng bài": "phamdd@vienthongtin.com",
+      "Họ tên người đăng bài": "Đinh Đình Phẩm",
+      "Tiêu đề bài đăng": "CÙNG NHAU ĐỒNG HÀNH",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 12:00:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HN06",
+      "Bộ phận": "PKT",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "591",
+      "Email người đăng bài": "nhandt47@fpt.com",
+      "Họ tên người đăng bài": "Nhan Duong Trong",
+      "Tiêu đề bài đăng": "Ngày mới đầy năng lượng cùng HaNS1",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:50:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "CMU",
+      "Bộ phận": "KTV",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "592",
+      "Email người đăng bài": "cuongpt3@fpt.com",
+      "Họ tên người đăng bài": "Cuong Pham Tuan",
+      "Tiêu đề bài đăng": "⚡ ĐƯỜNG CÓ THỂ KHÓ – KHÍ PHÁCH KHÔNG THỂ LÙI!",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:50:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "KGG",
+      "Bộ phận": "BGĐ",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "593",
+      "Email người đăng bài": "phuongnam.taipq1@fpt.net",
+      "Họ tên người đăng bài": "Phạm Quốc Tài",
+      "Tiêu đề bài đăng": "FTEL30 – TỰ HÀO HÀNH TRÌNH KẾT NỐI VÀ PHỤC VỤ KHÁCH HÀNG",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:46:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "594",
+      "Email người đăng bài": "haptt9@fpt.com",
+      "Họ tên người đăng bài": "Ha Pham Thi Thu",
+      "Tiêu đề bài đăng": "KẾT NỐI YÊU THƯƠNG, THẮP SÁNG ƯỚC MƠ",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:43:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "KGG",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "595",
+      "Email người đăng bài": "nganntb4@fpt.com",
+      "Họ tên người đăng bài": "Nguyen Thi Bich Ngan",
+      "Tiêu đề bài đăng": "ÁO CAM TRAO YÊU THƯƠNG – TRIỆU NỤ CƯỜI LAN TỎA",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:33:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "AGG",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "596",
+      "Email người đăng bài": "phuongnam.cuongnm3@fpt.net",
+      "Họ tên người đăng bài": "MANH CUONG NGUYEN",
+      "Tiêu đề bài đăng": "Rút điện modem, cắm lại nụ cười",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:33:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "597",
+      "Email người đăng bài": "linhhtt33@fpt.com",
+      "Họ tên người đăng bài": "Linh Huynh Thi Tu",
+      "Tiêu đề bài đăng": "TRIỆU NỤ CƯỜI – TRIỆU HÀNH TRÌNH ĐỒNG HÀNH ❤️",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:15:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "STG",
+      "Bộ phận": "AD",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "598",
+      "Email người đăng bài": "phuongnam.tramdtt1@fpt.net",
+      "Họ tên người đăng bài": "Đỗ Thạch Tuyết Trâm",
+      "Tiêu đề bài đăng": "NỤ CƯỜI SAU MỖI CUỘC GỌI",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:13:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "599",
+      "Email người đăng bài": "huongttp@fpt.com",
+      "Họ tên người đăng bài": "Huong Tran Thi Phuc",
+      "Tiêu đề bài đăng": "KHI NỤ CƯỜI LÀ MÓN QUÀ LỚN NHẤT",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:09:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "KHA",
+      "Bộ phận": "IBB",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "600",
+      "Email người đăng bài": "haiht5@fpt.com",
+      "Họ tên người đăng bài": "Huynh Tu (FTEL V6 BTN) Hai",
+      "Tiêu đề bài đăng": "KHẮC PHỤC SỰ CỐ – KẾT NỐI THÊM NIỀM VUI",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:08:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "VTU",
+      "Bộ phận": "BGĐ",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "601",
+      "Email người đăng bài": "thanhhk@fpt.com",
+      "Họ tên người đăng bài": "Thanh Hoang Khac",
+      "Tiêu đề bài đăng": "❤️ FTEL30 – KHÔNG CHỈ KẾT NỐI INTERNET, MÀ CÒN KẾT NỐI NIỀM TIN",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:05:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "602",
+      "Email người đăng bài": "nhuntq23@fpt.com",
+      "Họ tên người đăng bài": "Nguyen Thi Quynh Nhu",
+      "Tiêu đề bài đăng": "Khách hàng hài lòng là động lực – Đồng đội đồng lòng là sức mạnh!",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 11:02:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "BDH",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "603",
+      "Email người đăng bài": "huongnht@fpt.com",
+      "Họ tên người đăng bài": "Nguyen Hoang Thanh Huong",
+      "Tiêu đề bài đăng": "Trao đi sự tận tâm – Nhận lại những nụ cười!",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 10:54:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SG08",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "604",
+      "Email người đăng bài": "laint2@fpt.com",
+      "Họ tên người đăng bài": "Lai Nguyen Tuong",
+      "Tiêu đề bài đăng": "CÙNG NHAU IDEA – CÙNG NHAU THÀNH CÔNG",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 10:53:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "605",
+      "Email người đăng bài": "duongttt16@fpt.com",
+      "Họ tên người đăng bài": "Duong Truong Thi Thuy",
+      "Tiêu đề bài đăng": "FTEL30 – GIỮ TRỌN NIỀM TIN, TRAO GỬI YÊU THƯƠNG 🌸",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 10:29:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HDG",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "606",
+      "Email người đăng bài": "anhdtn9@fpt.com",
+      "Họ tên người đăng bài": "Dam Thi Ngoc Anh",
+      "Tiêu đề bài đăng": "FTEL30 - Triệu nụ cười - ĐỒNG HÀNH",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 10:29:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HN02",
+      "Bộ phận": "IBB",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "607",
+      "Email người đăng bài": "phuongnam.tinhnht@fpt.net",
+      "Họ tên người đăng bài": "Nguyễn Huỳnh Trung Tính",
+      "Tiêu đề bài đăng": "TỪ NHỮNG CUỘC GỌI ĐẾN NHỮNG LẦN GẶP GỠ 😊",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 10:27:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "SOC",
+      "Bộ phận": "SOC",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "608",
+      "Email người đăng bài": "cuongpt3@fpt.com",
+      "Họ tên người đăng bài": "Cuong Pham Tuan",
+      "Tiêu đề bài đăng": "TRAO TRI THỨC, GIEO TƯƠNG LAI",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 10:12:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "KGG",
+      "Bộ phận": "BGĐ",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "609",
+      "Email người đăng bài": "linhntc3@fpt.com",
+      "Họ tên người đăng bài": "Linh Nham Thi Cam",
+      "Tiêu đề bài đăng": "Chăm lo cho anh em KTV – Nền tảng Dịch vụ TỐT",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 10:07:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HGG",
+      "Bộ phận": "AD",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "610",
+      "Email người đăng bài": "vanth2@fpt.com",
+      "Họ tên người đăng bài": "Van Tran Hong",
+      "Tiêu đề bài đăng": "Hơn một giờ \"trò chuyện\" trên trang giấy và nụ cười rạng rỡ của người thương binh già",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 10:06:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HN09",
+      "Bộ phận": "DVKH",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "611",
+      "Email người đăng bài": "huonglg@fpt.com",
+      "Họ tên người đăng bài": "Le Gia Huong",
+      "Tiêu đề bài đăng": "KHI KHÁCH HÀNG TRỞ THÀNH ĐẠI SỨ THƯƠNG HIỆU!",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "13/11/2026 09:51:00",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "ThangDM6@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HDG",
+      "Bộ phận": "IBB",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "612",
       "Email người đăng bài": "Phuongtt14@fpt.com",
       "Họ tên người đăng bài": "Phuong Trinh Thi",
       "Tiêu đề bài đăng": "FTEL30 - Triệu Nụ Cười",
@@ -8998,7 +9590,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "536",
+      "STT": "613",
       "Email người đăng bài": "Dienndp@fpt.com",
       "Họ tên người đăng bài": "Dien Nguyen Duy Phong",
       "Tiêu đề bài đăng": "FTEL 30 TRIỆU NỤ CƯỜI",
@@ -9014,7 +9606,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "537",
+      "STT": "614",
       "Email người đăng bài": "thinhht6@fpt.com",
       "Họ tên người đăng bài": "Thinh Hoang Thi",
       "Tiêu đề bài đăng": "TRIỆU NỤ CƯỜI FPT - MANG KẾT NỐI, TRAO AN TÂM!",
@@ -9030,7 +9622,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "538",
+      "STT": "615",
       "Email người đăng bài": "Vietpd9@fpt.com",
       "Họ tên người đăng bài": "Viet Pham Duc",
       "Tiêu đề bài đăng": "FTEL30 – TRIỆU NỤ CƯỜI | HN02 MEN'S DAY 11/11 – GẮN KẾT ĐỂ VỮNG BƯỚC ❤️",
@@ -9046,7 +9638,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "539",
+      "STT": "616",
       "Email người đăng bài": "Trangnt59@fpt.com",
       "Họ tên người đăng bài": "Nguyen Thien Trang",
       "Tiêu đề bài đăng": "🧡 TỪ TUỔI 20 ĐẾN TUỔI 30 – MỘT HÀNH TRÌNH, VẠN NIỀM TỰ HÀO!",
@@ -9062,7 +9654,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "540",
+      "STT": "617",
       "Email người đăng bài": "Trangnt59@fpt.com",
       "Họ tên người đăng bài": "Nguyen Thien Trang",
       "Tiêu đề bài đăng": "🏡 FPT – NGÔI NHÀ CỦA SỰ ĐỒNG HÀNH! 🧡",
@@ -9078,7 +9670,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "541",
+      "STT": "618",
       "Email người đăng bài": "Thuyltt39@fpt.com",
       "Họ tên người đăng bài": "Thuy Le Thi Thanh",
       "Tiêu đề bài đăng": "FTEL30- Triệu nụ cười-​Không khoảng cách, chỉ có nụ cười FTEL!",
@@ -9094,7 +9686,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "542",
+      "STT": "619",
       "Email người đăng bài": "tuyendq8@fpt.com",
       "Họ tên người đăng bài": "Tuyen Do Quang",
       "Tiêu đề bài đăng": "FTEL30 – Triệu nụ cười- Góp một nụ cười nhỏ",
@@ -9110,7 +9702,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "543",
+      "STT": "620",
       "Email người đăng bài": "Phuongnam.hieunt27@fpt.net",
       "Họ tên người đăng bài": "Anh Hoang Nguyen Lan",
       "Tiêu đề bài đăng": "Nụ cười rực rỡ trong ngày đặc biệt",
@@ -9126,7 +9718,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "544",
+      "STT": "621",
       "Email người đăng bài": "tuoint4@fpt.com",
       "Họ tên người đăng bài": "Tuoi Nguyen Thi",
       "Tiêu đề bài đăng": "Cà phê gọi theo ly, nụ cười tính theo team",
@@ -9142,7 +9734,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "545",
+      "STT": "622",
       "Email người đăng bài": "aidt2@fpt.com",
       "Họ tên người đăng bài": "Ai Doan Thi",
       "Tiêu đề bài đăng": "😊 20 CON NGƯỜI – 20 NỤ CƯỜI – VÀ HÀNH TRÌNH MANG TRIỆU NỤ CƯỜI ĐẾN VỚI KH PHÚ MỸ!",
@@ -9158,7 +9750,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "546",
+      "STT": "623",
       "Email người đăng bài": "Trangnt59@fpt.com",
       "Họ tên người đăng bài": "Nguyen Thien Trang",
       "Tiêu đề bài đăng": "🧡 MỘT TẬP THỂ – MỘT TINH THẦN – MỘT SỨC MẠNH!",
@@ -9174,7 +9766,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "547",
+      "STT": "624",
       "Email người đăng bài": "dungnt333@fpt.com",
       "Họ tên người đăng bài": "Dung Nguyen Thi",
       "Tiêu đề bài đăng": "FTEL30 - TRIỆU NỤ CƯỜI - KTV HTH cuộc sống dù có bận rộn như thế nào, nhưng hãy luôn giữ nụ cười trên môi",
@@ -9190,7 +9782,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "548",
+      "STT": "625",
       "Email người đăng bài": "TamLT46@fpt.com",
       "Họ tên người đăng bài": "Tam Le Thanh",
       "Tiêu đề bài đăng": "Một nụ cười được trao đi, một kết nối được lan tỏa! 🧡",
@@ -9206,7 +9798,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "549",
+      "STT": "626",
       "Email người đăng bài": "LinhCTK6@fpt.com",
       "Họ tên người đăng bài": "Cao Thi Kieu Linh",
       "Tiêu đề bài đăng": "FTEL30 - Kết nối yêu thương – Lan tỏa triệu nụ cười.",
@@ -9222,7 +9814,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "550",
+      "STT": "627",
       "Email người đăng bài": "HaoVT9@fpt.com",
       "Họ tên người đăng bài": "Hao Vo Tan",
       "Tiêu đề bài đăng": "Trao đi một món quà nhỏ, nhận lại một nụ cười thật xinh! 🧡",
@@ -9238,7 +9830,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "551",
+      "STT": "628",
       "Email người đăng bài": "tuoint4@fpt.com",
       "Họ tên người đăng bài": "Tuoi Nguyen Thi",
       "Tiêu đề bài đăng": "Trời nhá nhem, nụ cười vẫn full vạch!",
@@ -9254,7 +9846,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "552",
+      "STT": "629",
       "Email người đăng bài": "longk@fpt.com",
       "Họ tên người đăng bài": "Long Kim",
       "Tiêu đề bài đăng": "phuongnam.TruongVM1-BTE-PKT",
@@ -9270,7 +9862,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "553",
+      "STT": "630",
       "Email người đăng bài": "phuongnam.DangHQ2",
       "Họ tên người đăng bài": "",
       "Tiêu đề bài đăng": "Triệu nụ cười - Khách nhẹ ví một chút, anh em KTV nhẹ lòng cả ngày!",
@@ -9286,7 +9878,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "554",
+      "STT": "631",
       "Email người đăng bài": "longk@fpt.com",
       "Họ tên người đăng bài": "Long Kim",
       "Tiêu đề bài đăng": "phuongnam.KhanhNH-BTE-PKT",
@@ -9302,7 +9894,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "555",
+      "STT": "632",
       "Email người đăng bài": "dienltn@fpt.com",
       "Họ tên người đăng bài": "Dien Le Thi Nhuan",
       "Tiêu đề bài đăng": "🌤️ NỤ CƯỜI CUỐI NGÀY – HẠNH PHÚC ĐẾN TỪ NHỮNG ĐIỀU GIẢN DỊ 🧡",
@@ -9318,7 +9910,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "556",
+      "STT": "633",
       "Email người đăng bài": "Linhntc3@fpt.com",
       "Họ tên người đăng bài": "Linh Nham Thi Cam",
       "Tiêu đề bài đăng": "Triệu nụ cười - Lãnh đạo sát thực tế – anh em có điểm tựa – KPI mới có đường về! 💪❤️",
@@ -9334,7 +9926,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "557",
+      "STT": "634",
       "Email người đăng bài": "Duyttt4@fpt.com",
       "Họ tên người đăng bài": "Duy Tran Thi Thuy",
       "Tiêu đề bài đăng": "FTEL30 - TRIỆU NỤ CƯỜI",
@@ -9350,7 +9942,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "558",
+      "STT": "635",
       "Email người đăng bài": "NganTTK10@fpt.com",
       "Họ tên người đăng bài": "Ngan Tran Thi Kim",
       "Tiêu đề bài đăng": "🧡 TRIỆU NỤ CƯỜI – MỘT TINH THẦN FPT!",
@@ -9366,7 +9958,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "559",
+      "STT": "636",
       "Email người đăng bài": "NganTTK10@fpt.com",
       "Họ tên người đăng bài": "Ngan Tran Thi Kim",
       "Tiêu đề bài đăng": "🧡 SẮC CAM RỰC RỠ – NỤ CƯỜI LAN TỎA!",
@@ -9382,7 +9974,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "560",
+      "STT": "637",
       "Email người đăng bài": "thinhndv@fpt.com",
       "Họ tên người đăng bài": "Thinh Nguyen Dao Vinh",
       "Tiêu đề bài đăng": "FTEL30 – TRIỆU NỤ CƯỜI – Onsite sau nhiều năm...",
@@ -9398,7 +9990,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "561",
+      "STT": "638",
       "Email người đăng bài": "NganTTK10@fpt.com",
       "Họ tên người đăng bài": "Ngan Tran Thi Kim",
       "Tiêu đề bài đăng": "☀️ NẮNG CÓ THỂ GAY GẮT – NHƯNG NỤ CƯỜI FPT LUÔN RỰC RỠ! 🧡",
@@ -9414,7 +10006,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "562",
+      "STT": "639",
       "Email người đăng bài": "Phuocln@fpt.com",
       "Họ tên người đăng bài": "Phuoc Lai Ngoc",
       "Tiêu đề bài đăng": "ĐI CÙNG KỸ THUẬT SWAP WIFI 7: CHẠM CÔNG NGHỆ MỚI, GÓP TRIỆU NỤ CƯỜI 🧡",
@@ -9430,7 +10022,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "563",
+      "STT": "640",
       "Email người đăng bài": "phuongnam.DuyNN2",
       "Họ tên người đăng bài": "",
       "Tiêu đề bài đăng": "FTEL30 - TRIỆU NỤ CƯỜI",
@@ -9446,7 +10038,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "564",
+      "STT": "641",
       "Email người đăng bài": "LanTNY@fpt.com",
       "Họ tên người đăng bài": "Lan Tran Nguyen Y",
       "Tiêu đề bài đăng": "FTEL30 – 🌧️ DÙ NGÀY MƯA HAY NGÀY NẮNG, CHÚNG TÔI VẪN CSKH! 💚",
@@ -9462,7 +10054,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "565",
+      "STT": "642",
       "Email người đăng bài": "anhptv10@fpt.com",
       "Họ tên người đăng bài": "Anh Pham Thi Van",
       "Tiêu đề bài đăng": "Trinh phục nụ Cười của người nổi tiếng",
@@ -9478,7 +10070,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "566",
+      "STT": "643",
       "Email người đăng bài": "NamNH178@fpt.com",
       "Họ tên người đăng bài": "Nguyen Hoang Nam",
       "Tiêu đề bài đăng": "FTEL30 - TRIỆU NỤ CƯỜI",
@@ -9494,7 +10086,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "567",
+      "STT": "644",
       "Email người đăng bài": "Vanntc@fpt.com",
       "Họ tên người đăng bài": "Nguyen Thi Cam Van",
       "Tiêu đề bài đăng": "THÊM MỘT KẾT NỐI, THÊM MỘT NIỀM AN TÂM.",
@@ -9510,7 +10102,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "568",
+      "STT": "645",
       "Email người đăng bài": "HauCT@fpt.com",
       "Họ tên người đăng bài": "Chu Thị Hậu",
       "Tiêu đề bài đăng": "FTEL30 - Triệu nụ cười",
@@ -9526,7 +10118,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "569",
+      "STT": "646",
       "Email người đăng bài": "linhptk20@fpt.com",
       "Họ tên người đăng bài": "Phạm Thị Khánh Linh",
       "Tiêu đề bài đăng": "Những kết nối nhỏ – Những hành trình lớn 🍀",
@@ -9542,7 +10134,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "570",
+      "STT": "647",
       "Email người đăng bài": "NyHA@fpt.com",
       "Họ tên người đăng bài": "Ny Ho Ai",
       "Tiêu đề bài đăng": "FTEL30 - Triệu nụ cười - Món quà nhỏ, niềm vui lớn",
@@ -9558,7 +10150,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "571",
+      "STT": "648",
       "Email người đăng bài": "lamcd@fpt.com",
       "Họ tên người đăng bài": "Lam Chau Duy",
       "Tiêu đề bài đăng": "KỶ NIỆM ONSITE PHÚ MỸ – VŨNG TÀU",
@@ -9574,7 +10166,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "572",
+      "STT": "649",
       "Email người đăng bài": "Vanntc@fpt.com",
       "Họ tên người đăng bài": "Nguyen Thi Cam Van",
       "Tiêu đề bài đăng": "TRAO TẬN TÂM, GỬI NIỀM VUI ĐẾN TỪNG NHÀ KHÁCH HÀNG",
@@ -9590,7 +10182,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "573",
+      "STT": "650",
       "Email người đăng bài": "phed@fpt.com",
       "Họ tên người đăng bài": "Phe Danh",
       "Tiêu đề bài đăng": "HẠNH PHÚC TỪ NHỮNG ĐIỀU GIẢN DỊ",
@@ -9606,7 +10198,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "574",
+      "STT": "651",
       "Email người đăng bài": "hieunh7@fpt.com",
       "Họ tên người đăng bài": "Nguyễn Hữu Hiếu",
       "Tiêu đề bài đăng": "Một chuyến đi nhỏ, một điểm CSAT 5",
@@ -9622,7 +10214,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "575",
+      "STT": "652",
       "Email người đăng bài": "KhangNQ3@FPT.com",
       "Họ tên người đăng bài": "Ngo Quoc Khang",
       "Tiêu đề bài đăng": "FTEL30 - TRIỆU NỤ CƯỜI - NỤ CƯỜI CỦA SỰ TẬN TÂM",
@@ -9638,7 +10230,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "576",
+      "STT": "653",
       "Email người đăng bài": "TuNV@vienthongtin.com",
       "Họ tên người đăng bài": "Tú Nguyễn Văn",
       "Tiêu đề bài đăng": "FTEL30 – Triệu nụ cười – Nụ cười ở lại sau ca trực",
@@ -9654,7 +10246,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "580",
+      "STT": "657",
       "Email người đăng bài": "thinhpt15@fpt.com",
       "Họ tên người đăng bài": "Thinh Phan Truong",
       "Tiêu đề bài đăng": "🌟 NỤ CƯỜI NGƯỜI KỸ THUẬT – LAN TỎA TINH THẦN TẬN TÂM! 🌟",
@@ -9670,7 +10262,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "581",
+      "STT": "658",
       "Email người đăng bài": "longk@fpt.com",
       "Họ tên người đăng bài": "Long Kim",
       "Tiêu đề bài đăng": "❤️ KỸ THUẬT VIÊN FPT – TẬN TÂM TRONG TỪNG LẦN PHỤC VỤ, HÀI LÒNG TRONG TỪNG NỤ CƯỜI! ❤️",
@@ -9686,7 +10278,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "582",
+      "STT": "659",
       "Email người đăng bài": "thanhnt13@fpt.com",
       "Họ tên người đăng bài": "Thanh Nguyen Tuan",
       "Tiêu đề bài đăng": "Đồng hành cùng đồng đội – Lan tỏa giá trị phục vụ khách hàng",
@@ -9702,7 +10294,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "583",
+      "STT": "660",
       "Email người đăng bài": "KhanhTVT2@fpt.com",
       "Họ tên người đăng bài": "Khanh Tran Vy Tuan",
       "Tiêu đề bài đăng": "❤️ TRIỆU NỤ CƯỜI – CHO ĐI SỰ TẬN TÂM, NHẬN LẠI YÊU THƯƠNG",
@@ -9718,7 +10310,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "584",
+      "STT": "661",
       "Email người đăng bài": "thinhnd65@fpt.com",
       "Họ tên người đăng bài": "Thinh Nguyen Duc",
       "Tiêu đề bài đăng": "Anh em tôi ! Phòng Kỹ Thuật BTN",
@@ -9734,7 +10326,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "585",
+      "STT": "662",
       "Email người đăng bài": "ducdm59@fpt.com",
       "Họ tên người đăng bài": "Duc Do Minh",
       "Tiêu đề bài đăng": "30 năm là một hành trình đáng tự hào",
@@ -9750,7 +10342,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "586",
+      "STT": "663",
       "Email người đăng bài": "hoanlt10@fpt.com",
       "Họ tên người đăng bài": "Hoan Le Thi",
       "Tiêu đề bài đăng": "BỮA TRƯA MUỘN – NIỀM VUI KHÔNG MUỘN",
@@ -9766,7 +10358,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "587",
+      "STT": "664",
       "Email người đăng bài": "tuannq64@fpt.com",
       "Họ tên người đăng bài": "Tuan Nguyen Quoc",
       "Tiêu đề bài đăng": "NHỮNG KHOẢNH KHẮC ĐẸP TRÊN HÀNH TRÌNH FPT TELECOM ❤️",
@@ -9782,7 +10374,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "588",
+      "STT": "665",
       "Email người đăng bài": "thinhpt15@fpt.com",
       "Họ tên người đăng bài": "Thinh Phan Truong",
       "Tiêu đề bài đăng": "🌧️☀️ DÙ MƯA HAY NẮNG – NỤ CƯỜI VẪN LUÔN NỞ TRÊN MÔI! 😊",
@@ -9798,7 +10390,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "589",
+      "STT": "666",
       "Email người đăng bài": "linhnta9@fpt.com",
       "Họ tên người đăng bài": "Linh Nguyen Thi Anh",
       "Tiêu đề bài đăng": "Đồng Đội- Chung Một Mục Tiêu, Không Bỏ Cuộc Trước Thử Thách",
@@ -9814,7 +10406,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "590",
+      "STT": "667",
       "Email người đăng bài": "ninhth3@fpt.com",
       "Họ tên người đăng bài": "Tran Hai Ninh",
       "Tiêu đề bài đăng": "Người ở lại !",
@@ -9830,7 +10422,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "591",
+      "STT": "668",
       "Email người đăng bài": "longk@fpt.com",
       "Họ tên người đăng bài": "Long Kim",
       "Tiêu đề bài đăng": "Nụ cười hài lòng của khách hàng – Niềm vui của người kỹ thuật viên!",
@@ -9846,7 +10438,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "592",
+      "STT": "669",
       "Email người đăng bài": "sonlq4@fpt.com",
       "Họ tên người đăng bài": "Lam Quoc Son",
       "Tiêu đề bài đăng": "Một chuyến Onsite – Một kết nối được khôi phục – Một nụ cười được trao đi",
@@ -9862,7 +10454,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "593",
+      "STT": "670",
       "Email người đăng bài": "huyenntm6@fpt.com",
       "Họ tên người đăng bài": "Huyen Nguyen Thi Mai",
       "Tiêu đề bài đăng": "NƠI NIỀM TIN BẮT ĐẦU TỪ SỰ CHÂN THÀNH ❤️",
@@ -9878,7 +10470,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "594",
+      "STT": "671",
       "Email người đăng bài": "phuongnam.BaoPQ@fpt.net",
       "Họ tên người đăng bài": "Nhat Le Duc",
       "Tiêu đề bài đăng": "\"FTEL30 - Triệu nụ cười - NỤ CƯỜI ĐỒNG HÀNH – KẾT NỐI NIỀM TIN\"",
@@ -9894,7 +10486,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "595",
+      "STT": "672",
       "Email người đăng bài": "duongnt234@fpt.com",
       "Họ tên người đăng bài": "Duong Nguyen Tien",
       "Tiêu đề bài đăng": "FTEL30 - Triệu Nụ Cười - Dê Vàng",
@@ -9910,7 +10502,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "596",
+      "STT": "673",
       "Email người đăng bài": "lamnpp@fpt.com",
       "Họ tên người đăng bài": "Lam Nguyen Pham Phuoc",
       "Tiêu đề bài đăng": "FTEL30 - TRIỆU NỤ CƯỜI - KẾT NỐI YÊU THƯƠNG, TRAO TRỌN NỤ CƯỜI",
@@ -9926,7 +10518,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "597",
+      "STT": "674",
       "Email người đăng bài": "phucdv10@fpt.com",
       "Họ tên người đăng bài": "Doan Van Phuc",
       "Tiêu đề bài đăng": "THÊM MỘT KẾT NỐI, THÊM MỘT NỤ CƯỜI AN TÂM ❤️",
@@ -9942,7 +10534,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "598",
+      "STT": "675",
       "Email người đăng bài": "mannt8@fpt.com",
       "Họ tên người đăng bài": "Man Nguyen Thanh",
       "Tiêu đề bài đăng": "NIỀM VUI ĐƯỢC TRAO ĐI – HẠNH PHÚC NHẬN VỀ",
@@ -9958,7 +10550,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "599",
+      "STT": "676",
       "Email người đăng bài": "phuongnam.quannv6@fpt.net",
       "Họ tên người đăng bài": "Quan Nguyen Van",
       "Tiêu đề bài đăng": "FTEL30 - Triệu nụ cười - Chăm chút từng đường dây, trao gửi vạn nụ cười",
@@ -9974,7 +10566,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "600",
+      "STT": "677",
       "Email người đăng bài": "phuongnam.duonghnd@fpt.net",
       "Họ tên người đăng bài": "Duong Hoang Ngo Dang",
       "Tiêu đề bài đăng": "FTEL30 - Triệu nụ cười - Khắc phục sự cố, giữ trọn niềm tin khách hàng",
@@ -9990,7 +10582,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "601",
+      "STT": "678",
       "Email người đăng bài": "phuongnam.tainlt@fpt.net",
       "Họ tên người đăng bài": "Tai Nguyen Le Thai",
       "Tiêu đề bài đăng": "FTEL30 - Triệu nụ cười - Xử lý nhanh lỗi camera, trao lại sự an tâm tuyệt đối",
@@ -10006,7 +10598,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "602",
+      "STT": "679",
       "Email người đăng bài": "Huept46@fpt.com",
       "Họ tên người đăng bài": "Hue Phan Thi",
       "Tiêu đề bài đăng": "FTEL30-Triệu nụ cười - 🌻 NỤ CƯỜI ĐỒNG HÀNH – TRIỆU NỤ CƯỜI KẾT NỐI 🌻",
@@ -10022,7 +10614,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "603",
+      "STT": "680",
       "Email người đăng bài": "Huept46@fpt.com",
       "Họ tên người đăng bài": "Hue Phan Thi",
       "Tiêu đề bài đăng": "FTEL30-Triệu nụ cười - ⚽ MANG NGOẠI HẠNG ANH – MANG TRIỆU NỤ CƯỜI ĐẾN KHÁCH HÀNG 🧡",
@@ -10038,7 +10630,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "604",
+      "STT": "681",
       "Email người đăng bài": "giatcs@fpt.com",
       "Họ tên người đăng bài": "Gia Thach Chanh Sai",
       "Tiêu đề bài đăng": "😊 TRIỆU NỤ CƯỜI – 30 NĂM FPT",
@@ -10054,7 +10646,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "605",
+      "STT": "682",
       "Email người đăng bài": "Phuongnam.HuyNL1@fpt.net",
       "Họ tên người đăng bài": "Huy Le Nguyen",
       "Tiêu đề bài đăng": "FTEL30 – Triệu nụ cười – Vượt mưa bão, kết nối trọn vẹn niềm tin",
@@ -10070,7 +10662,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "606",
+      "STT": "683",
       "Email người đăng bài": "tranght46@fpt.com",
       "Họ tên người đăng bài": "Trang Hoang Thi",
       "Tiêu đề bài đăng": "Hành trình lấy lại niềm tin khách hàng – Khi sự thấu hiểu tạo nên trải nghiệm khác biệt",
@@ -10086,7 +10678,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "607",
+      "STT": "684",
       "Email người đăng bài": "phuongnh78@fpt.com",
       "Họ tên người đăng bài": "Phuong Nguyen Hoai",
       "Tiêu đề bài đăng": "❤️ Triệu nụ cười trao đi bằng sự tận tâm, nhận lại bằng yêu thương.",
@@ -10102,7 +10694,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt comment": ""
     },
     {
-      "STT": "608",
+      "STT": "685",
       "Email người đăng bài": "Phuongnam.cuongnc4@fpt.net",
       "Họ tên người đăng bài": "Cuong Nguyen Chi",
       "Tiêu đề bài đăng": "TẬN TÂM TRÊN MỌI NẺO ĐƯỜNG",
@@ -10114,6 +10706,22 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "BTE",
+      "Bộ phận": "KTV",
+      "Số lượt comment": ""
+    },
+    {
+      "STT": "686",
+      "Email người đăng bài": "TuyenDH1@vienthongtin.com",
+      "Họ tên người đăng bài": "Tuyen Dang Huu",
+      "Tiêu đề bài đăng": "FTEL30 - TRIỆU NỤ CƯỜI - KTV HTH",
+      "Nội dung bài đăng": "",
+      "Thời gian đăng": "16/11/2026 10:29",
+      "Thời gian duyệt": "",
+      "Email người duyệt": "lytd2@fpt.com",
+      "Loại: video/ hình ảnh": "Hình ảnh",
+      "Số lượt like": "",
+      "Số lượt share": "",
+      "Chi nhánh": "HTH",
       "Bộ phận": "KTV",
       "Số lượt comment": ""
     }
