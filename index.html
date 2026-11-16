@@ -6,76 +6,87 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Bảng Theo Dõi Thi Đua: Triệu Nụ Cười TTC - 79 Đơn Vị & 16 Khu Vực</title>
+  <meta name="theme-color" content="#ea580c" />
+  <title>Triệu Nụ Cười TTC · Bảng thi đua FTEL30</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261116143604" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261116153004" />
   <!-- Chart.js & SheetJS for Excel Export -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script>
+    if (window.Chart) {
+      Chart.defaults.font.family = "'Be Vietnam Pro', 'Inter', sans-serif";
+      Chart.defaults.color = '#57534e';
+      Chart.defaults.borderColor = '#f0ebe7';
+    }
+  </script>
 </head>
 <body>
 
-  <!-- Header Public Gọn Đẹp Cho Chi Nhánh -->
+  <!-- ═════════ HEADER ═════════ -->
   <header class="top-header">
     <div class="header-inner">
       <div class="brand-group">
-        <div class="brand-icon">😊</div>
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+        </div>
         <div class="brand-title">
-          <h1>
-            CHƯƠNG TRÌNH FTEL30 - TRIỆU NỤ CƯỜI TTC
-            <span class="badge-rule">📸 Hình ảnh = 3 nụ cười &nbsp;|&nbsp; 🎬 Video = 5 nụ cười</span>
-          </h1>
-          <div class="brand-subtitle">
-            <span>🏢 Bảng Theo Dõi Thi Đua <strong>79 Đơn vị / 16 Khu vực</strong></span>
-            <span>•</span>
-            <span class="live-sync-badge">
-              <span class="pulse-dot"></span>
-              <span id="lastSyncText">Đang tải dữ liệu mới nhất...</span>
-            </span>
-          </div>
+          <div class="brand-eyebrow">FTEL30 · Bảng thi đua 79 chi nhánh / 16 khu vực</div>
+          <h1>Triệu Nụ Cười TTC</h1>
         </div>
       </div>
 
+      <div class="header-meta">
+        <span class="badge-rule">
+          <span><b>Ảnh</b> = 3 nụ cười</span>
+          <span class="sep"></span>
+          <span><b>Video</b> = 5 nụ cười</span>
+        </span>
+        <span class="live-sync-badge">
+          <span class="pulse-dot"></span>
+          <span id="lastSyncText">Đang tải dữ liệu mới nhất...</span>
+        </span>
+      </div>
+
       <div class="header-actions">
-        <button class="btn btn-emerald" id="btnExportExcel" title="Tải bảng báo cáo tổng hợp ra file Excel (.xlsx)">
-          📥 Tải Báo Cáo Excel (.xlsx)
+        <button class="btn btn-primary" id="btnExportExcel" title="Tải bảng báo cáo tổng hợp ra file Excel (.xlsx)">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          Tải Excel
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Main Content -->
   <main class="container">
 
-    <!-- Filter Panel: Chọn nhanh Đơn vị / Khu vực / Thời gian -->
+    <!-- ═════════ BỘ LỌC ═════════ -->
     <section class="filter-panel">
       <div class="filter-top-row">
         <div class="period-mode-group">
-          <span class="group-label">Chiều xem chi tiết:</span>
+          <span class="group-label">Xem theo</span>
           <div class="segmented-control" id="timeGrainControl">
-            <button type="button" class="seg-btn active" data-grain="day">Theo Ngày</button>
-            <button type="button" class="seg-btn" data-grain="week">Theo Tuần</button>
-            <button type="button" class="seg-btn" data-grain="month">Theo Tháng</button>
+            <button type="button" class="seg-btn active" data-grain="day">Ngày</button>
+            <button type="button" class="seg-btn" data-grain="week">Tuần</button>
+            <button type="button" class="seg-btn" data-grain="month">Tháng</button>
           </div>
         </div>
 
         <div class="quick-range-group" id="quickRangeGroup">
-          <span class="group-label">Kỳ thống kê:</span>
+          <span class="group-label">Kỳ</span>
           <button type="button" class="chip-btn" data-range="today">Hôm nay</button>
           <button type="button" class="chip-btn" data-range="yesterday">Hôm qua</button>
           <button type="button" class="chip-btn" data-range="this_week">Tuần này</button>
           <button type="button" class="chip-btn" data-range="last_7d">7 ngày qua</button>
-          <button type="button" class="chip-btn active" data-range="this_month">Lũy kế Tháng này</button>
+          <button type="button" class="chip-btn active" data-range="this_month">Tháng này</button>
           <button type="button" class="chip-btn" data-range="all">Toàn thời gian</button>
         </div>
       </div>
 
-      <!-- Hàng ngang 16 Khu vực (bao gồm SOC) để chọn nhanh -->
-      <div class="quick-range-group" id="regionHorizontalBar" style="padding-bottom:14px; margin-bottom:14px; border-bottom:1px solid var(--border-color);">
-        <span class="group-label">🗺️ Khu vực (16):</span>
-        <button type="button" class="chip-btn active" data-region-chip="ALL">Tất cả (16)</button>
+      <div class="quick-range-group region-bar" id="regionHorizontalBar">
+        <span class="group-label">Khu vực</span>
+        <button type="button" class="chip-btn active" data-region-chip="ALL">Tất cả</button>
         <button type="button" class="chip-btn" data-region-chip="HNI">HNI</button>
         <button type="button" class="chip-btn" data-region-chip="HCM">HCM</button>
         <button type="button" class="chip-btn" data-region-chip="TBB">TBB</button>
@@ -96,79 +107,94 @@
 
       <div class="filter-grid">
         <div class="filter-field">
-          <label for="filterRegion">🗺️ Chọn Khu vực của bạn (16 KV)</label>
+          <label for="filterRegion">Khu vực</label>
           <select id="filterRegion">
-            <option value="ALL">-- Tất cả Khu vực (16) --</option>
+            <option value="ALL">Tất cả khu vực (16)</option>
           </select>
         </div>
         <div class="filter-field">
-          <label for="filterBranch">🏢 Chọn Chi nhánh / Đơn vị (79 CN)</label>
+          <label for="filterBranch">Chi nhánh</label>
           <select id="filterBranch">
-            <option value="ALL">-- Tất cả Chi nhánh (79) --</option>
+            <option value="ALL">Tất cả chi nhánh (79)</option>
           </select>
         </div>
         <div class="filter-field">
-          <label for="filterDept">👥 Bộ phận</label>
+          <label for="filterDept">Bộ phận</label>
           <select id="filterDept">
-            <option value="ALL">-- Tất cả Bộ phận --</option>
+            <option value="ALL">Tất cả bộ phận</option>
           </select>
         </div>
         <div class="filter-field">
-          <label for="filterMediaType">🎬 Loại bài đăng</label>
+          <label for="filterMediaType">Loại bài</label>
           <select id="filterMediaType">
-            <option value="ALL">-- Tất cả (Ảnh + Video) --</option>
-            <option value="IMAGE">📸 Hình ảnh (= 3 nụ cười)</option>
-            <option value="VIDEO">🎬 Video (= 5 nụ cười)</option>
+            <option value="ALL">Ảnh + Video</option>
+            <option value="IMAGE">Hình ảnh (= 3)</option>
+            <option value="VIDEO">Video (= 5)</option>
           </select>
         </div>
         <div class="filter-field">
-          <label for="filterStartDate">📅 Từ ngày</label>
+          <label for="filterStartDate">Từ ngày</label>
           <input type="date" id="filterStartDate" />
         </div>
         <div class="filter-field">
-          <label for="filterEndDate">📅 Đến ngày</label>
+          <label for="filterEndDate">Đến ngày</label>
           <input type="date" id="filterEndDate" />
         </div>
-        <div class="filter-field">
-          <label for="searchKeyword">🔍 Tìm nhanh Chi nhánh / Người đăng</label>
-          <input type="text" id="searchKeyword" placeholder="Nhập mã CN (VD: KGG, GLI, HNI-01) hoặc tên..." />
+        <div class="filter-field field-search">
+          <label for="searchKeyword">Tìm kiếm</label>
+          <div class="input-icon">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="searchKeyword" placeholder="Mã CN (KGG, HNI-01…) hoặc tên" />
+          </div>
         </div>
       </div>
 
-      <!-- Banner Spotlight khi người dùng chọn 1 Khu vực hoặc Chi nhánh cụ thể -->
       <div id="unitSpotlightBanner" class="unit-spotlight" style="display:none;"></div>
     </section>
 
-    <!-- 5 Thẻ KPI Tiến Độ Thực Tế: Hôm nay / Hôm qua & So sánh / Tuần này / Lũy kế Tháng / Độ phủ & Thứ hạng -->
+    <!-- ═════════ KPI ═════════ -->
     <section class="kpi-grid">
-      <div class="kpi-card emerald">
+      <div class="kpi-card kpi-hero">
         <div class="kpi-header">
-          <span class="kpi-title" id="kpiTodayTitle">Phát Sinh Hôm Nay</span>
-          <div class="kpi-icon">🔥</div>
+          <span class="kpi-title" id="kpiMonthTitle">Lũy Kế Tháng</span>
+          <div class="kpi-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.850 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
         </div>
-        <div class="kpi-value" id="kpiTodaySmiles">+0</div>
+        <div class="kpi-value" id="kpiTotalSmiles">0</div>
+        <div class="kpi-unit">nụ cười</div>
         <div class="kpi-sub">
-          <span id="kpiTodayDetail">0 Ảnh • 0 Video</span>
-          <span class="kpi-badge" id="kpiTodayVsYesterday">So với hôm qua: --</span>
+          <span id="kpiTotalPostsText">0 Ảnh (×3) + 0 Video (×5)</span>
+          <span class="kpi-badge" id="kpiAvgSmilesPerDay">TB: 0 / ngày</span>
         </div>
       </div>
 
       <div class="kpi-card">
         <div class="kpi-header">
-          <span class="kpi-title" id="kpiYesterdayTitle">Hôm Qua (Ngày T)</span>
-          <div class="kpi-icon">⚡</div>
+          <span class="kpi-title" id="kpiTodayTitle">Hôm nay</span>
+          <div class="kpi-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
+        </div>
+        <div class="kpi-value" id="kpiTodaySmiles">+0</div>
+        <div class="kpi-sub">
+          <span id="kpiTodayDetail">0 Ảnh • 0 Video</span>
+          <span class="kpi-badge" id="kpiTodayVsYesterday">--</span>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title" id="kpiYesterdayTitle">Hôm qua</span>
+          <div class="kpi-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         </div>
         <div class="kpi-value" id="kpiYesterdaySmiles">+0</div>
         <div class="kpi-sub">
           <span id="kpiYesterdayDetail">0 Ảnh • 0 Video</span>
-          <span class="kpi-badge" id="kpiYesterdayVsPrev">So với hôm kia: --</span>
+          <span class="kpi-badge" id="kpiYesterdayVsPrev">--</span>
         </div>
       </div>
 
-      <div class="kpi-card purple">
+      <div class="kpi-card">
         <div class="kpi-header">
-          <span class="kpi-title" id="kpiWeekTitle">Lũy Kế Tuần Này</span>
-          <div class="kpi-icon">📅</div>
+          <span class="kpi-title" id="kpiWeekTitle">Tuần này</span>
+          <div class="kpi-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg></div>
         </div>
         <div class="kpi-value" id="kpiWeekSmiles">0</div>
         <div class="kpi-sub">
@@ -177,22 +203,10 @@
         </div>
       </div>
 
-      <div class="kpi-card amber">
+      <div class="kpi-card">
         <div class="kpi-header">
-          <span class="kpi-title" id="kpiMonthTitle">Lũy Kế Tháng</span>
-          <div class="kpi-icon">🏆</div>
-        </div>
-        <div class="kpi-value" id="kpiTotalSmiles">0</div>
-        <div class="kpi-sub">
-          <span id="kpiTotalPostsText">0 Ảnh (×3) + 0 Video (×5)</span>
-          <span class="kpi-badge" id="kpiAvgSmilesPerDay">TB: 0 / ngày</span>
-        </div>
-      </div>
-
-      <div class="kpi-card rose">
-        <div class="kpi-header">
-          <span class="kpi-title" id="kpiCoverageTitle">Độ Phủ & Dẫn Đầu</span>
-          <div class="kpi-icon">🏢</div>
+          <span class="kpi-title" id="kpiCoverageTitle">Độ phủ</span>
+          <div class="kpi-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></div>
         </div>
         <div class="kpi-value" id="kpiActiveBranches">0 / 79 CN</div>
         <div class="kpi-sub">
@@ -202,11 +216,11 @@
       </div>
     </section>
 
-    <!-- Khối Bảng Vàng Thi Đua Nhanh (Top Chi Nhánh / Bứt Phá Hôm Qua & Hôm Nay / Top Khu Vực) -->
+    <!-- ═════════ BẢNG VÀNG ═════════ -->
     <section class="leaderboard-strip" id="leaderboardStrip">
       <div class="leader-box">
         <div class="leader-box-header">
-          <span>🏆 Top 5 Chi Nhánh Dẫn Đầu Lũy Kế</span>
+          <span class="leader-title"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>Top chi nhánh lũy kế</span>
           <span class="leader-sub" id="lblLeaderScope">Toàn hệ thống</span>
         </div>
         <div class="leader-list" id="topBranchesMtdList"></div>
@@ -214,7 +228,7 @@
 
       <div class="leader-box">
         <div class="leader-box-header">
-          <span>🚀 Top 5 Chi Nhánh Sôi Nổi Nhất (Hôm Qua & Hôm Nay)</span>
+          <span class="leader-title"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Sôi nổi nhất 2 ngày</span>
           <span class="leader-sub" id="lblRecentDates">--</span>
         </div>
         <div class="leader-list" id="topBranchesRecentList"></div>
@@ -222,68 +236,65 @@
 
       <div class="leader-box">
         <div class="leader-box-header">
-          <span>🗺️ Top 5 Khu Vực Dẫn Đầu Nụ Cười</span>
-          <span class="leader-sub">16 Khu vực</span>
+          <span class="leader-title"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>Top khu vực</span>
+          <span class="leader-sub">16 khu vực</span>
         </div>
         <div class="leader-list" id="topRegionsMtdList"></div>
       </div>
     </section>
 
-    <!-- Navigation Tabs -->
+    <!-- ═════════ TABS ═════════ -->
     <nav class="nav-tabs" id="mainNavTabs">
       <button type="button" class="tab-btn active" data-tab="tab-branch-region">
-        📋 1. Tiến Độ 79 Đơn Vị & Khu Vực
+        Tiến độ chi nhánh
         <span class="tab-count" id="badgeBranchCount">79 CN / 16 KV</span>
       </button>
       <button type="button" class="tab-btn" data-tab="tab-region-summary">
-        🗺️ 2. Xếp Hạng 16 Khu Vực
-        <span class="tab-count">16 KV</span>
+        Xếp hạng khu vực
+        <span class="tab-count">16</span>
       </button>
       <button type="button" class="tab-btn" data-tab="tab-department">
-        👥 3. Thống Kê Theo Bộ Phận
+        Bộ phận
         <span class="tab-count" id="badgeDeptCount">0</span>
       </button>
       <button type="button" class="tab-btn" data-tab="tab-charts">
-        📈 4. Biểu Đồ Xu Hướng
+        Biểu đồ
       </button>
       <button type="button" class="tab-btn" data-tab="tab-raw-data">
-        🗂️ 5. Danh Sách Bài Đăng Chi Tiết
+        Bài đăng
         <span class="tab-count" id="badgeRawCount">0 bài</span>
       </button>
     </nav>
 
-    <!-- TAB 1: BẢNG CHI NHÁNH & KHU VỰC -->
+    <!-- TAB 1 -->
     <section id="tab-branch-region" class="tab-pane active">
       <div class="section-card">
         <div class="section-header">
           <div>
-            <div class="section-title">
-              📋 Tiến Độ Thi Đua Theo Chi Nhánh & Khu Vực (Hôm qua • Hôm nay • Tuần này • Lũy kế Tháng)
-            </div>
+            <div class="section-title">Tiến độ theo chi nhánh &amp; khu vực</div>
             <div class="section-desc" id="branchTableSubtitle">
-              Theo dõi trực tiếp điểm Nụ cười phát sinh Hôm qua, Hôm nay, so sánh tăng/giảm, Lũy kế Tuần, Lũy kế Tháng và chi tiết từng ngày của 79 Đơn vị thuộc 16 Khu vực (bao gồm SOC).
+              Nụ cười phát sinh hôm qua, hôm nay, lũy kế tuần, lũy kế tháng và chi tiết từng ngày của 79 đơn vị thuộc 16 khu vực.
             </div>
           </div>
           <div class="table-toolbar">
             <label class="toggle-label">
-              Sắp xếp:
-              <select id="sortBranchSelect" style="padding:5px 8px; border-radius:6px; border:1px solid #cbd5e1; font-weight:600;">
-                <option value="hierarchy">Theo 16 Khu vực chuẩn (Có dòng tổng KV)</option>
-                <option value="rank_desc">Xếp hạng Tổng Nụ Cười (Cao → Thấp)</option>
-                <option value="today_desc">Phát sinh Hôm nay & Hôm qua (Cao → Thấp)</option>
+              Sắp xếp
+              <select id="sortBranchSelect" class="mini-select">
+                <option value="hierarchy">Theo 16 khu vực (có dòng tổng)</option>
+                <option value="rank_desc">Tổng nụ cười (cao → thấp)</option>
+                <option value="today_desc">Hôm nay &amp; hôm qua (cao → thấp)</option>
               </select>
             </label>
             <label class="toggle-label">
               <input type="checkbox" id="chkShowZeroBranches" checked />
-              Hiện cả Chi nhánh = 0
+              Hiện CN = 0
             </label>
             <label class="toggle-label">
               <input type="checkbox" id="chkShowTimeColumns" checked />
-              Hiện cột chi tiết từng <strong id="lblTimeColumnMode">Ngày</strong>
+              Cột từng <strong id="lblTimeColumnMode">Ngày</strong>
             </label>
           </div>
         </div>
-
         <div class="table-wrapper">
           <table class="report-table" id="branchReportTable">
             <thead id="branchTableHead"></thead>
@@ -293,23 +304,23 @@
       </div>
     </section>
 
-    <!-- TAB 2: TỔNG HỢP THEO KHU VỰC -->
+    <!-- TAB 2 -->
     <section id="tab-region-summary" class="tab-pane">
       <div class="section-card">
         <div class="section-header">
           <div>
-            <div class="section-title">🗺️ Bảng Tổng Hợp & Xếp Hạng 16 Khu Vực</div>
+            <div class="section-title">Xếp hạng 16 khu vực</div>
             <div class="section-desc">
-              So sánh kết quả Hôm qua, Hôm nay, Tuần này, Lũy kế Tháng, tỷ lệ Chi nhánh tham gia và trung bình Nụ cười/Chi nhánh của 16 Khu vực (bao gồm SOC).
+              Kết quả hôm qua, hôm nay, tuần này, lũy kế tháng, tỷ lệ chi nhánh tham gia và trung bình nụ cười / chi nhánh.
             </div>
           </div>
           <div class="table-toolbar">
             <label class="toggle-label">
-              Sắp xếp:
-              <select id="sortRegionSelect" style="padding:5px 8px; border-radius:6px; border:1px solid #cbd5e1;">
-                <option value="smiles_desc">Xếp hạng Tổng Nụ Cười (Cao → Thấp)</option>
-                <option value="excel_order">Thứ tự chuẩn 16 Khu vực</option>
-                <option value="rate_desc">Tỷ lệ CN tham gia (Cao → Thấp)</option>
+              Sắp xếp
+              <select id="sortRegionSelect" class="mini-select">
+                <option value="smiles_desc">Tổng nụ cười (cao → thấp)</option>
+                <option value="excel_order">Thứ tự chuẩn 16 khu vực</option>
+                <option value="rate_desc">Tỷ lệ CN tham gia (cao → thấp)</option>
               </select>
             </label>
           </div>
@@ -323,15 +334,14 @@
       </div>
     </section>
 
-    <!-- TAB 3: THỐNG KÊ THEO BỘ PHẬN -->
+    <!-- TAB 3 -->
     <section id="tab-department" class="tab-pane">
-      <!-- Bảng 3A: Xếp hạng Bộ phận -->
       <div class="section-card">
         <div class="section-header">
           <div>
-            <div class="section-title">👥 3A. Bảng Thống Kê Nụ Cười Theo Bộ Phận</div>
+            <div class="section-title">Thống kê theo bộ phận</div>
             <div class="section-desc">
-              Tổng hợp số lượng Hình ảnh (×3), Video (×5), Tổng Nụ Cười, số Chi nhánh tham gia của từng Bộ phận theo Ngày / Tuần / Tháng.
+              Số hình ảnh (×3), video (×5), tổng nụ cười và số chi nhánh tham gia của từng bộ phận.
             </div>
           </div>
         </div>
@@ -343,21 +353,20 @@
         </div>
       </div>
 
-      <!-- Bảng 3B: Ma trận Khu vực / Chi nhánh x Bộ phận -->
       <div class="section-card">
         <div class="section-header">
           <div>
-            <div class="section-title">🧩 3B. Ma Trận Chéo: Chi Nhánh & Khu Vực × Bộ Phận</div>
+            <div class="section-title">Ma trận chi nhánh &amp; khu vực × bộ phận</div>
             <div class="section-desc">
-              Xem chi tiết ở mỗi Khu vực và Chi nhánh, bộ phận nào đóng góp bao nhiêu nụ cười.
+              Mỗi khu vực, chi nhánh có bộ phận nào đóng góp bao nhiêu nụ cười.
             </div>
           </div>
           <div class="table-toolbar">
             <label class="toggle-label">
-              Cấp độ hiển thị:
-              <select id="deptMatrixLevel" style="padding:5px 8px; border-radius:6px; border:1px solid #cbd5e1;">
-                <option value="branch_and_region">Chi nhánh + Tổng Khu vực (79 CN & 16 KV)</option>
-                <option value="region_only">Chỉ Tổng hợp theo 16 Khu vực</option>
+              Cấp độ
+              <select id="deptMatrixLevel" class="mini-select">
+                <option value="branch_and_region">Chi nhánh + tổng khu vực</option>
+                <option value="region_only">Chỉ 16 khu vực</option>
               </select>
             </label>
           </div>
@@ -371,67 +380,59 @@
       </div>
     </section>
 
-    <!-- TAB 4: BIỂU ĐỒ PHÂN TÍCH -->
+    <!-- TAB 4 -->
     <section id="tab-charts" class="tab-pane">
       <div class="charts-grid">
         <div class="section-card">
           <div class="section-header">
             <div>
-              <div class="section-title" id="chartTrendTitle">📈 Xu Hướng Nụ Cười Theo Thời Gian</div>
-              <div class="section-desc">So sánh điểm Nụ cười từ Hình ảnh (×3), Video (×5) và Tổng Nụ Cười</div>
+              <div class="section-title" id="chartTrendTitle">Xu hướng nụ cười theo thời gian</div>
+              <div class="section-desc">Nụ cười từ hình ảnh (×3), video (×5) và tổng</div>
             </div>
           </div>
-          <div class="chart-box">
-            <canvas id="chartTimeTrend"></canvas>
-          </div>
+          <div class="chart-box"><canvas id="chartTimeTrend"></canvas></div>
         </div>
 
         <div class="section-card">
           <div class="section-header">
             <div>
-              <div class="section-title">🗺️ Tổng Nụ Cười Theo 16 Khu Vực</div>
-              <div class="section-desc">Đối sánh đóng góp Hình ảnh và Video giữa các Khu vực</div>
+              <div class="section-title">Nụ cười theo 16 khu vực</div>
+              <div class="section-desc">Đóng góp hình ảnh và video giữa các khu vực</div>
             </div>
           </div>
-          <div class="chart-box">
-            <canvas id="chartRegionBar"></canvas>
-          </div>
+          <div class="chart-box"><canvas id="chartRegionBar"></canvas></div>
         </div>
 
         <div class="section-card">
           <div class="section-header">
             <div>
-              <div class="section-title">👥 Thống Kê Nụ Cười Theo Bộ Phận</div>
-              <div class="section-desc">Cơ cấu đóng góp nụ cười giữa các Bộ phận</div>
+              <div class="section-title">Nụ cười theo bộ phận</div>
+              <div class="section-desc">Cơ cấu đóng góp giữa các bộ phận</div>
             </div>
           </div>
-          <div class="chart-box">
-            <canvas id="chartDeptBar"></canvas>
-          </div>
+          <div class="chart-box"><canvas id="chartDeptBar"></canvas></div>
         </div>
 
         <div class="section-card">
           <div class="section-header">
             <div>
-              <div class="section-title">🏅 Top 15 Chi Nhánh Dẫn Đầu Nụ Cười</div>
-              <div class="section-desc">Các chi nhánh đạt tổng điểm Nụ cười cao nhất trong kỳ đang chọn</div>
+              <div class="section-title">Top 15 chi nhánh</div>
+              <div class="section-desc">Tổng điểm nụ cười cao nhất trong kỳ đang chọn</div>
             </div>
           </div>
-          <div class="chart-box">
-            <canvas id="chartTopBranches"></canvas>
-          </div>
+          <div class="chart-box"><canvas id="chartTopBranches"></canvas></div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 5: DANH SÁCH BÀI ĐĂNG CHI TIẾT -->
+    <!-- TAB 5 -->
     <section id="tab-raw-data" class="tab-pane">
       <div class="section-card">
         <div class="section-header">
           <div>
-            <div class="section-title">🗂️ Danh Sách Bài Đăng Đã Ghi Nhận</div>
+            <div class="section-title">Danh sách bài đăng đã ghi nhận</div>
             <div class="section-desc" id="rawMappingWarning">
-              Tra cứu chi tiết từng bài đăng của CBNV các Chi nhánh (Hình ảnh = 3 nụ cười, Video = 5 nụ cười).
+              Chi tiết từng bài đăng của CBNV các chi nhánh (hình ảnh = 3, video = 5 nụ cười).
             </div>
           </div>
         </div>
@@ -450,7 +451,7 @@
                 <th>Khu vực</th>
                 <th>Bộ phận</th>
                 <th>Loại</th>
-                <th>Điểm Nụ Cười</th>
+                <th>Điểm</th>
               </tr>
             </thead>
             <tbody id="rawTableBody"></tbody>
@@ -461,7 +462,11 @@
 
   </main>
 
-  <script src="sheet_data_bundle.js?v=20261116143604"></script>
-  <script src="app.js?v=20261116143604"></script>
+  <footer class="site-footer">
+    Chương trình FTEL30 · Triệu Nụ Cười TTC — dữ liệu tự động cập nhật mỗi giờ từ Google Sheet
+  </footer>
+
+  <script src="sheet_data_bundle.js?v=20261116153004"></script>
+  <script src="app.js?v=20261116153004"></script>
 </body>
 </html>
