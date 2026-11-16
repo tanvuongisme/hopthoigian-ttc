@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <meta name="theme-color" content="#ea580c" />
-  <title>Triệu Nụ Cười TTC · Bảng thi đua FTEL30</title>
+  <title>Triệu Nụ Cười TNC · Bảng thi đua FTEL30</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
         </div>
         <div class="brand-title">
           <div class="brand-eyebrow">FTEL30 · Bảng thi đua 79 chi nhánh / 16 khu vực</div>
-          <h1>Triệu Nụ Cười TTC</h1>
+          <h1>Triệu Nụ Cười TNC <span class="brand-source"><span class="brand-dash">– </span>Dữ liệu từ HopThoiGian.fpt.vn</span></h1>
         </div>
       </div>
 
@@ -62,25 +62,25 @@
   <main class="container">
 
     <!-- ═════════ BỘ LỌC ═════════ -->
+    <div class="zone-title"><span class="zone-label">Bộ lọc</span><span class="zone-sub">Chọn kỳ, khu vực, chi nhánh để xem số liệu của đơn vị mình</span><span class="zone-line"></span></div>
     <section class="filter-panel">
       <div class="filter-top-row">
-        <div class="period-mode-group">
-          <span class="group-label">Xem theo</span>
-          <div class="segmented-control" id="timeGrainControl">
-            <button type="button" class="seg-btn active" data-grain="day">Ngày</button>
-            <button type="button" class="seg-btn" data-grain="week">Tuần</button>
-            <button type="button" class="seg-btn" data-grain="month">Tháng</button>
-          </div>
-        </div>
-
         <div class="quick-range-group" id="quickRangeGroup">
-          <span class="group-label">Kỳ</span>
+          <span class="group-label">Kỳ thống kê</span>
           <button type="button" class="chip-btn" data-range="today">Hôm nay</button>
           <button type="button" class="chip-btn" data-range="yesterday">Hôm qua</button>
           <button type="button" class="chip-btn" data-range="this_week">Tuần này</button>
           <button type="button" class="chip-btn" data-range="last_7d">7 ngày qua</button>
           <button type="button" class="chip-btn active" data-range="this_month">Tháng này</button>
           <button type="button" class="chip-btn" data-range="all">Toàn thời gian</button>
+        </div>
+
+        <div class="date-range" title="Hoặc chọn khoảng ngày tùy ý">
+          <label for="filterStartDate">Từ</label>
+          <input type="date" id="filterStartDate" />
+          <span class="date-arrow">→</span>
+          <label for="filterEndDate">Đến</label>
+          <input type="date" id="filterEndDate" />
         </div>
       </div>
 
@@ -132,14 +132,6 @@
             <option value="VIDEO">Video (= 5)</option>
           </select>
         </div>
-        <div class="filter-field">
-          <label for="filterStartDate">Từ ngày</label>
-          <input type="date" id="filterStartDate" />
-        </div>
-        <div class="filter-field">
-          <label for="filterEndDate">Đến ngày</label>
-          <input type="date" id="filterEndDate" />
-        </div>
         <div class="filter-field field-search">
           <label for="searchKeyword">Tìm kiếm</label>
           <div class="input-icon">
@@ -153,6 +145,7 @@
     </section>
 
     <!-- ═════════ KPI ═════════ -->
+    <div class="zone-title"><span class="zone-label">Tổng quan</span><span class="zone-sub">Kết quả theo bộ lọc đang chọn</span><span class="zone-line"></span></div>
     <section class="kpi-grid">
       <div class="kpi-card kpi-hero">
         <div class="kpi-header">
@@ -217,6 +210,7 @@
     </section>
 
     <!-- ═════════ BẢNG VÀNG ═════════ -->
+    <div class="zone-title"><span class="zone-label">Bảng vàng thi đua</span><span class="zone-sub">Bấm vào tên để xem nhanh đơn vị</span><span class="zone-line"></span></div>
     <section class="leaderboard-strip" id="leaderboardStrip">
       <div class="leader-box">
         <div class="leader-box-header">
@@ -244,6 +238,8 @@
     </section>
 
     <!-- ═════════ TABS ═════════ -->
+    <div class="zone-title"><span class="zone-label">Báo cáo chi tiết</span><span class="zone-line"></span></div>
+    <div class="report-shell">
     <nav class="nav-tabs" id="mainNavTabs">
       <button type="button" class="tab-btn active" data-tab="tab-branch-region">
         Tiến độ chi nhánh
@@ -291,8 +287,15 @@
             </label>
             <label class="toggle-label">
               <input type="checkbox" id="chkShowTimeColumns" checked />
-              Cột từng <strong id="lblTimeColumnMode">Ngày</strong>
+              Cột chi tiết theo<strong id="lblTimeColumnMode" class="sr-only">Ngày</strong>
             </label>
+            <div class="period-mode-group">
+              <div class="segmented-control" id="timeGrainControl">
+                <button type="button" class="seg-btn active" data-grain="day">Ngày</button>
+                <button type="button" class="seg-btn" data-grain="week">Tuần</button>
+                <button type="button" class="seg-btn" data-grain="month">Tháng</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="table-wrapper">
@@ -460,10 +463,11 @@
       </div>
     </section>
 
+    </div><!-- /report-shell -->
   </main>
 
   <footer class="site-footer">
-    Chương trình FTEL30 · Triệu Nụ Cười TTC — dữ liệu tự động cập nhật mỗi giờ từ Google Sheet
+    Chương trình FTEL30 - Triệu Nụ Cười &amp; Report từ TINPNC HO
   </footer>
 
   <script src="sheet_data_bundle.js?v=20261116153004"></script>

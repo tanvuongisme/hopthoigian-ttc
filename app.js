@@ -1,5 +1,5 @@
 /**
- * HỆ THỐNG THỐNG KÊ NỤ CƯỜI TTC - DASHBOARD & ANALYTICS
+ * HỆ THỐNG THỐNG KÊ NỤ CƯỜI TNC - DASHBOARD & ANALYTICS
  * Quy tắc: Hình ảnh = 1 nụ cười | Video = 2 nụ cười
  * Phân cấp chuẩn: 99 Chi nhánh thuộc 15 Khu vực (theo file Chi nhánh.xlsx)
  */
@@ -870,9 +870,9 @@ function formatDeltaHtml(diff) {
 
 function formatRankBadge(rank) {
   if (!rank || rank <= 0) return `<span class="rank-pill">-</span>`;
-  if (rank === 1) return `<span class="rank-pill gold">🥇 #1</span>`;
-  if (rank === 2) return `<span class="rank-pill silver">🥈 #2</span>`;
-  if (rank === 3) return `<span class="rank-pill bronze">🥉 #3</span>`;
+  if (rank === 1) return `<span class="rank-pill gold">#1</span>`;
+  if (rank === 2) return `<span class="rank-pill silver">#2</span>`;
+  if (rank === 3) return `<span class="rank-pill bronze">#3</span>`;
   return `<span class="rank-pill">#${rank}</span>`;
 }
 
@@ -991,7 +991,7 @@ function renderKpis() {
     document.getElementById('kpiTodayDetail').textContent = `${todayImages} Ảnh (×3) • ${todayVideos} Video (×5)`;
     const diffToday = todaySmiles - yestSmiles;
     const signToday = diffToday >= 0 ? `+${diffToday}` : `${diffToday}`;
-    document.getElementById('kpiTodayVsYesterday').textContent = `Hôm qua (${formatShortDM(m.yesterdayYmd)}): ${yestSmiles} 😊 (${signToday})`;
+    document.getElementById('kpiTodayVsYesterday').textContent = `Hôm qua (${formatShortDM(m.yesterdayYmd)}): ${yestSmiles} (${signToday})`;
   }
 
   // Thẻ 2: Hôm qua & So với hôm kia
@@ -1002,7 +1002,7 @@ function renderKpis() {
     document.getElementById('kpiYesterdayDetail').textContent = `${yestImages} Ảnh (×3) • ${yestVideos} Video (×5)`;
     const diffYest = yestSmiles - prevDaySmiles;
     const arrowYest = diffYest > 0 ? `▲ +${diffYest}` : (diffYest < 0 ? `▼ ${diffYest}` : `= 0`);
-    document.getElementById('kpiYesterdayVsPrev').textContent = `So với ${formatShortDM(m.prevDayYmd)}: ${arrowYest} 😊`;
+    document.getElementById('kpiYesterdayVsPrev').textContent = `So với ${formatShortDM(m.prevDayYmd)}: ${arrowYest}`;
   }
 
   // Thẻ 3: Lũy kế Tuần này
@@ -1013,7 +1013,7 @@ function renderKpis() {
     document.getElementById('kpiWeekDetail').textContent = `${weekImages} Ảnh (×3) • ${weekVideos} Video (×5)`;
     const diffWeek = weekSmiles - prevWeekSmiles;
     const arrowWeek = diffWeek > 0 ? `▲ +${diffWeek}` : (diffWeek < 0 ? `▼ ${diffWeek}` : `= 0`);
-    document.getElementById('kpiWeekVsPrev').textContent = `Tuần trước: ${prevWeekSmiles} 😊 (${arrowWeek})`;
+    document.getElementById('kpiWeekVsPrev').textContent = `Tuần trước: ${prevWeekSmiles} (${arrowWeek})`;
   }
 
   // Thẻ 4: Lũy kế Tháng / Kỳ đang xem
@@ -1089,11 +1089,11 @@ function renderUnitSpotlight() {
       📍 Đang xem kết quả của: ${titleLabel}
     </div>
     <div class="unit-spotlight-metrics">
-      <span class="spotlight-chip">🔥 Hôm nay (${formatShortDM(m.latestYmd)}): <strong>+${todayS} 😊</strong></span>
-      <span class="spotlight-chip">⚡ Hôm qua (${formatShortDM(m.yesterdayYmd)}): <strong>+${yestS} 😊</strong> (${deltaStr} so với ${formatShortDM(m.prevDayYmd)})</span>
-      <span class="spotlight-chip">📅 Tuần này: <strong>${weekS} 😊</strong></span>
-      <span class="spotlight-chip">🏆 Lũy kế tháng: <strong>${mtdS} 😊</strong></span>
-      <button type="button" id="btnResetUnitFilter" style="background:#1e3a8a;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer;">
+      <span class="spotlight-chip">Hôm nay (${formatShortDM(m.latestYmd)}): <strong>+${todayS} 😊</strong></span>
+      <span class="spotlight-chip">Hôm qua (${formatShortDM(m.yesterdayYmd)}): <strong>+${yestS} 😊</strong> (${deltaStr} so với ${formatShortDM(m.prevDayYmd)})</span>
+      <span class="spotlight-chip">Tuần này: <strong>${weekS} 😊</strong></span>
+      <span class="spotlight-chip">Lũy kế tháng: <strong>${mtdS} 😊</strong></span>
+      <button type="button" id="btnResetUnitFilter" style="background:#ea580c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer;">
         ✕ Xem lại toàn quốc
       </button>
     </div>
@@ -1154,7 +1154,7 @@ function renderLeaderboardStrip() {
   const topRecent = Object.values(brMap).sort((a, b) => b.recent - a.recent || b.today - a.today || b.mtd - a.mtd).slice(0, 5);
   const topRegs = Object.values(regMap).sort((a, b) => b.smiles - a.smiles).slice(0, 5);
 
-  const medals = ['🥇', '🥈', '🥉', '4.', '5.'];
+  const medals = ['1', '2', '3', '4', '5'];
 
   mtdEl.innerHTML = topMtd.map((item, idx) => `
     <div class="leader-item" data-select-branch="${item.branch}" title="Bấm để xem chi tiết ${item.branch}">
@@ -1243,17 +1243,17 @@ function renderBranchAndRegionTable(timeBuckets) {
       <th rowspan="2" class="sticky-col-2">Đơn vị / Chi nhánh</th>
       <th rowspan="2">Khu vực</th>
       <th rowspan="2">Hạng</th>
-      <th colspan="5" style="background:#1e3a8a;color:#fff;">Tiến Độ Hôm Qua • Hôm Nay • Tuần Này</th>
+      <th colspan="5" style="background:#ea580c;color:#fff;">Tiến Độ Hôm Qua • Hôm Nay • Tuần Này</th>
       <th colspan="4">Lũy Kế Trong Kỳ Đang Chọn</th>
       <th rowspan="2">Tỷ trọng</th>
       ${showDynamic ? `<th colspan="${timeBuckets.length}">${grainTitle}</th>` : ''}
     </tr>
     <tr class="sub-header">
-      <th style="background:#eff6ff;color:#1e3a8a;">Hôm kia (${formatShortDM(m.prevDayYmd)})</th>
-      <th style="background:#eff6ff;color:#1e3a8a;">Hôm qua (${formatShortDM(m.yesterdayYmd)})</th>
-      <th style="background:#eff6ff;color:#1e3a8a;">So với ${formatShortDM(m.prevDayYmd)}</th>
+      <th style="background:#fff7ed;color:#9a3412;">Hôm kia (${formatShortDM(m.prevDayYmd)})</th>
+      <th style="background:#fff7ed;color:#9a3412;">Hôm qua (${formatShortDM(m.yesterdayYmd)})</th>
+      <th style="background:#fff7ed;color:#9a3412;">So với ${formatShortDM(m.prevDayYmd)}</th>
       <th style="background:#ecfdf5;color:#047857;">Hôm nay (${formatShortDM(m.latestYmd)})</th>
-      <th style="background:#f5f3ff;color:#5b21b6;">Tuần này (${m.currentWeekKey.split('-')[1]})</th>
+      <th style="background:#fef3c7;color:#92400e;">Tuần này (${m.currentWeekKey.split('-')[1]})</th>
       <th>Hình ảnh (×3)</th>
       <th>Video (×5)</th>
       <th>Tổng bài</th>
@@ -1350,7 +1350,7 @@ function renderBranchAndRegionTable(timeBuckets) {
         <td class="center-col"><span class="region-tag">${groupRegion}</span></td>
         <td class="center-col">${formatRankBadge(rankMap[branch])}</td>
         <td class="num-col ${st.prevDay === 0 ? 'zero-val' : ''}">${st.prevDay}</td>
-        <td class="num-col ${st.yesterday === 0 ? 'zero-val' : ''}" style="font-weight:700;color:#1e40af;">${st.yesterday > 0 ? '+' + st.yesterday : '0'}</td>
+        <td class="num-col ${st.yesterday === 0 ? 'zero-val' : ''}" style="font-weight:700;color:#c2410c;">${st.yesterday > 0 ? '+' + st.yesterday : '0'}</td>
         <td class="center-col">${formatDeltaHtml(diffYest)}</td>
         <td class="num-col ${st.today === 0 ? 'zero-val' : ''}" style="font-weight:700;color:#047857;">${st.today > 0 ? '+' + st.today : '0'}</td>
         <td class="num-col ${st.thisWeek === 0 ? 'zero-val' : ''}" style="font-weight:600;">${st.thisWeek}</td>
@@ -1502,9 +1502,9 @@ function renderRegionSummaryTable(timeBuckets) {
       <th>Tên Khu Vực</th>
       <th>Số CN Có Bài</th>
       <th>Tỷ Lệ Tham Gia</th>
-      <th style="background:#eff6ff;color:#1e3a8a;">Hôm qua (${formatShortDM(m.yesterdayYmd)})</th>
+      <th style="background:#fff7ed;color:#9a3412;">Hôm qua (${formatShortDM(m.yesterdayYmd)})</th>
       <th style="background:#ecfdf5;color:#047857;">Hôm nay (${formatShortDM(m.latestYmd)})</th>
-      <th style="background:#f5f3ff;color:#5b21b6;">Tuần này (${m.currentWeekKey.split('-')[1]})</th>
+      <th style="background:#fef3c7;color:#92400e;">Tuần này (${m.currentWeekKey.split('-')[1]})</th>
       <th>Hình Ảnh (×3)</th>
       <th>Video (×5)</th>
       <th>Tổng Bài Đăng</th>
@@ -1603,7 +1603,7 @@ function renderRegionSummaryTable(timeBuckets) {
             <span style="font-weight:600;font-size:12px">${row.rate.toFixed(0)}%</span>
           </div>
         </td>
-        <td class="num-col" style="font-weight:700;color:#1e40af;">${row.yesterday > 0 ? '+' + row.yesterday : '0'}</td>
+        <td class="num-col" style="font-weight:700;color:#c2410c;">${row.yesterday > 0 ? '+' + row.yesterday : '0'}</td>
         <td class="num-col" style="font-weight:700;color:#047857;">${row.today > 0 ? '+' + row.today : '0'}</td>
         <td class="num-col" style="font-weight:600;">${row.thisWeek}</td>
         <td class="num-col">${row.images.toLocaleString('vi-VN')}</td>
@@ -1858,8 +1858,8 @@ function renderCharts(timeBuckets) {
           type: 'line',
           label: 'Tổng Nụ Cười',
           data: totalSmilesArr,
-          borderColor: '#2563eb',
-          backgroundColor: '#2563eb',
+          borderColor: '#7c2d12',
+          backgroundColor: '#7c2d12',
           borderWidth: 2.5,
           tension: 0.25,
           yAxisID: 'y'
@@ -1868,14 +1868,14 @@ function renderCharts(timeBuckets) {
           type: 'bar',
           label: 'Nụ cười từ Hình ảnh (×3)',
           data: imgSmilesArr,
-          backgroundColor: '#10b981',
+          backgroundColor: '#fdba74',
           stack: 'smiles'
         },
         {
           type: 'bar',
           label: 'Nụ cười từ Video (×5)',
           data: vidSmilesArr,
-          backgroundColor: '#f59e0b',
+          backgroundColor: '#ea580c',
           stack: 'smiles'
         }
       ]
@@ -1915,8 +1915,8 @@ function renderCharts(timeBuckets) {
     data: {
       labels: regionLabels,
       datasets: [
-        { label: 'Hình ảnh (×3)', data: regImgSmiles, backgroundColor: '#3b82f6', stack: 'reg' },
-        { label: 'Video (×5)', data: regVidSmiles, backgroundColor: '#f59e0b', stack: 'reg' }
+        { label: 'Hình ảnh (×3)', data: regImgSmiles, backgroundColor: '#fdba74', stack: 'reg' },
+        { label: 'Video (×5)', data: regVidSmiles, backgroundColor: '#ea580c', stack: 'reg' }
       ]
     },
     options: {
@@ -1946,7 +1946,7 @@ function renderCharts(timeBuckets) {
       datasets: [{
         label: 'Tổng Nụ Cười',
         data: sortedDepts.map(d => d[1]),
-        backgroundColor: ['#2563eb', '#10b981', '#f59e0b', '#7c3aed', '#e11d48', '#06b6d4', '#64748b']
+        backgroundColor: '#ea580c'
       }]
     },
     options: {
@@ -1974,7 +1974,7 @@ function renderCharts(timeBuckets) {
       datasets: [{
         label: 'Điểm Nụ Cười',
         data: top15Branches.map(b => b[1]),
-        backgroundColor: '#7c3aed'
+        backgroundColor: '#ea580c'
       }]
     },
     options: {
@@ -2063,10 +2063,15 @@ function exportExcelReport() {
   });
 
   REGION_BRANCH_HIERARCHY.forEach(group => {
+    // Chỉ xuất Khu vực / Chi nhánh đang được lọc (tránh 95 dòng toàn số 0)
+    if (state.region !== 'ALL' && group.region !== state.region) return;
+    if (state.branch !== 'ALL' && !group.branches.includes(state.branch)) return;
+
     let regImg = 0, regVid = 0, regPosts = 0, regSmiles = 0;
     const regBuckets = {};
 
     group.branches.forEach(branch => {
+      if (state.branch !== 'ALL' && branch !== state.branch) return;
       const st = branchStats[branch];
       regImg += st.images;
       regVid += st.videos;
@@ -2130,7 +2135,10 @@ function exportExcelReport() {
   const ws3 = XLSX.utils.aoa_to_sheet(ws3Data);
   XLSX.utils.book_append_sheet(wb, ws3, '3_DuLieuChiTiet');
 
-  XLSX.writeFile(wb, `Bao_Cao_Nu_Cuoi_TTC_${state.startDate}_den_${state.endDate}.xlsx`);
+  // Tên file ghi rõ phạm vi lọc: Toàn quốc / Khu vực / Chi nhánh
+  const scopeRaw = state.branch !== 'ALL' ? state.branch : (state.region !== 'ALL' ? state.region : 'ToanQuoc');
+  const scope = String(scopeRaw).replace(/[^\p{L}\p{N}-]+/gu, '');
+  XLSX.writeFile(wb, `Bao_Cao_Nu_Cuoi_TNC_${scope}_${state.startDate}_den_${state.endDate}.xlsx`);
 }
 
 // Tạo HTML mẫu Email Báo cáo hàng ngày (Chuẩn Executive Summary gửi lúc 09:15 sáng T+1)
@@ -2309,7 +2317,7 @@ function generateDailyEmailHtml() {
       <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#1e3a8a" style="width:100%;border-collapse:collapse;background-color:#1e3a8a;">
         <tr>
           <td bgcolor="#1e3a8a" style="background-color:#1e3a8a;color:#ffffff;padding:20px 24px;">
-            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#fde68a;font-weight:700;">CHƯƠNG TRÌNH FTEL30 - TRIỆU NỤ CƯỜI TTC</div>
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#fde68a;font-weight:700;">CHƯƠNG TRÌNH FTEL30 - TRIỆU NỤ CƯỜI TNC</div>
             <div style="margin:6px 0;font-size:20px;font-weight:800;color:#ffffff;">😊 BÁO CÁO THỐNG KÊ NỤ CƯỜI HÀNG NGÀY</div>
             <div style="margin:0;color:#e2e8f0;font-size:13px;">
               Ngày chốt số liệu: <strong style="color:#ffffff;">${formatDMY(yesterdayYmd)} (Ngày T)</strong> &amp; sáng <strong style="color:#ffffff;">${formatDMY(latestYmd)}</strong> &nbsp;|&nbsp;
