@@ -702,7 +702,7 @@ function applyNewRecords(records, isDemo, sourceLabel) {
   if (syncText) {
     const cutoff = getDataCutoffDate();
     const cutoffText = `${String(cutoff.getDate()).padStart(2, '0')}/${String(cutoff.getMonth() + 1).padStart(2, '0')}/${cutoff.getFullYear()}`;
-    syncText.textContent = `Dữ liệu tính đến hết ngày ${cutoffText} · Cập nhật 1 lần/ngày trước 10:00 (không realtime)`;
+    syncText.textContent = `Dữ liệu tính đến hết ngày ${cutoffText} · Cập nhật 1 lần/ngày lúc 10:00 (không realtime)`;
   }
 
   populateFilterDropdowns();
@@ -2309,9 +2309,9 @@ function generateDailyEmailHtml() {
     <div style="font-family:'Segoe UI',Arial,sans-serif;color:#0f172a;max-width:840px;margin:0 auto;border:1px solid #cbd5e1;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(15,23,42,0.08);">
       <!-- Khung mô phỏng Header Email gửi tự động -->
       <div style="background:#f8fafc;padding:12px 20px;border-bottom:1px solid #e2e8f0;font-size:12.5px;color:#334155;">
-        <div style="margin-bottom:4px;"><strong>Tiêu đề (Subject):</strong> <span style="color:#0f172a;font-weight:700;">(Báo cáo tay GG sheet) Báo cáo Thống kê Nụ Cười hàng ngày (Chốt 09:00 sáng ${formatDMY(latestYmd)})</span></div>
+        <div style="margin-bottom:4px;"><strong>Tiêu đề (Subject):</strong> <span style="color:#0f172a;font-weight:700;">(Báo cáo tay GG sheet) Báo cáo Thống kê Nụ Cười hàng ngày (Cập nhật 10:00 sáng ${formatDMY(latestYmd)})</span></div>
         <div style="margin-bottom:4px;"><strong>Người nhận (To):</strong> <span style="color:#1d4ed8;font-weight:600;">VuongNT1@vienthongtin.com</span></div>
-        <div style="margin-bottom:4px;"><strong>Lịch gửi tự động:</strong> 09:30 AM hàng ngày (Sau giờ chốt duyệt bài ngày T lúc 09:00 sáng T+1)</div>
+        <div style="margin-bottom:4px;"><strong>Lịch gửi tự động:</strong> 10:00 AM hàng ngày (cập nhật link xong rồi gửi email)</div>
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;">
           <strong>File đính kèm (2 file):</strong>
           <a href="Bao_Cao_Dashboard_TTC.html" download style="display:inline-flex;align-items:center;gap:4px;background:#eff6ff;border:1px solid #93c5fd;color:#1d4ed8;padding:3px 10px;border-radius:6px;text-decoration:none;font-weight:600;font-size:12px;">
