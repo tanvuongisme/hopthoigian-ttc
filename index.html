@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261118133004" />
+  <link rel="stylesheet" href="styles.css?v=20261118142537" />
   <!-- Chart.js & SheetJS for Excel Export -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -46,7 +46,7 @@
         </span>
         <span class="live-sync-badge">
           <span class="pulse-dot"></span>
-          <span id="lastSyncText">Đang tải dữ liệu mới nhất...</span>
+          <span id="lastSyncText">Đang tải dữ liệu...</span>
         </span>
       </div>
 
@@ -67,8 +67,8 @@
       <div class="filter-top-row">
         <div class="quick-range-group" id="quickRangeGroup">
           <span class="group-label">Kỳ thống kê</span>
-          <button type="button" class="chip-btn" data-range="today">Hôm nay</button>
-          <button type="button" class="chip-btn" data-range="yesterday">Hôm qua</button>
+          <button type="button" class="chip-btn" data-range="today">Ngày chốt</button>
+          <button type="button" class="chip-btn" data-range="yesterday">Ngày trước</button>
           <button type="button" class="chip-btn" data-range="this_week">Tuần này</button>
           <button type="button" class="chip-btn" data-range="last_7d">7 ngày qua</button>
           <button type="button" class="chip-btn active" data-range="this_month">Tháng này</button>
@@ -162,7 +162,7 @@
 
       <div class="kpi-card">
         <div class="kpi-header">
-          <span class="kpi-title" id="kpiTodayTitle">Hôm nay</span>
+          <span class="kpi-title" id="kpiTodayTitle">Ngày chốt</span>
           <div class="kpi-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
         </div>
         <div class="kpi-value" id="kpiTodaySmiles">+0</div>
@@ -174,7 +174,7 @@
 
       <div class="kpi-card">
         <div class="kpi-header">
-          <span class="kpi-title" id="kpiYesterdayTitle">Hôm qua</span>
+          <span class="kpi-title" id="kpiYesterdayTitle">Ngày trước</span>
           <div class="kpi-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         </div>
         <div class="kpi-value" id="kpiYesterdaySmiles">+0</div>
@@ -269,7 +269,7 @@
           <div>
             <div class="section-title">Tiến độ theo chi nhánh &amp; khu vực</div>
             <div class="section-desc" id="branchTableSubtitle">
-              Nụ cười phát sinh hôm qua, hôm nay, lũy kế tuần, lũy kế tháng và chi tiết từng ngày của 79 đơn vị thuộc 16 khu vực.
+              Nụ cười phát sinh ngày chốt, ngày trước, lũy kế tuần, lũy kế tháng và chi tiết từng ngày của 79 đơn vị thuộc 16 khu vực.
             </div>
           </div>
           <div class="table-toolbar">
@@ -278,7 +278,7 @@
               <select id="sortBranchSelect" class="mini-select">
                 <option value="hierarchy">Theo 16 khu vực (có dòng tổng)</option>
                 <option value="rank_desc">Tổng nụ cười (cao → thấp)</option>
-                <option value="today_desc">Hôm nay &amp; hôm qua (cao → thấp)</option>
+                <option value="today_desc">Ngày chốt &amp; ngày trước (cao → thấp)</option>
               </select>
             </label>
             <label class="toggle-label">
@@ -314,7 +314,7 @@
           <div>
             <div class="section-title">Xếp hạng 16 khu vực</div>
             <div class="section-desc">
-              Kết quả hôm qua, hôm nay, tuần này, lũy kế tháng, tỷ lệ chi nhánh tham gia và trung bình nụ cười / chi nhánh.
+              Kết quả ngày chốt, ngày trước, tuần này, lũy kế tháng, tỷ lệ chi nhánh tham gia và trung bình nụ cười / chi nhánh.
             </div>
           </div>
           <div class="table-toolbar">
@@ -470,7 +470,7 @@
     Chương trình FTEL30 - Triệu Nụ Cười &amp; Report từ TINPNC HO
   </footer>
 
-  <script src="sheet_data_bundle.js?v=20261118133004"></script>
-  <script src="app.js?v=20261118133004"></script>
+  <script src="sheet_data_bundle.js?v=20261118142537"></script>
+  <script src="app.js?v=20261118142537"></script>
 </body>
 </html>

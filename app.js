@@ -234,6 +234,7 @@ function normalizeDepartment(rawDept) {
   const raw = String(rawDept).trim();
   const up = raw.toUpperCase().replace(/\s+/g, ' ');
   if (up === 'TPDVKH' || up === 'TP DVKH') return 'TP DVKH';
+  if (up === 'DVKG') return 'DVKH'; // gõ nhầm trên Sheet
   if (up === 'TPKD') return 'TPKD';
   if (up === 'PPKT') return 'PPKT';
   return up;
@@ -699,10 +700,9 @@ function applyNewRecords(records, isDemo, sourceLabel) {
     text.textContent = sourceLabel;
   }
   if (syncText) {
-    const syncTime = (window.LIVE_SHEET_DATA && window.LIVE_SHEET_DATA.updated_at)
-      ? window.LIVE_SHEET_DATA.updated_at
-      : `${new Date().toLocaleTimeString('vi-VN')} ${new Date().toLocaleDateString('vi-VN')}`;
-    syncText.textContent = `Cập nhật: ${syncTime} (Tự động 1h/lần)`;
+    const cutoff = getDataCutoffDate();
+    const cutoffText = `${String(cutoff.getDate()).padStart(2, '0')}/${String(cutoff.getMonth() + 1).padStart(2, '0')}/${cutoff.getFullYear()}`;
+    syncText.textContent = `Dữ liệu tính đến hết ngày ${cutoffText} · Cập nhật 1 lần/ngày trước 10:00 (không realtime)`;
   }
 
   populateFilterDropdowns();
@@ -767,8 +767,8 @@ function applyQuickRange(rangeCode) {
     ? state.rawRecords.reduce((min, r) => (r.dateObj < min ? r.dateObj : min), state.rawRecords[0].dateObj)
     : now;
 
-  // Neo theo ngày thực tế hiện tại (Hôm nay)
-  const ref = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  // Neo theo ngày chốt dữ liệu (dữ liệu chỉ cập nhật đến T-1)
+  const ref = getDataCutoffDate();
   let start = new Date(ref);
   let end = new Date(ref);
 
@@ -846,9 +846,19 @@ function getRecordBucketKey(r) {
 }
 
 // Tính các mốc thời gian chuẩn theo ngày thực tế hiện tại: Hôm nay, Hôm qua, Hôm kia, Tuần này, Tuần trước, Tháng này
-function getTemporalMilestones() {
+// Ngày chốt dữ liệu = ngày có bài đăng mới nhất (Sheet cập nhật đến T-1), không vượt quá hôm nay
+function getDataCutoffDate() {
   const now = new Date();
-  const todayObj = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  let latest = null;
+  for (const r of state.rawRecords) {
+    if (r.dateObj && r.dateObj <= now && (!latest || r.dateObj > latest)) latest = r.dateObj;
+  }
+  return latest ? new Date(latest.getFullYear(), latest.getMonth(), latest.getDate()) : today;
+}
+
+function getTemporalMilestones() {
+  const todayObj = getDataCutoffDate();
   const yestObj = new Date(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate() - 1);
   const prevObj = new Date(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate() - 2);
   const prevWeekObj = new Date(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate() - 7);
@@ -986,18 +996,18 @@ function renderKpis() {
   // Thẻ 1: Hôm nay
   const elTodayTitle = document.getElementById('kpiTodayTitle');
   if (elTodayTitle) {
-    elTodayTitle.textContent = `Hôm Nay (${formatShortDM(m.latestYmd)})`;
+    elTodayTitle.textContent = `Ngày chốt (${formatShortDM(m.latestYmd)})`;
     document.getElementById('kpiTodaySmiles').textContent = `+${todaySmiles.toLocaleString('vi-VN')} 😊`;
     document.getElementById('kpiTodayDetail').textContent = `${todayImages} Ảnh (×3) • ${todayVideos} Video (×5)`;
     const diffToday = todaySmiles - yestSmiles;
     const signToday = diffToday >= 0 ? `+${diffToday}` : `${diffToday}`;
-    document.getElementById('kpiTodayVsYesterday').textContent = `Hôm qua (${formatShortDM(m.yesterdayYmd)}): ${yestSmiles} (${signToday})`;
+    document.getElementById('kpiTodayVsYesterday').textContent = `Ngày trước (${formatShortDM(m.yesterdayYmd)}): ${yestSmiles} (${signToday})`;
   }
 
   // Thẻ 2: Hôm qua & So với hôm kia
   const elYestTitle = document.getElementById('kpiYesterdayTitle');
   if (elYestTitle) {
-    elYestTitle.textContent = `Hôm Qua (${formatShortDM(m.yesterdayYmd)})`;
+    elYestTitle.textContent = `Ngày trước (${formatShortDM(m.yesterdayYmd)})`;
     document.getElementById('kpiYesterdaySmiles').textContent = `+${yestSmiles.toLocaleString('vi-VN')} 😊`;
     document.getElementById('kpiYesterdayDetail').textContent = `${yestImages} Ảnh (×3) • ${yestVideos} Video (×5)`;
     const diffYest = yestSmiles - prevDaySmiles;
@@ -1089,8 +1099,8 @@ function renderUnitSpotlight() {
       📍 Đang xem kết quả của: ${titleLabel}
     </div>
     <div class="unit-spotlight-metrics">
-      <span class="spotlight-chip">Hôm nay (${formatShortDM(m.latestYmd)}): <strong>+${todayS} 😊</strong></span>
-      <span class="spotlight-chip">Hôm qua (${formatShortDM(m.yesterdayYmd)}): <strong>+${yestS} 😊</strong> (${deltaStr} so với ${formatShortDM(m.prevDayYmd)})</span>
+      <span class="spotlight-chip">Ngày chốt (${formatShortDM(m.latestYmd)}): <strong>+${todayS} 😊</strong></span>
+      <span class="spotlight-chip">Ngày trước (${formatShortDM(m.yesterdayYmd)}): <strong>+${yestS} 😊</strong> (${deltaStr} so với ${formatShortDM(m.prevDayYmd)})</span>
       <span class="spotlight-chip">Tuần này: <strong>${weekS} 😊</strong></span>
       <span class="spotlight-chip">Lũy kế tháng: <strong>${mtdS} 😊</strong></span>
       <button type="button" id="btnResetUnitFilter" style="background:#ea580c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer;">
@@ -1243,16 +1253,16 @@ function renderBranchAndRegionTable(timeBuckets) {
       <th rowspan="2" class="sticky-col-2">Đơn vị / Chi nhánh</th>
       <th rowspan="2">Khu vực</th>
       <th rowspan="2">Hạng</th>
-      <th colspan="5" style="background:#ea580c;color:#fff;">Tiến Độ Hôm Qua • Hôm Nay • Tuần Này</th>
+      <th colspan="5" style="background:#ea580c;color:#fff;">Tiến Độ Ngày Trước • Ngày Chốt • Tuần Này</th>
       <th colspan="4">Lũy Kế Trong Kỳ Đang Chọn</th>
       <th rowspan="2">Tỷ trọng</th>
       ${showDynamic ? `<th colspan="${timeBuckets.length}">${grainTitle}</th>` : ''}
     </tr>
     <tr class="sub-header">
-      <th style="background:#fff7ed;color:#9a3412;">Hôm kia (${formatShortDM(m.prevDayYmd)})</th>
-      <th style="background:#fff7ed;color:#9a3412;">Hôm qua (${formatShortDM(m.yesterdayYmd)})</th>
+      <th style="background:#fff7ed;color:#9a3412;">2 ngày trước (${formatShortDM(m.prevDayYmd)})</th>
+      <th style="background:#fff7ed;color:#9a3412;">Ngày trước (${formatShortDM(m.yesterdayYmd)})</th>
       <th style="background:#fff7ed;color:#9a3412;">So với ${formatShortDM(m.prevDayYmd)}</th>
-      <th style="background:#ecfdf5;color:#047857;">Hôm nay (${formatShortDM(m.latestYmd)})</th>
+      <th style="background:#ecfdf5;color:#047857;">Ngày chốt (${formatShortDM(m.latestYmd)})</th>
       <th style="background:#fef3c7;color:#92400e;">Tuần này (${m.currentWeekKey.split('-')[1]})</th>
       <th>Hình ảnh (×3)</th>
       <th>Video (×5)</th>
@@ -1502,8 +1512,8 @@ function renderRegionSummaryTable(timeBuckets) {
       <th>Tên Khu Vực</th>
       <th>Số CN Có Bài</th>
       <th>Tỷ Lệ Tham Gia</th>
-      <th style="background:#fff7ed;color:#9a3412;">Hôm qua (${formatShortDM(m.yesterdayYmd)})</th>
-      <th style="background:#ecfdf5;color:#047857;">Hôm nay (${formatShortDM(m.latestYmd)})</th>
+      <th style="background:#fff7ed;color:#9a3412;">Ngày trước (${formatShortDM(m.yesterdayYmd)})</th>
+      <th style="background:#ecfdf5;color:#047857;">Ngày chốt (${formatShortDM(m.latestYmd)})</th>
       <th style="background:#fef3c7;color:#92400e;">Tuần này (${m.currentWeekKey.split('-')[1]})</th>
       <th>Hình Ảnh (×3)</th>
       <th>Video (×5)</th>
