@@ -1,6 +1,6 @@
 // Auto-generated from Google Sheet: data trang hop thoi gian
 window.LIVE_SHEET_DATA = {
-  "updated_at": "10:00:09 21/11/2026",
+  "updated_at": "11:00:09 21/11/2026",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
   "total_rows": 1105,
@@ -5682,7 +5682,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "KGG",
-      "Bộ phận": "TVPGD",
+      "Bộ phận": "IBB",
       "Số lượt comment": ""
     },
     {
@@ -7090,7 +7090,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "BDH",
-      "Bộ phận": "DVKG",
+      "Bộ phận": "DVKH",
       "Số lượt comment": "0"
     },
     {
@@ -7106,7 +7106,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "BDH",
-      "Bộ phận": "DVKG",
+      "Bộ phận": "DVKH",
       "Số lượt comment": "0"
     },
     {
@@ -8114,7 +8114,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "DNI",
-      "Bộ phận": "TPKT",
+      "Bộ phận": "KTV",
       "Số lượt comment": "0"
     },
     {
@@ -8386,7 +8386,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "HN02",
-      "Bộ phận": "TPKT",
+      "Bộ phận": "KTV",
       "Số lượt comment": ""
     },
     {
@@ -8690,7 +8690,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "SG03",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": "0"
     },
     {
@@ -8706,7 +8706,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "VTU",
-      "Bộ phận": "BGĐ",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -8786,7 +8786,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "AGG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": "0"
     },
     {
@@ -8834,7 +8834,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "STG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": "0"
     },
     {
@@ -8850,7 +8850,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "STG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -8898,7 +8898,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "STG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -8914,7 +8914,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "STG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -8930,7 +8930,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "STG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -8962,7 +8962,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "STG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -8978,7 +8978,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "HGG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -8994,7 +8994,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "TBH",
-      "Bộ phận": "PKT",
+      "Bộ phận": "KTV",
       "Số lượt comment": ""
     },
     {
@@ -9042,7 +9042,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "BLU",
-      "Bộ phận": "ĐT",
+      "Bộ phận": "KTV",
       "Số lượt comment": "0"
     },
     {
@@ -9058,7 +9058,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "SG10",
-      "Bộ phận": "PKT",
+      "Bộ phận": "KTV",
       "Số lượt comment": ""
     },
     {
@@ -9090,7 +9090,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "TBH",
-      "Bộ phận": "PKT",
+      "Bộ phận": "KTV",
       "Số lượt comment": ""
     },
     {
@@ -9122,7 +9122,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "KGG",
-      "Bộ phận": "BGĐ",
+      "Bộ phận": "Khác",
       "Số lượt comment": "0"
     },
     {
@@ -9138,7 +9138,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "KGG",
-      "Bộ phận": "BGĐ",
+      "Bộ phận": "Khác",
       "Số lượt comment": "0"
     },
     {
@@ -9154,7 +9154,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "KGG",
-      "Bộ phận": "BGĐ",
+      "Bộ phận": "Khác",
       "Số lượt comment": "0"
     },
     {
@@ -9170,7 +9170,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "KGG",
-      "Bộ phận": "BGĐ",
+      "Bộ phận": "Khác",
       "Số lượt comment": "0"
     },
     {
@@ -9266,7 +9266,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "HN06",
-      "Bộ phận": "PKT",
+      "Bộ phận": "KTV",
       "Số lượt comment": ""
     },
     {
@@ -9298,7 +9298,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "KGG",
-      "Bộ phận": "BGĐ",
+      "Bộ phận": "Khác",
       "Số lượt comment": "0"
     },
     {
@@ -9378,7 +9378,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "STG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -9426,7 +9426,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "VTU",
-      "Bộ phận": "BGĐ",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -9554,7 +9554,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "KGG",
-      "Bộ phận": "BGĐ",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -9570,7 +9570,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "",
       "Số lượt share": "",
       "Chi nhánh": "HGG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": ""
     },
     {
@@ -9778,7 +9778,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "13",
       "Chi nhánh": "HTH",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": "13"
     },
     {
@@ -9906,7 +9906,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "0",
       "Chi nhánh": "DNI",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": "0"
     },
     {
@@ -9922,7 +9922,7 @@ window.LIVE_SHEET_DATA = {
       "Số lượt like": "0",
       "Số lượt share": "1",
       "Chi nhánh": "HGG",
-      "Bộ phận": "AD",
+      "Bộ phận": "Khác",
       "Số lượt comment": "1"
     },
     {
