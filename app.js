@@ -7,7 +7,7 @@
 const SPREADSHEET_ID = '1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas';
 const GID = '0';
 
-// Danh mục chuẩn 15 Khu vực & 78 Chi nhánh (Đã bỏ tiền tố TIN / Phuong Nam và gộp các phòng đối tác -01, -02 của tỉnh về 1 Chi nhánh)
+// Danh mục chuẩn 15 Khu vực & 77 Chi nhánh (DKG đã gộp vào DLK; Đã bỏ tiền tố TIN / Phuong Nam và gộp các phòng đối tác -01, -02 của tỉnh về 1 Chi nhánh)
 const REGION_BRANCH_HIERARCHY = [
   {
     region: 'HNI',
@@ -46,7 +46,7 @@ const REGION_BRANCH_HIERARCHY = [
     region: 'MT&TN',
     regionName: 'Miền Trung & Tây Nguyên (MT&TN)',
     branches: [
-      'BDH', 'DLK', 'DKG', 'GLI',
+      'BDH', 'DLK', 'GLI',
       'KTM', 'PYN', 'QNI', 'QNM',
       'HUE', 'QBH', 'QTI'
     ]
@@ -115,7 +115,7 @@ const REGION_BRANCH_HIERARCHY = [
   }
 ];
 
-// Xây dựng bảng tra cứu nhanh Chi nhánh -> Khu vực & STT chuẩn (1 -> 78)
+// Xây dựng bảng tra cứu nhanh Chi nhánh -> Khu vực & STT chuẩn (1 -> 77)
 const BRANCH_TO_REGION = {};
 const BRANCH_STT_MAP = {};
 const ALL_BRANCHES = [];
@@ -183,11 +183,19 @@ const CUSTOM_BRANCH_ALIASES = {
   'SOC-01': 'SOC', 'SOC-02': 'SOC', 'SOC01': 'SOC', 'SOC02': 'SOC'
 };
 
+// Chi nhánh đã sáp nhập: mọi cách viết của CN cũ (DKG, DKG-01, TIN DKG...) tính cho CN mới
+const MERGED_BRANCHES = { 'DKG': 'DLK' }; // 26/11/2026: DKG gộp vào DLK
+
 function resolveCanonicalBranch(rawBranch) {
   if (!rawBranch || !String(rawBranch).trim()) {
     return { branch: 'Chưa điền CN', region: 'KHÁC', matched: false };
   }
   const trimmed = String(rawBranch).trim();
+  const mMerged = normalizeKey(trimmed).replace(/^(TIN|PHUONG NAM)[\s-]+/, '').replace(/[\s\-_.]+/g, '').match(/^([A-Z]{3})\d*$/);
+  if (mMerged && MERGED_BRANCHES[mMerged[1]]) {
+    const canon = MERGED_BRANCHES[mMerged[1]];
+    return { branch: canon, region: BRANCH_TO_REGION[canon] || 'KHÁC', matched: true };
+  }
   if (BRANCH_TO_REGION[trimmed]) {
     return { branch: trimmed, region: BRANCH_TO_REGION[trimmed], matched: true };
   }
@@ -1132,7 +1140,7 @@ function renderLeaderboardStrip() {
   const lblRecent = document.getElementById('lblRecentDates');
   if (lblRecent) lblRecent.textContent = `${formatShortDM(m.yesterdayYmd)} & ${formatShortDM(m.latestYmd)}`;
   const lblScope = document.getElementById('lblLeaderScope');
-  if (lblScope) lblScope.textContent = state.region === 'ALL' ? 'Toàn quốc (78 CN)' : `Trong KV ${state.region}`;
+  if (lblScope) lblScope.textContent = state.region === 'ALL' ? `Toàn quốc (${ALL_BRANCHES.length} CN)` : `Trong KV ${state.region}`;
 
   const brMap = {};
   ALL_BRANCHES.forEach(b => {
@@ -1273,7 +1281,7 @@ function renderBranchAndRegionTable(timeBuckets) {
   `;
   headEl.innerHTML = headHtml;
 
-  // Khởi tạo bộ đếm cho 78 Chi nhánh
+  // Khởi tạo bộ đếm cho 77 Chi nhánh
   const branchStats = {};
   ALL_BRANCHES.forEach(b => {
     branchStats[b] = {
@@ -1332,7 +1340,7 @@ function renderBranchAndRegionTable(timeBuckets) {
     grandByBucket[bKey] = (grandByBucket[bKey] || 0) + r.smiles;
   });
 
-  // Tính thứ hạng (Rank 1 -> 78) dựa trên Tổng Nụ Cười trong kỳ
+  // Tính thứ hạng (Rank 1 -> 77) dựa trên Tổng Nụ Cười trong kỳ
   const rankedList = ALL_BRANCHES.slice().sort((a, b) => {
     const diff = branchStats[b].smiles - branchStats[a].smiles;
     if (diff !== 0) return diff;
