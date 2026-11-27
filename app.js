@@ -1,6 +1,6 @@
 /**
  * HỆ THỐNG THỐNG KÊ NỤ CƯỜI TNC - DASHBOARD & ANALYTICS
- * Quy tắc: Hình ảnh = 1 nụ cười | Video = 2 nụ cười
+ * Quy tắc: Hình ảnh = 3 nụ cười | Video = 5 | Hình ảnh + Video = 8
  * Phân cấp chuẩn: 99 Chi nhánh thuộc 15 Khu vực (theo file Chi nhánh.xlsx)
  */
 
@@ -248,10 +248,23 @@ function normalizeDepartment(rawDept) {
   return up;
 }
 
+// Lọc theo loại: bài 'Hình ảnh + Video' khớp cả bộ lọc Ảnh lẫn bộ lọc Video
+function matchesMediaFilter(r, type) {
+  if (type === 'IMAGE') return r.images > 0;
+  if (type === 'VIDEO') return r.videos > 0;
+  return r.mediaCode === type;
+}
+
 // Quy tắc tính điểm Nụ cười từ cột "Loại"
 function parseMediaType(rawType) {
   const norm = normalizeKey(rawType);
-  if (norm.includes('VIDEO') || norm.includes('CLIP') || norm.includes('PHIM') || norm === '2' || norm === '5') {
+  const hasVideo = norm.includes('VIDEO') || norm.includes('CLIP') || norm.includes('PHIM') || norm === '2' || norm === '5';
+  const hasImage = norm.includes('HINH') || norm.includes('ANH') || norm.includes('IMAGE') || norm.includes('PHOTO');
+  // Có CẢ hình ảnh và video ("Hình ảnh, video") = 3 + 5 = 8 nụ cười, đếm 1 ảnh + 1 video
+  if (hasVideo && hasImage) {
+    return { code: 'BOTH', label: 'Hình ảnh + Video', smiles: 8, images: 1, videos: 1 };
+  }
+  if (hasVideo) {
     return { code: 'VIDEO', label: 'Video', smiles: 5, images: 0, videos: 1 };
   }
   // Mặc định Hình ảnh = 3 nụ cười
@@ -695,6 +708,17 @@ function fetchGoogleSheetViaJsonp(sheetId, gid) {
   });
 }
 
+// Dòng "Dữ liệu mới nhất được update vào 9:30 sáng ngày dd/mm/yyyy" (2 phiên/ngày: 9:30, 10:30)
+function formatLatestUpdateText() {
+  const p = window.LIVE_SHEET_DATA;
+  const m = p && p.updated_at ? String(p.updated_at).match(/^(\d{1,2}):(\d{2})(?::\d{2})?\s+(\d{2}\/\d{2}\/\d{4})$/) : null;
+  if (!m) return 'Dữ liệu mới nhất: đang cập nhật...';
+  const label = p.session_label || `${parseInt(m[1], 10)}:${m[2]}`;
+  const hour = parseInt(label.split(':')[0], 10);
+  const buoi = hour < 12 ? 'sáng' : (hour < 18 ? 'chiều' : 'tối');
+  return `Dữ liệu mới nhất được update vào ${label} ${buoi} ngày ${m[3]}`;
+}
+
 function applyNewRecords(records, isDemo, sourceLabel) {
   state.rawRecords = records;
   state.isDemoData = isDemo;
@@ -708,9 +732,7 @@ function applyNewRecords(records, isDemo, sourceLabel) {
     text.textContent = sourceLabel;
   }
   if (syncText) {
-    const cutoff = getDataCutoffDate();
-    const cutoffText = `${String(cutoff.getDate()).padStart(2, '0')}/${String(cutoff.getMonth() + 1).padStart(2, '0')}/${cutoff.getFullYear()}`;
-    syncText.textContent = `Dữ liệu tính đến hết ngày ${cutoffText} · Cập nhật buổi sáng 10:00 · 11:00 · 12:00 (không realtime)`;
+    syncText.textContent = formatLatestUpdateText();
   }
 
   populateFilterDropdowns();
@@ -816,7 +838,7 @@ function filterRecords() {
     if (state.region !== 'ALL' && r.region !== state.region) return false;
     if (state.branch !== 'ALL' && r.branch !== state.branch) return false;
     if (state.dept !== 'ALL' && r.dept !== state.dept) return false;
-    if (state.mediaType !== 'ALL' && r.mediaCode !== state.mediaType) return false;
+    if (state.mediaType !== 'ALL' && !matchesMediaFilter(r, state.mediaType)) return false;
     if (kw) {
       const hay = normalizeKey(`${r.branch} ${r.region} ${r.dept} ${r.rawBranch} ${r.authorEmail} ${r.authorName} ${r.postTitle}`);
       if (!hay.includes(kw)) return false;
@@ -901,7 +923,7 @@ function getUnitScopedRecords() {
     if (state.region !== 'ALL' && r.region !== state.region) return false;
     if (state.branch !== 'ALL' && r.branch !== state.branch) return false;
     if (state.dept !== 'ALL' && r.dept !== state.dept) return false;
-    if (state.mediaType !== 'ALL' && r.mediaCode !== state.mediaType) return false;
+    if (state.mediaType !== 'ALL' && !matchesMediaFilter(r, state.mediaType)) return false;
     if (kw) {
       const hay = normalizeKey(`${r.branch} ${r.region} ${r.dept} ${r.rawBranch} ${r.authorEmail} ${r.authorName} ${r.postTitle}`);
       if (!hay.includes(kw)) return false;
@@ -1302,7 +1324,7 @@ function renderBranchAndRegionTable(timeBuckets) {
   // Tính các cột Hôm kia / Hôm qua / Hôm nay / Tuần này từ dữ liệu gốc (lọc theo Bộ phận / Loại nếu có)
   state.rawRecords.forEach(r => {
     if (state.dept !== 'ALL' && r.dept !== state.dept) return;
-    if (state.mediaType !== 'ALL' && r.mediaCode !== state.mediaType) return;
+    if (state.mediaType !== 'ALL' && !matchesMediaFilter(r, state.mediaType)) return;
     if (!branchStats[r.branch]) return;
     const st = branchStats[r.branch];
     if (r.ymd === m.prevDayYmd) st.prevDay += r.smiles;
@@ -1547,7 +1569,7 @@ function renderRegionSummaryTable(timeBuckets) {
     state.rawRecords.forEach(r => {
       if (r.region !== g.region) return;
       if (state.dept !== 'ALL' && r.dept !== state.dept) return;
-      if (state.mediaType !== 'ALL' && r.mediaCode !== state.mediaType) return;
+      if (state.mediaType !== 'ALL' && !matchesMediaFilter(r, state.mediaType)) return;
       if (r.ymd === m.yesterdayYmd) yesterday += r.smiles;
       if (r.ymd === m.latestYmd) today += r.smiles;
       if (r.weekKey === m.currentWeekKey) thisWeek += r.smiles;
@@ -2012,8 +2034,8 @@ function renderRawDataTable() {
 
   let html = '';
   rows.forEach((r, idx) => {
-    const typeClass = r.mediaCode === 'VIDEO' ? 'video' : 'image';
-    const typeIcon = r.mediaCode === 'VIDEO' ? '🎬 Video (×5)' : '📸 Hình ảnh (×3)';
+    const typeClass = r.mediaCode === 'IMAGE' ? 'image' : 'video';
+    const typeIcon = r.mediaCode === 'BOTH' ? '📸🎬 Ảnh + Video (×8)' : (r.mediaCode === 'VIDEO' ? '🎬 Video (×5)' : '📸 Hình ảnh (×3)');
     const branchDisplay = `<strong>${r.branch}</strong>`;
     const emailDisplay = r.authorEmail
       ? `<a href="mailto:${r.authorEmail}" style="color:#2563eb;text-decoration:none;font-weight:600;">${r.authorEmail}</a>`
@@ -2319,7 +2341,7 @@ function generateDailyEmailHtml() {
       <div style="background:#f8fafc;padding:12px 20px;border-bottom:1px solid #e2e8f0;font-size:12.5px;color:#334155;">
         <div style="margin-bottom:4px;"><strong>Tiêu đề (Subject):</strong> <span style="color:#0f172a;font-weight:700;">(Báo cáo tay GG sheet) Báo cáo Thống kê Nụ Cười hàng ngày (Cập nhật sáng ${formatDMY(latestYmd)})</span></div>
         <div style="margin-bottom:4px;"><strong>Người nhận (To):</strong> <span style="color:#1d4ed8;font-weight:600;">VuongNT1@vienthongtin.com</span></div>
-        <div style="margin-bottom:4px;"><strong>Lịch gửi tự động:</strong> 10:00, 11:00, 12:00 hàng ngày (chỉ gửi lại khi dữ liệu thay đổi)</div>
+        <div style="margin-bottom:4px;"><strong>Lịch gửi tự động:</strong> 9:30, 10:30 hàng ngày (chỉ gửi lại khi dữ liệu thay đổi)</div>
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;">
           <strong>File đính kèm (2 file):</strong>
           <a href="Bao_Cao_Dashboard_TTC.html" download style="display:inline-flex;align-items:center;gap:4px;background:#eff6ff;border:1px solid #93c5fd;color:#1d4ed8;padding:3px 10px;border-radius:6px;text-decoration:none;font-weight:600;font-size:12px;">
@@ -2339,7 +2361,7 @@ function generateDailyEmailHtml() {
             <div style="margin:6px 0;font-size:20px;font-weight:800;color:#ffffff;">😊 BÁO CÁO THỐNG KÊ NỤ CƯỜI HÀNG NGÀY</div>
             <div style="margin:0;color:#e2e8f0;font-size:13px;">
               Ngày chốt số liệu: <strong style="color:#ffffff;">${formatDMY(yesterdayYmd)} (Ngày T)</strong> &amp; sáng <strong style="color:#ffffff;">${formatDMY(latestYmd)}</strong> &nbsp;|&nbsp;
-              Quy tắc: <strong style="color:#fde68a;">Hình ảnh = 3 nụ cười, Video = 5 nụ cười</strong>
+              Quy tắc: <strong style="color:#fde68a;">Hình ảnh = 3 nụ cười, Video = 5 nụ cười, Hình ảnh + Video = 8 nụ cười</strong>
             </div>
           </td>
         </tr>
