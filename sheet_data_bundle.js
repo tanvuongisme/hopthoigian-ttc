@@ -1,7 +1,7 @@
 // Auto-generated from Google Sheet: data trang hop thoi gian
 window.LIVE_SHEET_DATA = {
-  "updated_at": "10:30:02 27/11/2026",
-  "session_label": "10:30",
+  "updated_at": "09:30:04 28/11/2026",
+  "session_label": "9:30",
   "spreadsheet_id": "1QQwYkkOkJWxR36KamV8jRSE98I8pLNRtkeXXe7MOcas",
   "spreadsheet_title": "data trang hop thoi gian",
   "total_rows": 1338,
